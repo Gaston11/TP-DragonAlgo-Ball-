@@ -5,7 +5,7 @@ import fiuba.algo3.modelo.Componentes.Tablero;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Partida {
-    private Tablero tablero;
+ /*   private Tablero tablero;
     private Jugador jugadorActual;
 
     public Partida(String nombreJugador1, String nombreJugador2){
@@ -25,6 +25,6 @@ public class Partida {
     public void finTurno() {
         this.jugadorActual = this.jugadorActual.rival();
     }
-
+*/
 
 }

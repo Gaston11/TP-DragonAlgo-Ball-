@@ -73,6 +73,10 @@ public abstract class Personaje{
         this.vida = (maxVida < this.vida + cantidad)? maxVida : this.vida + cantidad;
     }
 
+    public abstract void ataqueBasico(PersonajeBueno enemigo);
+
+    public abstract void ataqueBasico(PersonajeMalo enemigo);
+
     public abstract Coordenada moverArriba();
 
     public abstract Coordenada moverAbajo();

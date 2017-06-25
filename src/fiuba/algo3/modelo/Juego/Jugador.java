@@ -1,26 +1,25 @@
 package fiuba.algo3.modelo.Juego;
 
-import fiuba.algo3.modelo.Personajes.Equipo;
-import fiuba.algo3.modelo.Personajes.EquipoGuerrerosZ;
+import fiuba.algo3.modelo.Personajes.PersonajeBueno;
+import fiuba.algo3.modelo.Personajes.PersonajeMalo;
+;
 
-public class Jugador {
-    private String nombre;
-    private Equipo equipo;
-    private Jugador rival;
+public abstract class Jugador {
 
-    public Jugador(String nombreJugador) {
-        this.nombre = nombreJugador;
-    }
+    public abstract void asignarEquipo();
 
-    public void asignarEquipo(Equipo equipo) {
-        this.equipo = equipo;
-    }
+    public abstract void asignarRival(JugadorZ jugador);
 
-    public void asignarRival(Jugador jugadorRival) {
-        this.rival = jugadorRival;
-    }
+    public abstract void asignarRival(JugadorEnemigo jugador);
 
-    public Jugador rival() {
-        return this.rival;
-    }
+    public abstract void ataqueBasico(String clave, PersonajeBueno enemigo);
+
+    public abstract void ataqueBasico(String clave, PersonajeMalo enemigo);
+
+    public abstract String getNombre();
+
+    public abstract Jugador getRival();
+
+
+    //public abstract void inicializarPersonajesEnTablero();
 }

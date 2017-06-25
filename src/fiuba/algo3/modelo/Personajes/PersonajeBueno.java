@@ -3,7 +3,7 @@ package fiuba.algo3.modelo.Personajes;
 import fiuba.algo3.modelo.Estados.Estado;
 import fiuba.algo3.modelo.Componentes.Coordenada;
 
-public interface PersonajeBueno{
+public interface PersonajeBueno {
 
     int calcularDistanciaDesde(Coordenada otraCoordenada);
 
@@ -16,4 +16,6 @@ public interface PersonajeBueno{
     void recibirDanio(int cantidad);
 
     void convertimeEnChocolate();
+
+    int getVida();
 }
