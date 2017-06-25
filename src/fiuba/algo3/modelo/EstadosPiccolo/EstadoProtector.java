@@ -8,8 +8,8 @@ import fiuba.algo3.modelo.Estados.Estado;
 import fiuba.algo3.modelo.Personajes.Gohan;
 import fiuba.algo3.modelo.Personajes.Personaje;
 import fiuba.algo3.modelo.excepciones.EstadoDeTransformacionMaximaException;
-import fiuba.algo3.modelo.excepciones.NoSePuedeTransformarPersonaje;
-import fiuba.algo3.modelo.excepciones.NoSePuedeMoverPersonaje;
+import fiuba.algo3.modelo.excepciones.NoSePuedeTransformarPersonajeException;
+import fiuba.algo3.modelo.excepciones.NoSePuedeMoverPersonajeException;
 
 public class EstadoProtector implements Estado {
 
@@ -47,7 +47,7 @@ public class EstadoProtector implements Estado {
     @Override
     public void puedeMoverse(int pasos){
         if(velocidad<pasos){
-            throw new NoSePuedeMoverPersonaje();
+            throw new NoSePuedeMoverPersonajeException();
         }
     }
 
@@ -64,12 +64,12 @@ public class EstadoProtector implements Estado {
 
     @Override
     public Estado transformarse(int ki){
-        throw new NoSePuedeTransformarPersonaje();
+        throw new NoSePuedeTransformarPersonajeException();
     }
 
     @Override
     public Estado transformarse(Personaje personaje1, Personaje personaje2, int ki){
-        throw new NoSePuedeTransformarPersonaje();
+        throw new NoSePuedeTransformarPersonajeException();
     }
 
     @Override

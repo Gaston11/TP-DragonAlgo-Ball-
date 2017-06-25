@@ -1,13 +1,12 @@
 package fiuba.algo3.modelo.EstadosPiccolo;
 
 
-import fiuba.algo3.modelo.Estados.*;
 import fiuba.algo3.modelo.Componentes.Coordenada;
 import fiuba.algo3.modelo.Componentes.VersorDireccion;
 import fiuba.algo3.modelo.Estados.Estado;
 import fiuba.algo3.modelo.Personajes.Gohan;
-import fiuba.algo3.modelo.excepciones.NoSePuedeTransformarPersonaje;
-import fiuba.algo3.modelo.excepciones.NoSePuedeMoverPersonaje;
+import fiuba.algo3.modelo.excepciones.NoSePuedeMoverPersonajeException;
+import fiuba.algo3.modelo.excepciones.NoSePuedeTransformarPersonajeException;
 import fiuba.algo3.modelo.Personajes.Personaje;
 import fiuba.algo3.modelo.Personajes.PersonajeMalo;
 import fiuba.algo3.modelo.Personajes.PersonajeBueno;
@@ -48,14 +47,14 @@ public class EstadoFortalecido implements Estado {
     @Override
     public void puedeMoverse(int pasos){
         if(velocidad<pasos){
-            throw new NoSePuedeMoverPersonaje();
+            throw new NoSePuedeMoverPersonajeException();
         }
     }
 
     @Override
     public Estado transformarse(Gohan gohan,int kiActual){
         if (!gohan.estadoVidaCritica()){
-            throw new NoSePuedeTransformarPersonaje();
+            throw new NoSePuedeTransformarPersonajeException();
         }
         return new EstadoProtector();
     }
@@ -67,12 +66,12 @@ public class EstadoFortalecido implements Estado {
 
     @Override
     public Estado transformarse(int ki){
-        throw new NoSePuedeTransformarPersonaje();
+        throw new NoSePuedeTransformarPersonajeException();
     }
 
     @Override
     public Estado transformarse(Personaje personaje1, Personaje personaje2, int ki){
-        throw new NoSePuedeTransformarPersonaje();
+        throw new NoSePuedeTransformarPersonajeException();
     }
 
     @Override

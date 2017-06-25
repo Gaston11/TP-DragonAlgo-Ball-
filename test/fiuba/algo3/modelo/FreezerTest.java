@@ -1,19 +1,21 @@
 package fiuba.algo3.modelo;
 
-import fiuba.algo3.modelo.excepciones.*;
-import fiuba.algo3.modelo.Personajes.Freezer;
-import fiuba.algo3.modelo.Personajes.Goku;
-import fiuba.algo3.modelo.Personajes.Gohan;
-import fiuba.algo3.modelo.Personajes.Cell;
 import fiuba.algo3.modelo.Componentes.Celda;
 import fiuba.algo3.modelo.Componentes.Coordenada;
 import fiuba.algo3.modelo.Componentes.Tablero;
+import fiuba.algo3.modelo.Personajes.Cell;
+import fiuba.algo3.modelo.Personajes.Freezer;
+import fiuba.algo3.modelo.Personajes.Gohan;
+import fiuba.algo3.modelo.Personajes.Goku;
+import fiuba.algo3.modelo.excepciones.CeldaOcupadaException;
+import fiuba.algo3.modelo.excepciones.FuegoAmigoException;
+import fiuba.algo3.modelo.excepciones.NoSePuedeTransformarPersonajeException;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import org.junit.Rule;
-import org.junit.rules.ExpectedException;
 
 public class FreezerTest {
 
@@ -84,7 +86,7 @@ public class FreezerTest {
         Freezer freezer = new Freezer();
         freezer.naceEn(unaCoordenada);
 
-        thrown.expect(NoSePuedeTransformarPersonaje.class);
+        thrown.expect(NoSePuedeTransformarPersonajeException.class);
         freezer.transformarse();
 
         assertTrue(freezer.poseeKi(0));
@@ -106,7 +108,7 @@ public class FreezerTest {
 
         freezer.transformarse();
 
-        thrown.expect(NoSePuedeTransformarPersonaje.class);
+        thrown.expect(NoSePuedeTransformarPersonajeException.class);
         freezer.transformarse();
 
         assertTrue(freezer.poseeKi(5));
