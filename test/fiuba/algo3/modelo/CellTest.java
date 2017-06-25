@@ -87,7 +87,7 @@ public class CellTest {
         Cell cell = new Cell();
         cell.naceEn(unaCoordenada);
 
-        thrown.expect(NoSePuedeTransformarPersonaje.class);
+        thrown.expect(NoSePuedeTransformarPersonajeException.class);
         cell.transformarse();
     }
 
@@ -110,7 +110,7 @@ public class CellTest {
 
         cell.transformarse();
 
-        thrown.expect(NoSePuedeTransformarPersonaje.class);
+        thrown.expect(NoSePuedeTransformarPersonajeException.class);
         cell.transformarse();
     }
 

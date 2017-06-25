@@ -85,7 +85,7 @@ public class MajinBooTest {
         MajinBoo majinboo = new MajinBoo();
         majinboo.naceEn(unaCoordenada);
 
-        thrown.expect(NoSePuedeTransformarPersonaje.class);
+        thrown.expect(NoSePuedeTransformarPersonajeException.class);
         majinboo.transformarse();
     }
 
@@ -104,7 +104,7 @@ public class MajinBooTest {
 
         majinboo.transformarse();
 
-        thrown.expect(NoSePuedeTransformarPersonaje.class);
+        thrown.expect(NoSePuedeTransformarPersonajeException.class);
         majinboo.transformarse();
     }
 

@@ -2,9 +2,7 @@ package fiuba.algo3.modelo;
 
 import fiuba.algo3.modelo.Personajes.*;
 import fiuba.algo3.modelo.excepciones.*;
-import fiuba.algo3.modelo.Componentes.Celda;
 import fiuba.algo3.modelo.Componentes.Coordenada;
-import fiuba.algo3.modelo.Componentes.Tablero;
 import org.junit.Test;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
@@ -69,7 +67,7 @@ public class GohanTest {
         Piccolo piccolo = new Piccolo();
         piccolo.naceEn(unaCoordenada);
 
-        thrown.expect(NoSePuedeTransformarPersonaje.class);
+        thrown.expect(NoSePuedeTransformarPersonajeException.class);
         gohan.transformarse(goku,piccolo);
     }
 
@@ -137,7 +135,7 @@ public class GohanTest {
         }
         piccolo.recibirDanio(350);
 
-        thrown.expect(NoSePuedeTransformarPersonaje.class);
+        thrown.expect(NoSePuedeTransformarPersonajeException.class);
         gohan.transformarse(goku,piccolo);
 
     }
@@ -167,7 +165,7 @@ public class GohanTest {
         piccolo.recibirDanio(350);
         goku.recibirDanio(350);
 
-        thrown.expect(NoSePuedeTransformarPersonaje.class);
+        thrown.expect(NoSePuedeTransformarPersonajeException.class);
         gohan.transformarse(goku,piccolo);
 
     }

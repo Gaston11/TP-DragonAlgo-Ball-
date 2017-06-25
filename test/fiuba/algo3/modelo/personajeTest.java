@@ -1,15 +1,11 @@
 package fiuba.algo3.modelo;
 
 import fiuba.algo3.modelo.Personajes.*;
-import fiuba.algo3.modelo.Componentes.Celda;
 import fiuba.algo3.modelo.Componentes.Coordenada;
-import fiuba.algo3.modelo.excepciones.NoSePuedeMoverPersonaje;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
-import org.junit.Rule;
-import org.junit.rules.ExpectedException;
 
 public class personajeTest{
 
@@ -152,7 +148,7 @@ public class personajeTest{
 
             Celda celdaNueva = new Celda(0,4);
 
-        } catch (NoSePuedeMoverPersonaje e){
+        } catch (NoSePuedeMoverPersonajeException e){
             piccolo.seMueveHaciaLaDerecha(3);
 
             Celda celdaNueva = new Celda(0,3);

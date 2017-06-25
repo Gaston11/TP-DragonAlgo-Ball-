@@ -87,7 +87,7 @@ public class PiccoloTest{
         Gohan gohan = new Gohan();
         gohan.naceEn(otraCoordenada);
 
-        thrown.expect(NoSePuedeTransformarPersonaje.class);
+        thrown.expect(NoSePuedeTransformarPersonajeException.class);
         piccolo.transformarse(gohan);
     }
 
@@ -111,7 +111,7 @@ public class PiccoloTest{
 
         piccolo.transformarse(gohan);
 
-        thrown.expect(NoSePuedeTransformarPersonaje.class);
+        thrown.expect(NoSePuedeTransformarPersonajeException.class);
         piccolo.transformarse(gohan);
     }
 

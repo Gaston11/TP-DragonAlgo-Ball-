@@ -82,7 +82,7 @@ public class GokuTest {
         Goku goku = new Goku();
         goku.naceEn(unaCoordenada);
 
-        thrown.expect(NoSePuedeTransformarPersonaje.class);
+        thrown.expect(NoSePuedeTransformarPersonajeException.class);
         goku.transformarse();
     }
 
@@ -102,7 +102,7 @@ public class GokuTest {
 
         goku.transformarse();
 
-        thrown.expect(NoSePuedeTransformarPersonaje.class);
+        thrown.expect(NoSePuedeTransformarPersonajeException.class);
         goku.transformarse();
     }
 
