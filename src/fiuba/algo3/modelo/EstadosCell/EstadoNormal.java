@@ -32,6 +32,7 @@ public class EstadoNormal implements Estado {
 
     @Override
     public boolean distanciaPermitida(int distancia){
+
         return (distanciaAtaque >= distancia);
     }
 
@@ -208,6 +209,11 @@ public class EstadoNormal implements Estado {
     @Override
     public int getPoderPelea() {
         return poderPelea;
+    }
+
+    @Override
+    public int getVelocidad() {
+        return this.velocidad;
     }
 
 }

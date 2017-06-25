@@ -27,22 +27,25 @@ public class Coordenada {
 	}
 
 	public boolean ubicacionDiagonal(Coordenada coordenada){
-		return (Math.abs(coordenada.getCoordenadaY() - this.coordenadaY) ==
-				Math.abs(coordenada.getCoordenadaX() - this.coordenadaX));
+		return (Math.abs(Math.abs(coordenada.getCoordenadaY()) - Math.abs(this.coordenadaY)) ==
+				Math.abs(Math.abs(coordenada.getCoordenadaX()) - Math.abs(this.coordenadaX)));
 	}
 
 	public int obtenerDistancia(Coordenada coordenada){
 		int distancia;
-		if (this.ubicacionDiagonal(coordenada) || (coordenada.getCoordenadaX() == this.coordenadaX)){
-			distancia = Math.abs(coordenada.getCoordenadaY() - this.coordenadaY);
+		if (this.ubicacionDiagonal(coordenada) || (Math.abs(coordenada.getCoordenadaX()) == Math.abs(this.coordenadaX))){
+			distancia = Math.abs( Math.abs(coordenada.getCoordenadaY()) - Math.abs(this.coordenadaY));
 			//da igual la distancia columna o la distancia fila
-		} else if (coordenada.getCoordenadaY() == this.getCoordenadaY()){
-			distancia = Math.abs(coordenada.getCoordenadaX() - this.coordenadaX);
-
 		} else {
-			throw new NoSePuedeCalcularLaDistanciaException();
-			// si no se puede calcular la distancia Tira una excepcion
 
+			if (Math.abs(coordenada.getCoordenadaY()) == Math.abs(this.getCoordenadaY())){
+				distancia = Math.abs(Math.abs(coordenada.getCoordenadaX()) - Math.abs(this.coordenadaX));
+
+			} else {
+				throw new NoSePuedeCalcularLaDistanciaException();
+				// si no se puede calcular la distancia Tira una excepcion
+
+			}
 		}
 
 		return distancia;

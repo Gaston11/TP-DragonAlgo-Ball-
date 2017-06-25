@@ -200,5 +200,10 @@ public class EstadoBooOriginal implements Estado {
         return poderPelea;
     }
 
+    @Override
+    public int getVelocidad() {
+        return this.velocidad;
+    }
+
 }
 

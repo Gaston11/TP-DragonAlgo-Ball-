@@ -1,6 +1,7 @@
 package fiuba.algo3.modelo.Componentes;
 
 import fiuba.algo3.modelo.Estados.Estado;
+import fiuba.algo3.modelo.Personajes.Personaje;
 
 public class Semilla extends Consumible {
 
@@ -17,7 +18,7 @@ public class Semilla extends Consumible {
     }
 
     @Override
-    public Estado agregarEstado(Estado estado) {
+    public Estado agregarEstado(Estado estado,Personaje personaje) {
         return estado;
     }
 

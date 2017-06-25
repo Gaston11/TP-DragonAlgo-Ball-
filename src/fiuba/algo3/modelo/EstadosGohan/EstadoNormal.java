@@ -207,5 +207,10 @@ public class EstadoNormal implements Estado {
         return poderPelea;
     }
 
+    @Override
+    public int getVelocidad() {
+        return this.velocidad;
+    }
+
 }
 

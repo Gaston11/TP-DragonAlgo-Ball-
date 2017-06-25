@@ -66,13 +66,14 @@ public class Cell extends Personaje implements PersonajeMalo{
     }
 
     @Override
-    public void obtenerConsumibleEsfera(Consumible esfera) {
-        estado = esfera.agregarEstado(estado);
+    public void obtenerConsumible(Consumible consumible) {
+        Estado estadoNuevo = consumible.agregarEstado(estado,this);
+        estado = estadoNuevo;
     }
 
     @Override
     public void volverAlEstadoAnterior(Estado estado){
-
+        this.estado = estado;
     }
 
     @Override

@@ -34,7 +34,7 @@ public class VersorDireccion {
     public Coordenada moverAIzquierda(){
         int coordenadaX;
         int coordenadaY;
-        coordenadaX = this.coordenada.getCoordenadaX() -1;
+        coordenadaX = this.coordenada.getCoordenadaX()-1;
         coordenadaY = this.coordenada.getCoordenadaY();
 
         Coordenada unaCoordenada = new Coordenada( coordenadaX,coordenadaY);

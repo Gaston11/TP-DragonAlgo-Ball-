@@ -15,5 +15,5 @@ public abstract class Consumible {
         this.coordenada = otraCoordenada;
     }
 
-    public abstract Estado agregarEstado(Estado estado);
+    public abstract Estado agregarEstado(Estado estado,Personaje personaje);
 }

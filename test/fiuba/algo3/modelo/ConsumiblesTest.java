@@ -1,13 +1,10 @@
 package fiuba.algo3.modelo;
 
-
-import fiuba.algo3.modelo.Componentes.Celda;
-import fiuba.algo3.modelo.Componentes.Coordenada;
-import fiuba.algo3.modelo.Componentes.EsferaDelDragon;
-import fiuba.algo3.modelo.Componentes.Semilla;
+import fiuba.algo3.modelo.Componentes.*;
 import fiuba.algo3.modelo.Personajes.Freezer;
 import fiuba.algo3.modelo.Personajes.Gohan;
 import fiuba.algo3.modelo.Personajes.Goku;
+import fiuba.algo3.modelo.Personajes.Piccolo;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertTrue;
@@ -109,5 +106,123 @@ public class ConsumiblesTest {
 
     }
 
+    @Test
+    public void freezerObtieneUnaEsferaDelDragonSuAtaqueBasicoAumentaUn25porcLoUsaEnDosTurnos() {
+        Coordenada unaCoordenada = new Coordenada(2, 0);
+        Coordenada otraCoordenada = new Coordenada(0, 0);
+        Celda celdaConConsumible = new Celda(otraCoordenada);
+
+        Gohan gohan = new Gohan();
+        Coordenada otraCoordenada1 = new Coordenada(1, 1);
+        gohan.naceEn(otraCoordenada1);
+
+        Freezer freezer = new Freezer();
+        freezer.naceEn(unaCoordenada);
+
+        EsferaDelDragon esfera = new EsferaDelDragon();
+        celdaConConsumible.colocarConsumible(esfera);
+
+        freezer.mover(otraCoordenada);
+        celdaConConsumible.colocarPersonaje(freezer);
+
+        freezer.ataqueBasico(gohan);
+
+        freezer.ataqueBasico(gohan);
+
+        assertTrue(gohan.poseeVida(250));
+
+    }
+
+    @Test
+    public void freezerObtieneUnaEsferaDelDragonSuAtaqueBasicoAumentaUn25porcLoUsaEnDosTurnosAlTerceroVuelveASuEstadoNormal() {
+        Coordenada unaCoordenada = new Coordenada(2, 0);
+        Coordenada otraCoordenada = new Coordenada(0, 0);
+        Celda celdaConConsumible = new Celda(otraCoordenada);
+
+        Gohan gohan = new Gohan();
+        Coordenada otraCoordenada1 = new Coordenada(1, 1);
+        gohan.naceEn(otraCoordenada1);
+
+        Freezer freezer = new Freezer();
+        freezer.naceEn(unaCoordenada);
+
+        EsferaDelDragon esfera = new EsferaDelDragon();
+        celdaConConsumible.colocarConsumible(esfera);
+
+        freezer.mover(otraCoordenada);
+        celdaConConsumible.colocarPersonaje(freezer);
+
+        freezer.ataqueBasico(gohan);
+
+        freezer.ataqueBasico(gohan);
+
+        freezer.ataqueBasico(gohan);
+
+        assertTrue(gohan.poseeVida(230));
+
+    }
+
+    @Test
+    public void piccoloObtieneUnaNubeVoladoraSuVelocidadSeDuplica(){
+        Coordenada unaCoordenada = new Coordenada(2, 0);
+        Coordenada otraCoordenada = new Coordenada(0, 0);
+        Celda celdaConConsumible = new Celda(otraCoordenada);
+
+        Piccolo piccolo = new Piccolo();
+        piccolo.naceEn(unaCoordenada);
+
+        NubeVoladora nube = new NubeVoladora();
+        nube.posicionarEn(otraCoordenada);
+        celdaConConsumible.colocarConsumible(nube);
+        piccolo.mover(otraCoordenada);
+        celdaConConsumible.colocarPersonaje(piccolo);
+        piccolo.moverAbajo();
+        Coordenada coordenadaEsperada = new Coordenada(0,-4);
+
+        assertTrue(piccolo.estaUbicadoEn(coordenadaEsperada));
+    }
+
+    @Test
+    public void piccoloObtieneUnaNubeVoladoraSuVelocidadSeDuplicaPorDosTurnos(){
+        Coordenada unaCoordenada = new Coordenada(2, 0);
+        Coordenada otraCoordenada = new Coordenada(0, 0);
+        Celda celdaConConsumible = new Celda(otraCoordenada);
+
+        Piccolo piccolo = new Piccolo();
+        piccolo.naceEn(unaCoordenada);
+
+        NubeVoladora nube = new NubeVoladora();
+        nube.posicionarEn(otraCoordenada);
+        celdaConConsumible.colocarConsumible(nube);
+        piccolo.mover(otraCoordenada);
+        celdaConConsumible.colocarPersonaje(piccolo);
+        piccolo.moverAbajo();
+        Coordenada coordenadaEsperada = new Coordenada(4,-4);
+        piccolo.moverADerecha();
+
+        assertTrue(piccolo.estaUbicadoEn(coordenadaEsperada));
+    }
+
+    @Test
+    public void piccoloObtieneUnaNubeVoladoraSuVelocidadSeDuplicaPorDosTurnosAlTerceroVuelveAlEstadoAnterior(){
+        Coordenada unaCoordenada = new Coordenada(2, 0);
+        Coordenada otraCoordenada = new Coordenada(0, 0);
+        Celda celdaConConsumible = new Celda(otraCoordenada);
+
+        Piccolo piccolo = new Piccolo();
+        piccolo.naceEn(unaCoordenada);
+
+        NubeVoladora nube = new NubeVoladora();
+        nube.posicionarEn(otraCoordenada);
+        celdaConConsumible.colocarConsumible(nube);
+        piccolo.mover(otraCoordenada);
+        celdaConConsumible.colocarPersonaje(piccolo);
+        piccolo.moverAbajo();
+        Coordenada coordenadaEsperada = new Coordenada(2,-4);
+        piccolo.moverADerecha();
+        piccolo.moverAIzquierda();
+
+        assertTrue(piccolo.estaUbicadoEn(coordenadaEsperada));
+    }
 
 }

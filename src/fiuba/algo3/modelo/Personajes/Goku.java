@@ -82,8 +82,9 @@ public class Goku extends Personaje implements PersonajeBueno{
     }
 
     @Override
-    public void obtenerConsumibleEsfera(Consumible esfera) {
-        estado = esfera.agregarEstado(estado);
+    public void obtenerConsumible(Consumible consumible) {
+        Estado estadoNuevo = consumible.agregarEstado(estado,this);
+        estado = estadoNuevo;
     }
 
     @Override

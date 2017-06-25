@@ -16,7 +16,7 @@ public class EsferaDelDragon extends Consumible implements Estado{
     }
 
     @Override
-    public Estado agregarEstado(Estado estado){
+    public Estado agregarEstado(Estado estado,Personaje personaje){
 
         estadoAnterior = estado;
         return this;
@@ -56,6 +56,7 @@ public class EsferaDelDragon extends Consumible implements Estado{
     public void ataqueBasico(PersonajeMalo enemigo, Personaje personaje) {
         turnos -= 1;
         if(turnos<0){
+            estadoAnterior.ataqueBasico(enemigo, personaje);
             personaje.volverAlEstadoAnterior(estadoAnterior);
         }else {
             //ataque con el 25% mas de danio
@@ -67,6 +68,7 @@ public class EsferaDelDragon extends Consumible implements Estado{
     public void ataqueBasico(PersonajeBueno enemigo, Personaje personaje) {
         turnos -= 1;
         if(turnos<0){
+            estadoAnterior.ataqueBasico(enemigo, personaje);
             personaje.volverAlEstadoAnterior(estadoAnterior);
         }else {
             //ataque con el 25% mas de danio
@@ -185,5 +187,10 @@ public class EsferaDelDragon extends Consumible implements Estado{
     @Override
     public int getPoderPelea() {
         return estadoAnterior.getPoderPelea();
+    }
+
+    @Override
+    public int getVelocidad() {
+        return estadoAnterior.getVelocidad();
     }
 }

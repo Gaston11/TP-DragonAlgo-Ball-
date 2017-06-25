@@ -128,4 +128,9 @@ public class EstadoChocolate implements Estado {
         return 0;
     }
 
+    @Override
+    public int getVelocidad() {
+        return 0;
+    }
+
 }

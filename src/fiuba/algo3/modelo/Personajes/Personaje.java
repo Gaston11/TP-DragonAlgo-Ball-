@@ -45,10 +45,11 @@ public abstract class Personaje{
 
     public void consumir(Consumible consumible){
         this.aumentarVida(consumible.aumentarVida());
-        this.obtenerConsumibleEsfera(consumible);
+        this.obtenerConsumible(consumible);
     }
 
-    public abstract void obtenerConsumibleEsfera(Consumible esfera);
+    protected abstract void obtenerConsumible(Consumible consumible);
+
 
     public boolean estadoVidaCritica(){
         return (vida <= vidaCritica);
