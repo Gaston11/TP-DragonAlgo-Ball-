@@ -41,6 +41,7 @@ public class TableroTest {
 	    tablero.liberarCeldaEnTablero(unaCoordenada);
     }
 
+    /*
     @Test
     public void ubicarEquiposEnVerticesOpuestosDelTablero(){
         Tablero tablero = new Tablero(10);
@@ -48,6 +49,6 @@ public class TableroTest {
         EquipoGuerrerosZ guerrerosZ = new EquipoGuerrerosZ();
         tablero.ubicarEquipos(enemigos, guerrerosZ);
     }
-	
+	*/
 }
 
