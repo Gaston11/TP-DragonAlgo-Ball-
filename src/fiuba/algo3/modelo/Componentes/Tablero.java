@@ -6,6 +6,8 @@ import java.util.Iterator;
 import fiuba.algo3.modelo.Personajes.Equipo;
 import fiuba.algo3.modelo.Personajes.EquipoEnemigos;
 import fiuba.algo3.modelo.Personajes.EquipoGuerrerosZ;
+import fiuba.algo3.modelo.Personajes.Personaje;
+import fiuba.algo3.modelo.excepciones.CeldaConCoordenadaNegativaException;
 import fiuba.algo3.modelo.excepciones.CeldaNoOcupadaException;
 import fiuba.algo3.modelo.excepciones.CeldaOcupadaException;
 
@@ -37,12 +39,20 @@ public class Tablero {
 
     	return encontrado;
     }
-    
+
+    private boolean celdaTieneCoordenadaNegativa(Celda unaCelda){
+    	return (unaCelda.getCoordenada().getCoordenadaX() < 0 ||
+				unaCelda.getCoordenada().getCoordenadaY() < 0 );
+	}
     
     public void colocarCeldaEnTablero(Celda celda){
     	if (this.celdaOcupada(celda)){
     		throw new CeldaOcupadaException();
     	}
+
+    	if (this.celdaTieneCoordenadaNegativa( celda )){
+    		throw new CeldaConCoordenadaNegativaException();
+		}
     	
     	this.celdasOcupadas.add(celda);
     }
@@ -91,4 +101,45 @@ public class Tablero {
 		this.colocarCeldaEnTablero(celda6);
 
     }
+
+	private Coordenada getCoordenadaDePersonaje(Personaje unPersonaje){
+		Iterator<Celda> iterador =this.celdasOcupadas.iterator();
+		boolean encontrado = false;
+		Coordenada unaCoordenada = new Coordenada( 0,0 );
+		Celda celda = new Celda( unaCoordenada );
+
+		while (iterador.hasNext() && !encontrado)
+		{
+			celda = iterador.next();
+			encontrado = (celda.getPersonaje() == unPersonaje);
+		}
+
+		return (celda.getCoordenada());
+
+	}
+
+	private void colocarPersonajeEnCoordenadaAnterior(Personaje unPersonaje){
+		Coordenada unaCoordenada = this.getCoordenadaDePersonaje(unPersonaje);
+		unPersonaje.mover(unaCoordenada);
+
+	}
+
+	public void moverPersonaje(Personaje unPersonaje, Coordenada unaCoordenada){
+		Celda celdaNueva = new Celda(unaCoordenada);
+		if (this.celdaOcupada(celdaNueva)) {
+			this.colocarPersonajeEnCoordenadaAnterior(unPersonaje); // hay un metodo arriba q sirve
+		}
+
+		else
+		{
+			celdaNueva.colocarPersonaje(unPersonaje);
+			this.liberarCeldaEnTablero(this.getCoordenadaDePersonaje(unPersonaje) );
+			this.colocarCeldaEnTablero(celdaNueva);
+		}
+
+	}
+
+
+
+
 }
