@@ -75,15 +75,17 @@ public class Tablero {
 	}
 
     public void ubicarEquipos(Equipo equipo1, Equipo equipo2) {
-    	Coordenada esquinaSupIzq = new Coordenada(0,0);
-    	Coordenada esquinaInfDer = new Coordenada(this.dimension - 1, this.dimension -1);
+    	// TABLERO DE 10X10
+
+    	Coordenada esquinaSupIzq = new Coordenada(0,9);
+    	Coordenada esquinaInfDer = new Coordenada(9,0);
 
     	//ubicar equipo 1
     	Celda celda1 = new Celda(esquinaSupIzq);
     	celda1.colocarPersonaje(equipo1.obtenerPersonaje(0));
-    	Celda celda2 = new Celda(new Coordenada(esquinaSupIzq.getCoordenadaX(),esquinaSupIzq.getCoordenadaY() + 1));
+    	Celda celda2 = new Celda(new Coordenada(esquinaSupIzq.getCoordenadaX()+1,esquinaSupIzq.getCoordenadaY()));
     	celda2.colocarPersonaje(equipo1.obtenerPersonaje(1));
-    	Celda celda3 = new Celda(new Coordenada(esquinaSupIzq.getCoordenadaX() + 1,esquinaSupIzq.getCoordenadaY()));
+    	Celda celda3 = new Celda(new Coordenada(esquinaSupIzq.getCoordenadaX(),esquinaSupIzq.getCoordenadaY()-1));
     	celda3.colocarPersonaje(equipo1.obtenerPersonaje(2));
 		this.colocarCeldaEnTablero(celda1);
 		this.colocarCeldaEnTablero(celda2);
@@ -91,11 +93,11 @@ public class Tablero {
 
     	//ubicar equipo 2
 		Celda celda4 = new Celda(esquinaInfDer);
-		celda1.colocarPersonaje(equipo2.obtenerPersonaje(0));
-		Celda celda5 = new Celda(new Coordenada(esquinaInfDer.getCoordenadaX(),esquinaSupIzq.getCoordenadaY() - 1));
-		celda2.colocarPersonaje(equipo2.obtenerPersonaje(1));
-		Celda celda6 = new Celda(new Coordenada(esquinaSupIzq.getCoordenadaX() - 1,esquinaSupIzq.getCoordenadaY()));
-		celda3.colocarPersonaje(equipo2.obtenerPersonaje(2));
+		celda4.colocarPersonaje(equipo2.obtenerPersonaje(0));
+		Celda celda5 = new Celda(new Coordenada(esquinaInfDer.getCoordenadaX()-1,esquinaInfDer.getCoordenadaY()));
+		celda5.colocarPersonaje(equipo2.obtenerPersonaje(1));
+		Celda celda6 = new Celda(new Coordenada(esquinaInfDer.getCoordenadaX(),esquinaInfDer.getCoordenadaY()+1));
+		celda6.colocarPersonaje(equipo2.obtenerPersonaje(2));
 		this.colocarCeldaEnTablero(celda4);
 		this.colocarCeldaEnTablero(celda5);
 		this.colocarCeldaEnTablero(celda6);
