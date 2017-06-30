@@ -16,15 +16,30 @@ public class DragonAlgoBall extends Application {
         launch(args);
     }
 
+
+
     @Override
     public void start(Stage primaryStage) throws IOException {
         primaryStage.setTitle("DragonAlgoBall - TP2 Algoritmos III. FIUBA");
 
-        Parent root = FXMLLoader.load(getClass().getResource("/vista/EscenaEleccionDeEquipos.fxml"));
+        //Jugador jugadorActual = new JugadorZ(nombre);
 
-        Scene miEscena = new Scene(root);
+        ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(primaryStage);
+        Scene escenaJuego = new Scene(contenedorPrincipal, 640, 480); //necesito tamanio ?? seria tablero
 
-        primaryStage.setScene(miEscena);
+        //AplicacionOnKeyPressEventHandler AplicacionOnKeyPressEventHandler = new AplicacionOnKeyPressEventHandler(stage, contenedorPrincipal.getBarraDeMenu());
+        //escenaJuego.setOnKeyPressed(AplicacionOnKeyPressEventHandler);
+/* el contenedor ppal seria la eleccion de jugadores y sus equipos
+*/
+        ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(primaryStage, escenaJuego);
+
+        Scene escenaBienvenidos = new Scene(contenedorBienvenidos, 640, 480);
+
+        //stage.setScene(escenaBienvenidos);
+        //Scene miEscena = new Scene(root);
+
+        primaryStage.setScene(escenaBienvenidos);
         primaryStage.show();
+
     }
 }
