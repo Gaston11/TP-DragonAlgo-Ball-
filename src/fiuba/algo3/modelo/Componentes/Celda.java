@@ -26,4 +26,6 @@ public class Celda{
     public void colocarConsumible(Consumible consumible){
         this.consumible = consumible;
     }
+
+    public Personaje getPersonaje (){return this.personaje;}
 }
