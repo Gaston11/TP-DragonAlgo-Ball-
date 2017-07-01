@@ -7,14 +7,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.scene.image.Image;
+
+import java.awt.*;
+
+import static javafx.scene.layout.BackgroundRepeat.*;
 
 public class ContenedorBienvenidos extends VBox {
 
@@ -29,15 +32,15 @@ public class ContenedorBienvenidos extends VBox {
         this.setAlignment(Pos.CENTER);
         this.setSpacing(20);
         this.setPadding(new Insets(25));
-        //Image imagen = new Image("file:src/vista/imagenes/textura.png");
-        //BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-        //this.setBackground(new Background(imagenDeFondo));
+        Image imagen = new Image("file:src/fiuba/algo3/vista/imagenes/portada.png");
+        BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        this.setBackground(new Background(imagenDeFondo));
 
         Button botonEntrar = new Button();
         botonEntrar.setText("Entrar");
 
         Label etiquetaJugadorZ = new Label();
-        etiquetaJugadorZ.setFont(Font.font("Tahoma", FontWeight.BOLD, 18));
+        etiquetaJugadorZ.setFont(Font.font("Tahoma", FontWeight.EXTRA_BOLD, 18));
         etiquetaJugadorZ.setText("Nombre jugador Z :            ");
         TextField texto = new TextField();
 
@@ -45,7 +48,7 @@ public class ContenedorBienvenidos extends VBox {
         layout.getChildren().addAll( etiquetaJugadorZ, texto);
 
         Label etiquetaJugadorEnemigo = new Label();
-        etiquetaJugadorEnemigo.setFont(Font.font("Tahoma", FontWeight.BOLD, 18));
+        etiquetaJugadorEnemigo.setFont(Font.font("Tahoma", FontWeight.BLACK, 18));
         etiquetaJugadorEnemigo.setText("Nombre jugador Enemigo: ");
         TextField texto2 = new TextField();
 
@@ -53,7 +56,7 @@ public class ContenedorBienvenidos extends VBox {
         layout2.getChildren().addAll( etiquetaJugadorEnemigo, texto2);
 
         Label etiqueta = new Label();
-        etiqueta.setFont(Font.font("Tahoma", FontWeight.BLACK, 18));
+        etiqueta.setFont(Font.font("Tahoma", FontWeight.EXTRA_BOLD, 18));
         etiqueta.setText("Elija jugadores ");
 
         BotonEntrarEventHandler botonEntrarHandler = new BotonEntrarEventHandler(stage, proximaEscena, texto.getPromptText(), texto2.getPromptText());

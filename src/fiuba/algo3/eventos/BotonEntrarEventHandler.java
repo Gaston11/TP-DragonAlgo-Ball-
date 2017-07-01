@@ -18,9 +18,16 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
     public BotonEntrarEventHandler(Stage stage, Scene proximaEscena, String nombre1, String nombre2) {
         this.stage = stage;
         this.proximaEscena = proximaEscena;
+        Jugador jugadorActual = this.crearJugadorActual(nombre1,nombre2);
+
+    }
+
+    public Jugador crearJugadorActual(String nombre1, String nombre2){
         JugadorZ jugadorZ = new JugadorZ(nombre1);
         JugadorEnemigo jugadorEnemigo = new JugadorEnemigo(nombre2);
-
+        jugadorZ.asignarRival(jugadorEnemigo);
+        jugadorEnemigo.asignarRival(jugadorZ);
+        return jugadorZ;
     }
 
     @Override
