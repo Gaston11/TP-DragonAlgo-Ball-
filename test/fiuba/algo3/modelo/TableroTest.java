@@ -50,7 +50,7 @@ public class TableroTest {
         Tablero tablero = new Tablero(10);
         EquipoEnemigos enemigos = new EquipoEnemigos();
         EquipoGuerrerosZ guerrerosZ = new EquipoGuerrerosZ();
-        tablero.ubicarEquipos(enemigos, guerrerosZ);
+        tablero.ubicarEquipos();
         Coordenada coordenada1 = new Coordenada( 0,9 );
 
         Celda celda1 = new Celda( coordenada1 );
@@ -65,7 +65,7 @@ public class TableroTest {
         Tablero tablero = new Tablero(10);
         EquipoEnemigos enemigos = new EquipoEnemigos();
         EquipoGuerrerosZ guerrerosZ = new EquipoGuerrerosZ();
-        tablero.ubicarEquipos(enemigos, guerrerosZ);
+        tablero.ubicarEquipos();
         Coordenada coordenada2 = new Coordenada( 0,8 );
 
         Celda celda2 = new Celda( coordenada2 );
@@ -81,7 +81,7 @@ public class TableroTest {
         Tablero tablero = new Tablero(10);
         EquipoEnemigos enemigos = new EquipoEnemigos();
         EquipoGuerrerosZ guerrerosZ = new EquipoGuerrerosZ();
-        tablero.ubicarEquipos(enemigos, guerrerosZ);
+        tablero.ubicarEquipos();
         Coordenada coordenada3 = new Coordenada( 1,9 );
 
         Celda celda3 = new Celda( coordenada3 );
@@ -96,7 +96,7 @@ public class TableroTest {
         Tablero tablero = new Tablero(10);
         EquipoEnemigos enemigos = new EquipoEnemigos();
         EquipoGuerrerosZ guerrerosZ = new EquipoGuerrerosZ();
-        tablero.ubicarEquipos(enemigos, guerrerosZ);
+        tablero.ubicarEquipos();
         Coordenada coordenada4 = new Coordenada( 9,0 );
 
         Celda celda4 = new Celda( coordenada4 );
@@ -111,7 +111,7 @@ public class TableroTest {
         Tablero tablero = new Tablero(10);
         EquipoEnemigos enemigos = new EquipoEnemigos();
         EquipoGuerrerosZ guerrerosZ = new EquipoGuerrerosZ();
-        tablero.ubicarEquipos(enemigos, guerrerosZ);
+        tablero.ubicarEquipos();
         Coordenada coordenada5 = new Coordenada( 9,1 );
 
         Celda celda5 = new Celda( coordenada5 );
@@ -126,7 +126,7 @@ public class TableroTest {
         Tablero tablero = new Tablero(10);
         EquipoEnemigos enemigos = new EquipoEnemigos();
         EquipoGuerrerosZ guerrerosZ = new EquipoGuerrerosZ();
-        tablero.ubicarEquipos(enemigos, guerrerosZ);
+        tablero.ubicarEquipos();
 
         Coordenada coordenada6 = new Coordenada( 8,0 );
 
@@ -232,5 +232,21 @@ public class TableroTest {
         mitablero.moverPersonaje( majinBoo, nuevaCoordenada );
         assertTrue(majinBoo.estaUbicadoEn( unaCoordenada )); //vuelve a su posicion anterior
     }
+
+    /*
+    @Test
+    public void ubicarEquiposEnTablero(){
+        Tablero miTablero = new Tablero(10);
+
+        miTablero.ubicarEquipos();
+        Goku goku;
+        Coordenada unaCoordenada = new Coordenada( 3,3 );
+
+        miTablero.moverPersonaje( goku, unaCoordenada );
+
+        assertEquals( 3,3 );
+
+    }
+    */
 }
 

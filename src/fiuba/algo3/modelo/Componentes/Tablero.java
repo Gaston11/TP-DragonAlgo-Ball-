@@ -74,8 +74,10 @@ public class Tablero {
 		}
 	}
 
-    public void ubicarEquipos(Equipo equipo1, Equipo equipo2) {
+    public void ubicarEquipos() {
     	// TABLERO DE 10X10
+		EquipoGuerrerosZ equipo1 = new EquipoGuerrerosZ();
+		EquipoEnemigos equipo2 = new EquipoEnemigos();
 
     	Coordenada esquinaSupIzq = new Coordenada(0,9);
     	Coordenada esquinaInfDer = new Coordenada(9,0);
