@@ -12,6 +12,6 @@ public class Nada extends Consumible {
 
     @Override
     public Estado agregarEstado(Estado estado, Personaje personaje) {
-        return null;
+        return estado;
     }
 }
