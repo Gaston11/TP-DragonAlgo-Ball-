@@ -1,15 +1,17 @@
 package fiuba.algo3.modelo;
 
-import fiuba.algo3.modelo.Personajes.EquipoEnemigos;
-import fiuba.algo3.modelo.Personajes.EquipoGuerrerosZ;
+import fiuba.algo3.modelo.Personajes.*;
 import fiuba.algo3.modelo.excepciones.CeldaNoOcupadaException;
 import org.junit.Rule;
 import org.junit.Test;
+import static org.junit.Assert.assertTrue;
 import org.junit.rules.ExpectedException;
 import fiuba.algo3.modelo.Componentes.Celda;
 import fiuba.algo3.modelo.Componentes.Coordenada;
 import fiuba.algo3.modelo.Componentes.Tablero;
 import fiuba.algo3.modelo.excepciones.CeldaOcupadaException;
+
+import static org.junit.Assert.assertEquals;
 
 public class TableroTest {
 
@@ -133,6 +135,102 @@ public class TableroTest {
         thrown.expect( CeldaOcupadaException.class );
         tablero.colocarCeldaEnTablero( celda6 );
 
+    }
+
+    @Test
+    public void gokuYGohanEstanEnElTableroYGokuSeMueveALCasilleroDeGohanYTableroLoColocaEnSuCasilleroAnterior(){
+        Coordenada unaCoordenada = new Coordenada( 4,4 );
+        Coordenada otraCoordenada = new Coordenada( 4,6 );
+
+        Goku goku = new Goku();
+        goku.naceEn( unaCoordenada );
+        Gohan gohan = new Gohan();
+        gohan.naceEn( otraCoordenada );
+
+        Celda unaCelda = new Celda( unaCoordenada );
+        unaCelda.colocarPersonaje( goku );
+        Celda otraCelda = new Celda(otraCoordenada);
+        otraCelda.colocarPersonaje( gohan );
+
+        Tablero mitablero = new Tablero( 10 );
+        mitablero.colocarCeldaEnTablero( unaCelda );
+        mitablero.colocarCeldaEnTablero( otraCelda );
+
+        Coordenada nuevaCoordenada = goku.moverArriba();
+        mitablero.moverPersonaje( goku, nuevaCoordenada );
+        assertTrue(goku.estaUbicadoEn( unaCoordenada )); //vuelve a su posicion anterior
+    }
+
+    @Test
+    public void gokuYCellEstanEnElTableroYGokuSeMueveALCasilleroDeCellYTableroLoColocaEnSuCasilleroAnterior(){
+        Coordenada unaCoordenada = new Coordenada( 5,5 );
+        Coordenada otraCoordenada = new Coordenada( 5,7 );
+
+        Goku goku = new Goku();
+        goku.naceEn( unaCoordenada );
+        Cell cell = new Cell();
+        cell.naceEn( otraCoordenada );
+
+        Celda unaCelda = new Celda( unaCoordenada );
+        unaCelda.colocarPersonaje( goku );
+        Celda otraCelda = new Celda(otraCoordenada);
+        otraCelda.colocarPersonaje( cell );
+
+        Tablero mitablero = new Tablero( 10 );
+        mitablero.colocarCeldaEnTablero( unaCelda );
+        mitablero.colocarCeldaEnTablero( otraCelda );
+
+        Coordenada nuevaCoordenada = goku.moverArriba();
+        mitablero.moverPersonaje( goku, nuevaCoordenada );
+        assertTrue(goku.estaUbicadoEn( unaCoordenada )); //vuelve a su posicion anterior
+    }
+
+    @Test
+    public void gokuYFreezerEstanEnElTableroYGokuSeMueveALCasilleroDeFreezerYTableroLoColocaEnSuCasilleroAnterior(){
+        Coordenada unaCoordenada = new Coordenada( 3,5 );
+        Coordenada otraCoordenada = new Coordenada( 3,7 );
+
+        Goku goku = new Goku();
+        goku.naceEn( unaCoordenada );
+        Freezer freezer = new Freezer();
+        freezer.naceEn( otraCoordenada );
+
+        Celda unaCelda = new Celda( unaCoordenada );
+        unaCelda.colocarPersonaje( goku );
+        Celda otraCelda = new Celda(otraCoordenada);
+        otraCelda.colocarPersonaje( freezer );
+
+        Tablero mitablero = new Tablero( 10 );
+        mitablero.colocarCeldaEnTablero( unaCelda );
+        mitablero.colocarCeldaEnTablero( otraCelda );
+
+        Coordenada nuevaCoordenada = goku.moverArriba();
+        mitablero.moverPersonaje( goku, nuevaCoordenada );
+        assertTrue(goku.estaUbicadoEn( unaCoordenada )); //vuelve a su posicion anterior
+    }
+
+    @Test
+    public void MajinBooYFreezerEstanEnElTableroYMajinBooSeMueveALCasilleroDeFreezerYTableroLoColocaEnSuCasilleroAnterior(){
+        Coordenada unaCoordenada = new Coordenada( 2,5 );
+        Coordenada otraCoordenada = new Coordenada( 2,7 );
+
+        MajinBoo majinBoo = new MajinBoo();
+        majinBoo.naceEn( unaCoordenada );
+        Freezer freezer = new Freezer();
+        freezer.naceEn( otraCoordenada );
+
+        Celda unaCelda = new Celda( unaCoordenada );
+        unaCelda.colocarPersonaje( majinBoo );
+        Celda otraCelda = new Celda(otraCoordenada);
+        otraCelda.colocarPersonaje( freezer );
+
+        Tablero mitablero = new Tablero( 10 );
+        mitablero.colocarCeldaEnTablero( unaCelda );
+        mitablero.colocarCeldaEnTablero( otraCelda );
+
+        Coordenada nuevaCoordenada = majinBoo.moverArriba();
+        mitablero.moverPersonaje( majinBoo, nuevaCoordenada );
+        assertTrue(majinBoo.estaUbicadoEn( unaCoordenada )); //vuelve a su posicion anterior
     }
 }
 
