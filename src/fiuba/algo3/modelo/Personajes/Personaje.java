@@ -95,4 +95,7 @@ public abstract class Personaje{
 
     public abstract int getPoderPelea();
 
+    public boolean estaMuerto() {
+        return this.vida<=0;
+    }
 }

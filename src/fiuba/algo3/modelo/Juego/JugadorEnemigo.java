@@ -1,6 +1,7 @@
 package fiuba.algo3.modelo.Juego;
 
 import fiuba.algo3.modelo.Personajes.*;
+import fiuba.algo3.modelo.excepciones.PersonajeInvalidoException;
 
 import java.util.HashMap;
 
@@ -9,53 +10,89 @@ import java.util.HashMap;
  */
 public class JugadorEnemigo extends Jugador{
 
-    private String nombre;
-    private HashMap<String, PersonajeMalo> equipo;
-    private JugadorZ rival;
+    private MajinBoo majinBoo;
+    private Cell cell;
+    private Freezer freezer;
+    private Jugador rival;
 
     public JugadorEnemigo(String nombre){
         this.nombre = nombre;
-        equipo = new HashMap<String,PersonajeMalo>();
         asignarEquipo();
 
     }
 
     public void asignarEquipo() {
-        equipo.put("Freezer",new Freezer());
-        equipo.put("Cell",new Cell());
-        equipo.put("MajinBoo", new MajinBoo());
+        this.majinBoo = new MajinBoo();
+        this.cell = new Cell();
+        this.freezer = new Freezer();
     }
 
-    public void asignarRival(JugadorZ jugadorRival) {
+    public void asignarRival(Jugador jugadorRival) {
         this.rival = jugadorRival;
     }
 
-    @Override
-    public void asignarRival(JugadorEnemigo jugador) {
+    public void ataqueBasico(String claveEquipo, String enemigo){
 
-    }
-
-    public void ataqueBasico(String claveEquipo, PersonajeBueno enemigo){
-        PersonajeMalo personaje = equipo.get(claveEquipo);
-        //personaje.ataqueBasico(enemigo); codigo minimo
-        enemigo.recibirDanio(20);
+        this.seleccionar(claveEquipo).ataqueBasico(this.rival.seleccionarPersonajeBueno(enemigo));
     }
 
     @Override
-    public void ataqueBasico(String clave, PersonajeMalo enemigo) {
-
+    public void ataqueEspecial(String personaje, String enemigo) {
+        PersonajeBueno enemigoBueno = this.rival.seleccionarPersonajeBueno(enemigo);
+        switch (personaje){
+            case "Freezer":
+                freezer.rayoMortal(enemigoBueno);
+            case "MajinBoo":
+                    majinBoo.convertirEnChocolate(enemigoBueno);
+            case "Cell":
+                cell.absorber(enemigoBueno);
+                default:{
+                    throw new PersonajeInvalidoException();
+                }
+        }
     }
-
 
     public Jugador getRival() {
         return this.rival;
     }
 
-    public PersonajeMalo seleccionarPersonaje(String clave) {
-        return equipo.get(clave);
+    public Personaje seleccionar(String clave){
+        switch (clave){
+            case "MajinBoo":
+                return this.majinBoo;
+            case "Cell":
+                return this.cell;
+            case "Freezer":
+                return this.freezer;
+            default: {
+                throw new PersonajeInvalidoException();
+            }
+        }
+
     }
 
-    public String getNombre(){
-        return nombre;
+    public PersonajeMalo seleccionarPersonajeMalo(String clave) {
+        switch (clave) {
+            case "MajinBoo":
+                return this.majinBoo;
+            case "Cell":
+                return this.cell;
+            case "Freezer":
+                return this.freezer;
+            default:
+            {
+                throw new PersonajeInvalidoException();
+            }
+        }
     }
+
+    @Override
+    public boolean personajesMuertos() {
+        return (this.freezer.estaMuerto() && this.cell.estaMuerto() && this.majinBoo.estaMuerto());
+    }
+
+    public PersonajeBueno seleccionarPersonajeBueno(String clave){
+        throw new PersonajeInvalidoException();
+    }
+
 }

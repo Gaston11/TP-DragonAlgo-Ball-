@@ -1,6 +1,6 @@
 package fiuba.algo3.modelo;
 
-import fiuba.algo3.modelo.Juego.Partida;
+//import fiuba.algo3.modelo.Juego.Partida;
 import org.junit.Test;
 
 public class PartidaTests {

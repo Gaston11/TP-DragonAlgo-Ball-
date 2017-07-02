@@ -1,9 +1,11 @@
 package fiuba.algo3.modelo;
 
+import fiuba.algo3.modelo.Componentes.Coordenada;
 import fiuba.algo3.modelo.Juego.JugadorEnemigo;
 import fiuba.algo3.modelo.Juego.JugadorZ;
 import fiuba.algo3.modelo.Personajes.EquipoGuerrerosZ;
 import fiuba.algo3.modelo.Juego.Jugador;
+import fiuba.algo3.modelo.Personajes.Personaje;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
@@ -28,13 +30,19 @@ public class JugadorTest {
     public void jugadorZAtaquesBasicoAJugadorEnemigoVerificaDanioDeFreezer(){
         JugadorZ jugador = new JugadorZ("Juan");
         JugadorEnemigo jugadorEnemigo = new JugadorEnemigo("Fede");
-
         jugador.asignarRival(jugadorEnemigo);
         jugadorEnemigo.asignarRival(jugador);
 
-        jugador.ataqueBasico("Goku", jugadorEnemigo.seleccionarPersonaje("Freezer"));
+        Personaje freezer = jugadorEnemigo.seleccionar("Freezer");
+        Personaje goku = jugador.seleccionar("Goku");
+        Coordenada unaCoordenada = new Coordenada(0,0);
+        Coordenada otraCoordenada = new Coordenada(2,0);
+        freezer.mover(unaCoordenada);
+        goku.mover(otraCoordenada);
 
-        assertEquals(380, jugadorEnemigo.seleccionarPersonaje("Freezer").getVida());
+        jugador.ataqueBasico("Goku", "Freezer");
+
+        assertEquals(380, jugadorEnemigo.seleccionar("Freezer").getVida());
 
     }
 
@@ -46,9 +54,16 @@ public class JugadorTest {
         jugador.asignarRival(jugadorEnemigo);
         jugadorEnemigo.asignarRival(jugador);
 
-        jugadorEnemigo.ataqueBasico("Freezer", jugador.seleccionarPersonaje("Goku"));
+        Personaje freezer = jugadorEnemigo.seleccionar("Freezer");
+        Personaje goku = jugador.seleccionar("Goku");
+        Coordenada unaCoordenada = new Coordenada(0,0);
+        Coordenada otraCoordenada = new Coordenada(2,0);
+        freezer.mover(unaCoordenada);
+        goku.mover(otraCoordenada);
 
-        assertEquals(480, jugador.seleccionarPersonaje("Goku").getVida());
+        jugadorEnemigo.ataqueBasico("Freezer", "Goku");
+
+        assertEquals(480, jugador.seleccionar("Goku").getVida());
 
     }
 
