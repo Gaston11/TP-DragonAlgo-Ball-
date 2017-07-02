@@ -38,13 +38,11 @@ public class Juego {
                 accionMover+=1;
                 Personaje personaje1 = jugadorActual.seleccionar(personaje);
                 tablero.moverPersonaje(personaje1, jugadorActual.mover(personaje1, direccion));
-
+                this.cambiarTurno();
             } else {
                 jugadorGanador = jugadorActual.getRival();
                 //throw new TenemosUnGanador();
             }
-        }else {
-            this.cambiarTurno();
         }
     }
 
@@ -56,7 +54,6 @@ public class Juego {
             } else {
                 jugadorActual.ataqueEspecial(personajeAtaca, personajeAtacado);
             }
-        } else {
             this.cambiarTurno();
         }
     }
@@ -76,5 +73,9 @@ public class Juego {
 
     public Tablero getTablero() {
         return tablero;
+    }
+
+    public void transformar(String personaje){
+        jugadorActual.transformar(personaje);
     }
 }

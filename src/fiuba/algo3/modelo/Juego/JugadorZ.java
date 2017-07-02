@@ -2,6 +2,7 @@ package fiuba.algo3.modelo.Juego;
 
 import fiuba.algo3.modelo.Componentes.Coordenada;
 import fiuba.algo3.modelo.Personajes.*;
+import fiuba.algo3.modelo.excepciones.FuegoAmigoException;
 import fiuba.algo3.modelo.excepciones.PersonajeInvalidoException;
 
 import java.util.HashMap;
@@ -13,45 +14,58 @@ public class JugadorZ extends Jugador{
     private Piccolo piccolo;
     private Jugador rival;
 
+    private Equipo equipo;
+
     public JugadorZ(String nombreJugador) {
         this.nombre = nombreJugador;
         this.asignarEquipo();
     }
 
+    @Override
     public void asignarEquipo() {
         this.goku = new Goku();
         this.gohan = new Gohan();
         this.piccolo = new Piccolo();
     }
 
+    @Override
     public void asignarRival(Jugador jugador) {
         this.rival = jugador;
     }
 
+    @Override
     public void ataqueBasico(String personaje, String enemigo) {
-        this.seleccionar(personaje).ataqueBasico(this.rival.seleccionarPersonajeMalo(enemigo));
+        if (this.perteneceAEquipo(personaje)) {
+            this.seleccionar(personaje).ataqueBasico(this.rival.seleccionarPersonajeMalo(enemigo));
+        }else {
+            throw new PersonajeInvalidoException();
+        }
     }
 
     @Override
     public void ataqueEspecial(String personaje, String enemigo) {
         PersonajeMalo enemigos = this.rival.seleccionarPersonajeMalo(enemigo);
-        switch (personaje){
-            case "Goku":
-                goku.kamehameha(enemigos);
-            case "Gohan":
-                gohan.masenko(enemigos);
-            case "Piccolo":
-                piccolo.makankosappo(enemigos);
-                default:{
+        if (this.perteneceAEquipo(personaje)) {
+            switch (personaje) {
+                case "Goku":
+                    goku.kamehameha(enemigos);
+                case "Gohan":
+                    gohan.masenko(enemigos);
+                case "Piccolo":
+                    piccolo.makankosappo(enemigos);
+                default: {
                     throw new PersonajeInvalidoException();
                 }
+            }
         }
     }
 
+    @Override
     public Jugador getRival() {
         return this.rival;
     }
 
+    @Override
     public Personaje seleccionar(String clave){
         switch (clave){
             case "Goku":
@@ -66,6 +80,7 @@ public class JugadorZ extends Jugador{
         }
     }
 
+    @Override
     public PersonajeBueno seleccionarPersonajeBueno(String clave) {
         switch (clave) {
             case "Goku":
@@ -75,13 +90,42 @@ public class JugadorZ extends Jugador{
             case "Piccolo":
                 return this.piccolo;
             default: {
-                throw new PersonajeInvalidoException();
+                throw new FuegoAmigoException();
             }
         }
     }
 
+    @Override
     public PersonajeMalo seleccionarPersonajeMalo(String clave){
         throw new PersonajeInvalidoException();
+    }
+
+    @Override
+    public void transformar(String personaje) {
+        if(this.perteneceAEquipo(personaje)){
+            switch (personaje){
+                case "Goku":
+                    goku.transformarse();
+                    break;
+                case "Gohan":
+                    gohan.transformarse(goku,piccolo);
+                    break;
+                case "Piccolo":
+                    piccolo.transformarse(gohan);
+                    break;
+
+                    default:{
+
+                    }
+            }
+        }else {
+            throw new PersonajeInvalidoException();
+        }
+    }
+
+    @Override
+    protected boolean perteneceAEquipo(String personaje) {
+        return (personaje == "Gohan" || personaje == "Goku" || personaje == "Piccolo");
     }
 
     @Override

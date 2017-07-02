@@ -3,6 +3,7 @@ package fiuba.algo3.modelo.Juego;
 import fiuba.algo3.modelo.Componentes.Coordenada;
 import fiuba.algo3.modelo.Personajes.*;
 import fiuba.algo3.modelo.excepciones.NoSePuedeMoverPersonajeException;
+import fiuba.algo3.modelo.excepciones.PersonajeInvalidoException;
 ;import java.util.HashMap;
 
 public abstract class Jugador {
@@ -45,6 +46,10 @@ public abstract class Jugador {
             }
         }
     }
+
+    public abstract void transformar(String personaje);
+
+    protected abstract boolean perteneceAEquipo(String personaje);
 
     public abstract boolean personajesMuertos();
 
