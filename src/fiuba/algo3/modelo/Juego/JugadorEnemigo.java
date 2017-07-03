@@ -4,7 +4,9 @@ import fiuba.algo3.modelo.Personajes.*;
 import fiuba.algo3.modelo.excepciones.FuegoAmigoException;
 import fiuba.algo3.modelo.excepciones.PersonajeInvalidoException;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by noe on 25/06/17.
@@ -15,6 +17,7 @@ public class JugadorEnemigo extends Jugador{
     private Cell cell;
     private Freezer freezer;
     private Jugador rival;
+    private List<Personaje> personajesEnemigos;
 
     public JugadorEnemigo(String nombre){
         this.nombre = nombre;
@@ -27,6 +30,10 @@ public class JugadorEnemigo extends Jugador{
         this.majinBoo = new MajinBoo();
         this.cell = new Cell();
         this.freezer = new Freezer();
+        this.personajesEnemigos = new ArrayList<>();
+        this.personajesEnemigos.add( majinBoo );
+        this.personajesEnemigos.add(cell);
+        this.personajesEnemigos.add(freezer);
     }
 
     @Override
@@ -134,4 +141,8 @@ public class JugadorEnemigo extends Jugador{
         throw new PersonajeInvalidoException();
     }
 
+    @Override
+    public List<Personaje> obtenerPersonajesDeJugador(){
+        return this.personajesEnemigos;
+    }
 }

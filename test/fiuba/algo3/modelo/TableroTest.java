@@ -11,6 +11,9 @@ import fiuba.algo3.modelo.Componentes.Coordenada;
 import fiuba.algo3.modelo.Componentes.Tablero;
 import fiuba.algo3.modelo.excepciones.CeldaOcupadaException;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 public class TableroTest {
@@ -48,9 +51,23 @@ public class TableroTest {
     public void ubicarEquiposEnVerticesOpuestosDelTableroYVerificarCasilleroOcupadoCeroNueve(){
         //PRUEBA PARA UN TABLERO DE 10X10
         Tablero tablero = new Tablero(10);
-        EquipoEnemigos enemigos = new EquipoEnemigos();
-        EquipoGuerrerosZ guerrerosZ = new EquipoGuerrerosZ();
-        tablero.ubicarEquipos();
+        List<Personaje> personajesZ = new ArrayList<>();
+        List<Personaje> personajesEnemigos = new ArrayList<>();
+        Goku goku = new Goku();
+        Gohan gohan = new Gohan();
+        Piccolo piccolo = new Piccolo();
+        personajesZ.add( goku );
+        personajesZ.add( gohan );
+        personajesZ.add( piccolo );
+
+        Cell cell = new Cell();
+        Freezer freezer = new Freezer();
+        MajinBoo majinBoo = new MajinBoo();
+        personajesEnemigos.add( cell );
+        personajesEnemigos.add( freezer );
+        personajesEnemigos.add( majinBoo );
+
+        tablero.ubicarEquipos(personajesZ, personajesEnemigos);
         Coordenada coordenada1 = new Coordenada( 0,9 );
 
         Celda celda1 = new Celda( coordenada1 );
@@ -63,9 +80,24 @@ public class TableroTest {
     public void ubicarEquiposEnVerticesOpuestosDelTableroYVerificarCasilleroOcupadoCeroOcho(){
         //PRUEBA PARA UN TABLERO DE 10X10
         Tablero tablero = new Tablero(10);
-        EquipoEnemigos enemigos = new EquipoEnemigos();
-        EquipoGuerrerosZ guerrerosZ = new EquipoGuerrerosZ();
-        tablero.ubicarEquipos();
+        List<Personaje> personajesZ = new ArrayList<>();
+        List<Personaje> personajesEnemigos = new ArrayList<>();
+        Goku goku = new Goku();
+        Gohan gohan = new Gohan();
+        Piccolo piccolo = new Piccolo();
+        personajesZ.add( goku );
+        personajesZ.add( gohan );
+        personajesZ.add( piccolo );
+
+        Cell cell = new Cell();
+        Freezer freezer = new Freezer();
+        MajinBoo majinBoo = new MajinBoo();
+        personajesEnemigos.add( cell );
+        personajesEnemigos.add( freezer );
+        personajesEnemigos.add( majinBoo );
+
+        tablero.ubicarEquipos(personajesZ, personajesEnemigos);
+
         Coordenada coordenada2 = new Coordenada( 0,8 );
 
         Celda celda2 = new Celda( coordenada2 );
@@ -79,9 +111,24 @@ public class TableroTest {
     public void ubicarEquiposEnVerticesOpuestosDelTableroYVerificarCasilleroOcupadoUnoNueve(){
         //PRUEBA PARA UN TABLERO DE 10X10
         Tablero tablero = new Tablero(10);
-        EquipoEnemigos enemigos = new EquipoEnemigos();
-        EquipoGuerrerosZ guerrerosZ = new EquipoGuerrerosZ();
-        tablero.ubicarEquipos();
+        List<Personaje> personajesZ = new ArrayList<>();
+        List<Personaje> personajesEnemigos = new ArrayList<>();
+        Goku goku = new Goku();
+        Gohan gohan = new Gohan();
+        Piccolo piccolo = new Piccolo();
+        personajesZ.add( goku );
+        personajesZ.add( gohan );
+        personajesZ.add( piccolo );
+
+        Cell cell = new Cell();
+        Freezer freezer = new Freezer();
+        MajinBoo majinBoo = new MajinBoo();
+        personajesEnemigos.add( cell );
+        personajesEnemigos.add( freezer );
+        personajesEnemigos.add( majinBoo );
+
+        tablero.ubicarEquipos(personajesZ, personajesEnemigos);
+
         Coordenada coordenada3 = new Coordenada( 1,9 );
 
         Celda celda3 = new Celda( coordenada3 );
@@ -94,9 +141,24 @@ public class TableroTest {
     public void ubicarEquiposEnVerticesOpuestosDelTableroYVerificarCasilleroOcupadoNueveCero(){
         //PRUEBA PARA UN TABLERO DE 10X10
         Tablero tablero = new Tablero(10);
-        EquipoEnemigos enemigos = new EquipoEnemigos();
-        EquipoGuerrerosZ guerrerosZ = new EquipoGuerrerosZ();
-        tablero.ubicarEquipos();
+        List<Personaje> personajesZ = new ArrayList<>();
+        List<Personaje> personajesEnemigos = new ArrayList<>();
+        Goku goku = new Goku();
+        Gohan gohan = new Gohan();
+        Piccolo piccolo = new Piccolo();
+        personajesZ.add( goku );
+        personajesZ.add( gohan );
+        personajesZ.add( piccolo );
+
+        Cell cell = new Cell();
+        Freezer freezer = new Freezer();
+        MajinBoo majinBoo = new MajinBoo();
+        personajesEnemigos.add( cell );
+        personajesEnemigos.add( freezer );
+        personajesEnemigos.add( majinBoo );
+
+        tablero.ubicarEquipos(personajesZ, personajesEnemigos);
+
         Coordenada coordenada4 = new Coordenada( 9,0 );
 
         Celda celda4 = new Celda( coordenada4 );
@@ -109,9 +171,24 @@ public class TableroTest {
     public void ubicarEquiposEnVerticesOpuestosDelTableroYVerificarCasilleroOcupadoNueveUno(){
         //PRUEBA PARA UN TABLERO DE 10X10
         Tablero tablero = new Tablero(10);
-        EquipoEnemigos enemigos = new EquipoEnemigos();
-        EquipoGuerrerosZ guerrerosZ = new EquipoGuerrerosZ();
-        tablero.ubicarEquipos();
+        List<Personaje> personajesZ = new ArrayList<>();
+        List<Personaje> personajesEnemigos = new ArrayList<>();
+        Goku goku = new Goku();
+        Gohan gohan = new Gohan();
+        Piccolo piccolo = new Piccolo();
+        personajesZ.add( goku );
+        personajesZ.add( gohan );
+        personajesZ.add( piccolo );
+
+        Cell cell = new Cell();
+        Freezer freezer = new Freezer();
+        MajinBoo majinBoo = new MajinBoo();
+        personajesEnemigos.add( cell );
+        personajesEnemigos.add( freezer );
+        personajesEnemigos.add( majinBoo );
+
+        tablero.ubicarEquipos(personajesZ, personajesEnemigos);
+
         Coordenada coordenada5 = new Coordenada( 9,1 );
 
         Celda celda5 = new Celda( coordenada5 );
@@ -124,9 +201,24 @@ public class TableroTest {
     public void ubicarEquiposEnVerticesOpuestosDelTableroYVerificarCasilleroOcupadoOchoCero(){
         //PRUEBA PARA UN TABLERO DE 10X10
         Tablero tablero = new Tablero(10);
-        EquipoEnemigos enemigos = new EquipoEnemigos();
-        EquipoGuerrerosZ guerrerosZ = new EquipoGuerrerosZ();
-        tablero.ubicarEquipos();
+
+        List<Personaje> personajesZ = new ArrayList<>();
+        List<Personaje> personajesEnemigos = new ArrayList<>();
+        Goku goku = new Goku();
+        Gohan gohan = new Gohan();
+        Piccolo piccolo = new Piccolo();
+        personajesZ.add( goku );
+        personajesZ.add( gohan );
+        personajesZ.add( piccolo );
+
+        Cell cell = new Cell();
+        Freezer freezer = new Freezer();
+        MajinBoo majinBoo = new MajinBoo();
+        personajesEnemigos.add( cell );
+        personajesEnemigos.add( freezer );
+        personajesEnemigos.add( majinBoo );
+
+        tablero.ubicarEquipos(personajesZ, personajesEnemigos);
 
         Coordenada coordenada6 = new Coordenada( 8,0 );
 

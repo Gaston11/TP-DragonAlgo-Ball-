@@ -1,11 +1,14 @@
 package fiuba.algo3.modelo.Juego;
 
+import fiuba.algo3.modelo.Componentes.Celda;
 import fiuba.algo3.modelo.Componentes.Coordenada;
 import fiuba.algo3.modelo.Personajes.*;
 import fiuba.algo3.modelo.excepciones.FuegoAmigoException;
 import fiuba.algo3.modelo.excepciones.PersonajeInvalidoException;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class JugadorZ extends Jugador{
 
@@ -13,6 +16,7 @@ public class JugadorZ extends Jugador{
     private Gohan gohan;
     private Piccolo piccolo;
     private Jugador rival;
+    private List<Personaje> personajesZ;
 
     private Equipo equipo;
 
@@ -26,6 +30,10 @@ public class JugadorZ extends Jugador{
         this.goku = new Goku();
         this.gohan = new Gohan();
         this.piccolo = new Piccolo();
+        this.personajesZ = new ArrayList<>();
+        this.personajesZ.add( goku );
+        this.personajesZ.add( gohan );
+        this.personajesZ.add(piccolo);
     }
 
     @Override
@@ -131,6 +139,11 @@ public class JugadorZ extends Jugador{
     @Override
     public boolean personajesMuertos() {
         return (this.piccolo.estaMuerto() && this.goku.estaMuerto() && this.gohan.estaMuerto());
+    }
+
+    @Override
+    public List<Personaje> obtenerPersonajesDeJugador(){
+        return this.personajesZ;
     }
 
 }

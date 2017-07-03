@@ -74,32 +74,30 @@ public class Tablero {
 		}
 	}
 
-    public void ubicarEquipos() {
+    public void ubicarEquipos( List<Personaje> equipo1, List<Personaje> equipo2 ) {
     	// TABLERO DE 10X10
-		EquipoGuerrerosZ equipo1 = new EquipoGuerrerosZ();
-		EquipoEnemigos equipo2 = new EquipoEnemigos();
 
     	Coordenada esquinaSupIzq = new Coordenada(0,9);
     	Coordenada esquinaInfDer = new Coordenada(9,0);
 
     	//ubicar equipo 1
     	Celda celda1 = new Celda(esquinaSupIzq);
-    	celda1.colocarPersonaje(equipo1.obtenerPersonaje(0));
+    	celda1.colocarPersonaje(equipo1.get( 0 ));
     	Celda celda2 = new Celda(new Coordenada(esquinaSupIzq.getCoordenadaX()+1,esquinaSupIzq.getCoordenadaY()));
-    	celda2.colocarPersonaje(equipo1.obtenerPersonaje(1));
+    	celda2.colocarPersonaje(equipo1.get( 1 ));
     	Celda celda3 = new Celda(new Coordenada(esquinaSupIzq.getCoordenadaX(),esquinaSupIzq.getCoordenadaY()-1));
-    	celda3.colocarPersonaje(equipo1.obtenerPersonaje(2));
+    	celda3.colocarPersonaje(equipo1.get( 2 ));
 		this.colocarCeldaEnTablero(celda1);
 		this.colocarCeldaEnTablero(celda2);
 		this.colocarCeldaEnTablero(celda3);
 
     	//ubicar equipo 2
 		Celda celda4 = new Celda(esquinaInfDer);
-		celda4.colocarPersonaje(equipo2.obtenerPersonaje(0));
+		celda4.colocarPersonaje(equipo2.get( 0 ));
 		Celda celda5 = new Celda(new Coordenada(esquinaInfDer.getCoordenadaX()-1,esquinaInfDer.getCoordenadaY()));
-		celda5.colocarPersonaje(equipo2.obtenerPersonaje(1));
+		celda5.colocarPersonaje(equipo2.get( 1 ));
 		Celda celda6 = new Celda(new Coordenada(esquinaInfDer.getCoordenadaX(),esquinaInfDer.getCoordenadaY()+1));
-		celda6.colocarPersonaje(equipo2.obtenerPersonaje(2));
+		celda6.colocarPersonaje(equipo2.get( 2 ));
 		this.colocarCeldaEnTablero(celda4);
 		this.colocarCeldaEnTablero(celda5);
 		this.colocarCeldaEnTablero(celda6);

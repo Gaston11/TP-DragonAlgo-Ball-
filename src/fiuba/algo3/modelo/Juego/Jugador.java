@@ -5,6 +5,7 @@ import fiuba.algo3.modelo.Personajes.*;
 import fiuba.algo3.modelo.excepciones.NoSePuedeMoverPersonajeException;
 import fiuba.algo3.modelo.excepciones.PersonajeInvalidoException;
 ;import java.util.HashMap;
+import java.util.List;
 
 public abstract class Jugador {
 
@@ -53,6 +54,7 @@ public abstract class Jugador {
 
     public abstract boolean personajesMuertos();
 
+    public abstract List<Personaje> obtenerPersonajesDeJugador();
 
     //public abstract void inicializarPersonajesEnTablero();
 }

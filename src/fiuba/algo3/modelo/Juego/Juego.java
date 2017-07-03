@@ -5,6 +5,7 @@ import fiuba.algo3.modelo.Componentes.VersorDireccion;
 import fiuba.algo3.modelo.Personajes.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Juego {
@@ -29,6 +30,7 @@ public class Juego {
         jugadorZ.asignarRival(jugadorEnemigo);
         jugadorEnemigo.asignarRival(jugadorZ);
         this.jugadorActual = jugadorZ; //Tendria que ser random
+        this.inicializarTableroConPersonajes( jugadorZ,jugadorEnemigo );
     }
 
     public void mover(String personaje, String direccion){
@@ -77,5 +79,11 @@ public class Juego {
 
     public void transformar(String personaje){
         jugadorActual.transformar(personaje);
+    }
+
+    private void inicializarTableroConPersonajes(Jugador jugadorZ, Jugador jugadorEnemigo){
+        List<Personaje> personajesBuenos = jugadorZ.obtenerPersonajesDeJugador();
+        List<Personaje> personajesMalos = jugadorEnemigo.obtenerPersonajesDeJugador();
+        this.tablero.ubicarEquipos( personajesBuenos,personajesMalos );
     }
 }
