@@ -1,34 +1,45 @@
 package fiuba.algo3.vista;
 
+import fiuba.algo3.modelo.Juego.Juego;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Label;
 import javafx.scene.control.Button;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.*;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
-import java.awt.*;
 
 public class ContenedorPrincipal extends BorderPane {
 
+    private Juego modelo;
     BarraDeMenu menuBar;
-    //VistaRobot vistaRobot;
-    Canvas canvasCentral; // que significa ??
+    Canvas canvasCentral;
+    Canvas informacionEnemigo;
     VBox contenedorCentral;
+    Casillero[][] casilleros;
+
+    private static final int TAMANIO_CASILLERO = 40;
+    private static final int WIDTH = 400;
+    private static final int HEIGHT = 400;
+
+    private static final int X_CASILLEROS = WIDTH / TAMANIO_CASILLERO;
+    private static final int Y_CASILLEROS = HEIGHT / TAMANIO_CASILLERO;
+
+
+
 /* aca irian los personajes para ubicarlos en el tablero y pasarselo a la imagen */
 
-    public ContenedorPrincipal(Stage stage ) {
+    public ContenedorPrincipal(Stage stage, Juego juego) {
 
         this.setMenu(stage);
-        //this.setCentro(robot);
+        this.modelo = juego;
+        this.setCentro();
         //this.setConsola();
         this.setBotonera();
-
+        this.setDerecha();
     }
 
     private HBox elegirPersonaje(){
@@ -97,7 +108,6 @@ public class ContenedorPrincipal extends BorderPane {
         this.setTop(menuBar);
     }
 
-
     /*
     private void setBotonera(Robot robot) {
 
@@ -117,25 +127,46 @@ public class ContenedorPrincipal extends BorderPane {
 
         this.setLeft(contenedorVertical);
 
+    }*/
+
+    private void setCentro() {
+
+        //canvasCentral = new Canvas(400, 400);
+        //vistaRobot = new VistaRobot(robot, canvasCentral);
+        //vistaRobot.dibujar();
+        Pane centro = new Pane();
+        centro.setPrefSize(WIDTH, HEIGHT);
+        this.casilleros = new Casillero[X_CASILLEROS][Y_CASILLEROS];
+
+        for (int y = 0; y < Y_CASILLEROS; y++) {
+            for (int x = 0; x < X_CASILLEROS; x++) {
+                Casillero casillero = new Casillero(x, y);
+
+                casilleros[x][y] = casillero;
+
+                centro.getChildren().add(casillero);
+            }
+        }
+
+//        contenedorCentral = new VBox(canvasCentral);
+//        contenedorCentral.setAlignment(Pos.CENTER);
+//        contenedorCentral.setSpacing(20);
+//        contenedorCentral.setPadding(new Insets(25));
+        Image imagen = new Image("file:res/imagenes/FondoNameku.png");
+        BackgroundSize backgroundSize = new BackgroundSize(centro.getWidth(), centro.getHeight(), true, true, true, false);
+        BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, backgroundSize);
+        centro.setBackground(new Background(imagenDeFondo));
+
+        this.setCenter(centro);
     }
 
-    private void setCentro(Robot robot) {
-
-        canvasCentral = new Canvas(460, 220);
-        vistaRobot = new VistaRobot(robot, canvasCentral);
-        vistaRobot.dibujar();
-
-        contenedorCentral = new VBox(canvasCentral);
-        contenedorCentral.setAlignment(Pos.CENTER);
-        contenedorCentral.setSpacing(20);
-        contenedorCentral.setPadding(new Insets(25));
-        Image imagen = new Image("file:src/vista/imagenes/fondo-verde.jpg");
-        BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-        contenedorCentral.setBackground(new Background(imagenDeFondo));
-
-        this.setCenter(contenedorCentral);
+    private void setDerecha(){
+        this.informacionEnemigo = new Canvas(200, this.getHeight());
+            this.setRight(this.informacionEnemigo);
+        }
     }
 
+    /*
     private void setConsola() {
 
         // TODO cambiar por el modelo de Consola...
@@ -154,4 +185,4 @@ public class ContenedorPrincipal extends BorderPane {
 */
 
 //aca habria que mandar los personajes y moverlos segun requisitos del jugador
-}
+
