@@ -42,10 +42,11 @@ public class JugadorEnemigo extends Jugador{
     }
 
     @Override
-    public void ataqueBasico(String claveEquipo, String enemigo) {
+    public void ataqueBasico(String personaje, String enemigo) {
 
-        if (this.perteneceAEquipo(claveEquipo)) {
-            this.seleccionar(claveEquipo).ataqueBasico(this.rival.seleccionarPersonajeBueno(enemigo));
+        if (this.perteneceAEquipo(personaje)) {
+
+            this.seleccionar(personaje).ataqueBasico(this.rival.seleccionarPersonajeBueno(enemigo));
         }else {
             throw new PersonajeInvalidoException();
         }
