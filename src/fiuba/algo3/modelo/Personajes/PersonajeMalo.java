@@ -12,6 +12,10 @@ public interface PersonajeMalo {
 
     void ataqueBasico(PersonajeBueno unPersonaje);
 
+    void ataqueEspecial(PersonajeBueno enemigo);
+
+    void  transformar();
+
     void recibirDanio(int cantidad);
 
     int getVida();

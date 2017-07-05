@@ -1,11 +1,10 @@
 package fiuba.algo3.modelo.Juego;
 
+import fiuba.algo3.modelo.Componentes.Coordenada;
 import fiuba.algo3.modelo.Personajes.*;
-import fiuba.algo3.modelo.excepciones.FuegoAmigoException;
-import fiuba.algo3.modelo.excepciones.PersonajeInvalidoException;
+import fiuba.algo3.modelo.excepciones.PersonajeInvalidoNoEsPersonajeMaloException;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -13,28 +12,13 @@ import java.util.List;
  */
 public class JugadorEnemigo extends Jugador{
 
-    private MajinBoo majinBoo;
-    private Cell cell;
-    private Freezer freezer;
     private Jugador rival;
-    private List<Personaje> personajesEnemigos;
+    private List<PersonajeMalo> personajesEnemigos;
 
     public JugadorEnemigo(String nombre){
         this.nombre = nombre;
-        asignarEquipo();
-
     }
 
-    @Override
-    public void asignarEquipo() {
-        this.majinBoo = new MajinBoo();
-        this.cell = new Cell();
-        this.freezer = new Freezer();
-        this.personajesEnemigos = new ArrayList<>();
-        this.personajesEnemigos.add( majinBoo );
-        this.personajesEnemigos.add(cell);
-        this.personajesEnemigos.add(freezer);
-    }
 
     @Override
     public void asignarRival(Jugador jugadorRival) {
@@ -42,32 +26,35 @@ public class JugadorEnemigo extends Jugador{
     }
 
     @Override
-    public void ataqueBasico(String personaje, String enemigo) {
+    public void ataqueBasico(Personaje personaje, Personaje enemigo) {
 
-        if (this.perteneceAEquipo(personaje)) {
+        this.obtenerPersonajeEnemigo(personaje).ataqueBasico(this.rival.obtenerPersonajeZ(enemigo));
 
-            this.seleccionar(personaje).ataqueBasico(this.rival.seleccionarPersonajeBueno(enemigo));
+    }
+
+    @Override
+    public void ataqueEspecial(Personaje personaje, Personaje enemigo) {
+
+        this.obtenerPersonajeEnemigo(personaje).ataqueEspecial(this.rival.obtenerPersonajeZ(enemigo));
+    }
+
+    @Override
+    public void transformar(Personaje personaje) {
+        this.obtenerPersonajeEnemigo(personaje).transformar();
+    }
+
+    @Override
+    public void mover(Personaje personaje, Coordenada coordenada) {
+        if(personajesEnemigos.contains(personaje)){
+            personaje.mover(coordenada);
         }else {
-            throw new PersonajeInvalidoException();
+            throw new PersonajeInvalidoNoEsPersonajeMaloException();
         }
     }
 
     @Override
-    public void ataqueEspecial(String personaje, String enemigo) {
-        PersonajeBueno enemigoBueno = this.rival.seleccionarPersonajeBueno(enemigo);
-        if (this.perteneceAEquipo(personaje)) {
-            switch (personaje) {
-                case "Freezer":
-                    freezer.rayoMortal(enemigoBueno);
-                case "MajinBoo":
-                    majinBoo.convertirEnChocolate(enemigoBueno);
-                case "Cell":
-                    cell.absorber(enemigoBueno);
-                default: {
-                    throw new PersonajeInvalidoException();
-                }
-            }
-        }
+    public PersonajeBueno obtenerPersonajeZ(Personaje personaje) {
+        return null;
     }
 
     @Override
@@ -76,74 +63,40 @@ public class JugadorEnemigo extends Jugador{
     }
 
     @Override
-    public Personaje seleccionar(String clave){
-        switch (clave){
-            case "MajinBoo":
-                return this.majinBoo;
-            case "Cell":
-                return this.cell;
-            case "Freezer":
-                return this.freezer;
-            default: {
-                throw new PersonajeInvalidoException();
-            }
-        }
+    public void asignarEquipo(ArrayList<PersonajeBueno> personajesBuenos) {
 
     }
 
     @Override
-    public PersonajeMalo seleccionarPersonajeMalo(String clave) {
-
-        switch (clave) {
-            case "MajinBoo":
-                return this.majinBoo;
-            case "Cell":
-                return this.cell;
-            case "Freezer":
-                return this.freezer;
-            default: {
-                throw new FuegoAmigoException();
-            }
-        }
-
+    public void asignarEquipoRival(ArrayList<PersonajeMalo> personajeMalos) {
+        personajesEnemigos = personajeMalos;
     }
 
-    @Override
-    public void transformar(String personaje) {
-        if(this.perteneceAEquipo(personaje)){
-            switch (personaje){
-                case "Freezer":
-                    freezer.transformarse();
-                    break;
-                case "Cell":
-                    cell.transformarse();
-                    break;
-                case "MajinBoo":
-                    majinBoo.transformarse();
-                    break;
-            }
-        }else {
-            throw new PersonajeInvalidoException();
-        }
-    }
+
 
     @Override
-    protected boolean perteneceAEquipo(String personaje) {
-        return (personaje == "Cell" || personaje == "MajinBoo" || personaje == "Freezer");
+    public PersonajeMalo obtenerPersonajeEnemigo(Personaje personaje){
+        int i = 0;
+        if (!personajesEnemigos.contains(personaje)){
+            throw new PersonajeInvalidoNoEsPersonajeMaloException();
+        }
+
+        while (!personajesEnemigos.get(i).equals(personaje)) {
+            i++;
+        }
+        return personajesEnemigos.get(i);
     }
 
     @Override
     public boolean personajesMuertos() {
-        return (this.freezer.estaMuerto() && this.cell.estaMuerto() && this.majinBoo.estaMuerto());
+        Boolean estaMuerto = true;
+        int i =0;
+        while(estaMuerto && i<personajesEnemigos.size()){
+            estaMuerto = ((Personaje)personajesEnemigos.get(i)).estaMuerto();
+            i++;
+        }
+
+        return estaMuerto;
     }
 
-    @Override
-    public PersonajeBueno seleccionarPersonajeBueno(String clave){
-        throw new PersonajeInvalidoException();
-    }
-
-    @Override
-    public List<Personaje> obtenerPersonajesDeJugador(){
-        return this.personajesEnemigos;
-    }
 }

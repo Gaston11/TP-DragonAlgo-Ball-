@@ -47,7 +47,7 @@ public class EstadoChocolate implements Estado {
     }
 
     @Override
-    public Estado transformarse(Gohan gohan, int kiActual) {
+    public Estado transformarse(Personaje gohan, int kiActual) {
         throw new PersonajeEnEstadoChocolateExcepcion();
     }
 

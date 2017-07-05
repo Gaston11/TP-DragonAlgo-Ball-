@@ -1,9 +1,12 @@
 package fiuba.algo3.modelo.Juego;
 
+import fiuba.algo3.modelo.Componentes.Coordenada;
 import fiuba.algo3.modelo.Componentes.Tablero;
 import fiuba.algo3.modelo.Componentes.VersorDireccion;
 import fiuba.algo3.modelo.Personajes.*;
+import fiuba.algo3.modelo.excepciones.TenemosUnGanadorException;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -12,16 +15,45 @@ public class Juego {
 
     private Tablero tablero;
     private Jugador jugadorActual;
-    private int accionMover;
-    private int accionAtacar;
+    private ArrayList<PersonajeBueno> personajesZ;
+    private ArrayList<PersonajeMalo> personajesEnemigos;
     private Jugador jugadorGanador;
 
-    public Juego(String jZ, String jEnemigo){
 
+    public Juego(String jZ, String jEnemigo) {
         tablero = new Tablero(10);
+        personajesZ = new ArrayList<PersonajeBueno>();
+        personajesEnemigos = new ArrayList<PersonajeMalo>();
+        this.crearPersonajes();
         this.crearJugadorActual(jZ, jEnemigo);
-        accionMover = 0;
-        accionAtacar =0;
+    }
+
+    private void crearPersonajes() {
+        ArrayList<Personaje> personajesBuenos = new ArrayList<Personaje>();
+        ArrayList<Personaje> personajesMalos = new ArrayList<Personaje>();
+        Goku goku = new Goku();
+        Gohan gohan = new Gohan();
+        Piccolo piccolo = new Piccolo();
+        personajesZ.add(goku);
+        personajesZ.add(gohan);
+        personajesZ.add(piccolo);
+
+        Freezer freezer = new Freezer();
+        MajinBoo majinBoo = new MajinBoo();
+        Cell cell = new Cell();
+        personajesEnemigos.add(freezer);
+        personajesEnemigos.add(majinBoo);
+        personajesEnemigos.add(cell);
+
+        personajesBuenos.add(goku);
+        personajesBuenos.add(gohan);
+        personajesBuenos.add(piccolo);
+
+        personajesMalos.add(freezer);
+        personajesMalos.add(majinBoo);
+        personajesMalos.add(cell);
+
+        tablero.ubicarEquipos(personajesBuenos, personajesMalos);
     }
 
     private void crearJugadorActual(String jZ, String jEnemigo) {
@@ -29,61 +61,55 @@ public class Juego {
         Jugador jugadorEnemigo = new JugadorEnemigo(jEnemigo);
         jugadorZ.asignarRival(jugadorEnemigo);
         jugadorEnemigo.asignarRival(jugadorZ);
+        jugadorZ.asignarEquipo(personajesZ);
+        jugadorZ.asignarEquipoRival(personajesEnemigos);
         this.jugadorActual = jugadorZ; //Tendria que ser random
-        this.inicializarTableroConPersonajes( jugadorZ,jugadorEnemigo );
     }
 
-    public void mover(String personaje, String direccion){
-
-        if(accionMover==0) {
-            if (!jugadorActual.personajesMuertos()) {
-                accionMover+=1;
-                Personaje personaje1 = jugadorActual.seleccionar(personaje);
-                tablero.moverPersonaje(personaje1, jugadorActual.mover(personaje1, direccion));
-                this.cambiarTurno();
-            } else {
-                jugadorGanador = jugadorActual.getRival();
-                //throw new TenemosUnGanador();
-            }
-        }
+    public void mover(Coordenada coordenadaIni, Coordenada coordenadaFin){
+        Personaje personaje = tablero.mover(coordenadaIni, coordenadaFin);
+        jugadorActual.mover(personaje, coordenadaFin);
+        this.cambiarTurno();
     }
 
-    public void atacar(String personajeAtaca, String personajeAtacado, String tipoAtaque) {
-        if (accionAtacar == 0) {
-            accionAtacar += 1;
-            if (tipoAtaque == "Basico") {
-                jugadorActual.ataqueBasico(personajeAtaca, personajeAtacado);
-            } else {
-                jugadorActual.ataqueEspecial(personajeAtaca, personajeAtacado);
-            }
-            this.cambiarTurno();
-        }
+    public void atacar(Coordenada coordenadaAtaca, Coordenada coordenadaAtacado) {
+        Personaje personajeAtaca = tablero.obtenerPersonajeEn(coordenadaAtaca);
+        Personaje personajeAtacado = tablero.obtenerPersonajeEn(coordenadaAtacado);
+        jugadorActual.ataqueBasico(personajeAtaca, personajeAtacado);
+        this.cambiarTurno();
+
     }
 
-
+    public void atacarEspecial(Coordenada coordenadaAtaca, Coordenada coordenadaAtacado){
+        Personaje personajeAtaca = tablero.obtenerPersonajeEn(coordenadaAtaca);
+        Personaje personajeAtacado = tablero.obtenerPersonajeEn(coordenadaAtacado);
+        jugadorActual.ataqueEspecial(personajeAtaca, personajeAtacado);
+        this.cambiarTurno();
+    }
     public Jugador getJugadorActual() {
         return jugadorActual;
     }
 
     public void cambiarTurno() {
-        if(accionMover==1 && accionAtacar ==1){
+        if (!jugadorActual.personajesMuertos()) {
             jugadorActual = jugadorActual.getRival();
-            accionMover = 0;
-            accionAtacar = 0;
+        } else {
+            jugadorGanador = jugadorActual.getRival();
+            throw new TenemosUnGanadorException();
         }
+
+    }
+
+    public String obtenerGanador(){
+        return jugadorGanador.getNombre();
     }
 
     public Tablero getTablero() {
         return tablero;
     }
 
-    public void transformar(String personaje){
+    public void transformar(Coordenada cGoku) {
+        Personaje personaje = tablero.obtenerPersonajeEn(cGoku);
         jugadorActual.transformar(personaje);
-    }
-
-    private void inicializarTableroConPersonajes(Jugador jugadorZ, Jugador jugadorEnemigo){
-        List<Personaje> personajesBuenos = jugadorZ.obtenerPersonajesDeJugador();
-        List<Personaje> personajesMalos = jugadorEnemigo.obtenerPersonajesDeJugador();
-        this.tablero.ubicarEquipos( personajesBuenos,personajesMalos );
     }
 }

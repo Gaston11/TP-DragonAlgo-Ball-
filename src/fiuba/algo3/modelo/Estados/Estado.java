@@ -29,7 +29,7 @@ public interface Estado {
 
     public abstract Estado transformarse(int condicion);
 
-    public abstract Estado transformarse(Gohan gohan, int kiActual);
+    public abstract Estado transformarse(Personaje gohan, int kiActual);
 
     public abstract Estado transformarse(Personaje personaje1, Personaje personaje2, int ki);
 

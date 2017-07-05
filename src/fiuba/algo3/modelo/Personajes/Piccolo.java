@@ -25,7 +25,7 @@ public class Piccolo extends Personaje implements PersonajeBueno {
         estado = new EstadoNormal();
     }
 
-    public void transformarse(Gohan gohan){
+    public void transformarse(Personaje gohan){
         estado = estado.transformarse(gohan,this.ki);
         this.ki-= estado.costoDeTransformacion();
     }
@@ -48,6 +48,21 @@ public class Piccolo extends Personaje implements PersonajeBueno {
             throw new NoSePuedeAtacarPersonajePorNoEstarEnDistanciaDeAtaqueException();
         }
         estado.ataqueBasico(enemigo,this);
+    }
+
+    @Override
+    public void ataqueEspecial(PersonajeMalo enemigo) {
+        this.makankosappo(enemigo);
+    }
+
+    @Override
+    public void transformar(Personaje goku, Personaje gohan, Personaje piccolo) {
+        this.transformarse(gohan);
+    }
+
+    @Override
+    public void ataqueEspecial(PersonajeBueno enemigo) {
+        this.makankosappo(enemigo);
     }
 
     @Override

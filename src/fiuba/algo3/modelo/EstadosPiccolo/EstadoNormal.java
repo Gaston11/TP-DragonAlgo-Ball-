@@ -52,7 +52,7 @@ public class EstadoNormal implements Estado {
     }
 
     @Override
-    public Estado transformarse(Gohan gohan,int kiActual){
+    public Estado transformarse(Personaje gohan,int kiActual){
 
         if (kiNecesario > kiActual){
             throw new NoSePuedeTransformarPersonajeException();

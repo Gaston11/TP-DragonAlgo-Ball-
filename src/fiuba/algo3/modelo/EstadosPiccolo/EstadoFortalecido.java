@@ -52,7 +52,7 @@ public class EstadoFortalecido implements Estado {
     }
 
     @Override
-    public Estado transformarse(Gohan gohan,int kiActual){
+    public Estado transformarse(Personaje gohan,int kiActual){
         if (!gohan.estadoVidaCritica()){
             throw new NoSePuedeTransformarPersonajeException();
         }

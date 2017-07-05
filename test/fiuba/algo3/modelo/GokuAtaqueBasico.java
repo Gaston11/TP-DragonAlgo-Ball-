@@ -135,12 +135,12 @@ public class GokuAtaqueBasico {
         Freezer freezer = new Freezer();
         freezer.naceEn(otraCoordenada1);
 
-        for (int i=0; i<13; i++){
+        for (int i=0; i<18; i++){
             freezer.ataqueBasico(goku);
         }
         goku.ataqueBasico(freezer);
 
-        assertTrue(freezer.poseeVida(340));
+        assertTrue(freezer.poseeVida(328));
     }
 
     @Test

@@ -52,7 +52,7 @@ public class EstadoProtector implements Estado {
     }
 
     @Override
-    public Estado transformarse(Gohan gohan,int Ki){
+    public Estado transformarse(Personaje gohan,int Ki){
 
         throw new EstadoDeTransformacionMaximaException();
     }

@@ -81,6 +81,21 @@ public class Cell extends Personaje implements PersonajeMalo{
         throw new FuegoAmigoException();
     }
 
+    @Override
+    public void ataqueEspecial(PersonajeMalo enemigo) {
+        this.absorber(enemigo);
+    }
+
+    @Override
+    public void ataqueEspecial(PersonajeBueno enemigo) {
+        this.absorber(enemigo);
+    }
+
+    @Override
+    public void transformar() {
+        this.transformarse();
+    }
+
 
     @Override
     public Coordenada moverArriba() {

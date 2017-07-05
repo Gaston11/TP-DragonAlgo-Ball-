@@ -56,6 +56,21 @@ public class MajinBoo extends Personaje implements PersonajeMalo{
     }
 
     @Override
+    public void transformar() {
+        this.transformarse();
+    }
+
+    @Override
+    public void ataqueEspecial(PersonajeBueno enemigo){
+        this.convertirEnChocolate(enemigo);
+    }
+
+    @Override
+    public void ataqueEspecial(PersonajeMalo amigo){
+        this.convertirEnChocolate(amigo);
+    }
+
+    @Override
     public void ataqueBasico(PersonajeMalo amigo) {
         throw new FuegoAmigoException();
     }

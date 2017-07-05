@@ -5,100 +5,135 @@ import fiuba.algo3.modelo.Componentes.Coordenada;
 import fiuba.algo3.modelo.Componentes.Tablero;
 import fiuba.algo3.modelo.Juego.Juego;
 import fiuba.algo3.modelo.Juego.Jugador;
-import fiuba.algo3.modelo.Personajes.Cell;
-import fiuba.algo3.modelo.Personajes.Personaje;
+import fiuba.algo3.modelo.Personajes.*;
+import fiuba.algo3.modelo.excepciones.CeldaOcupadaException;
+import fiuba.algo3.modelo.excepciones.NoSePuedeAtacarPersonajePorNoPoseerKiSuficienteException;
+import fiuba.algo3.modelo.excepciones.NoSePuedeMoverPersonajeException;
+import fiuba.algo3.modelo.excepciones.NoSeleccionoNingunPersonajeException;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
+
+import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class JuegoTest {
 
-    @Test
-    public void JuegoIntegracionTurnoDeCadaJugadorAtacaYMuevueCambiaTurno(){
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+
+    @Test //Puede atacar o transformarse Pero no significa que cambia el turno pero solo lo puede hacer una vez
+    public void JuegoIntegracionTurnoDeCadaJugadorCuandoMuevePersonajeCambiaTurnoJuegaJugadorEnemigo() {
 
         Juego juego = new Juego("Miqui","Giu");
-        Jugador jugadorActual = juego.getJugadorActual();
-        Personaje goku = jugadorActual.seleccionar("Goku");
-        Personaje freezer = jugadorActual.getRival().seleccionar("Freezer");
-        Coordenada unaCoordenada = new Coordenada(0,0);
-        Coordenada dosCoordenada = new Coordenada(1,1);
-        Coordenada otraCoordenada = new Coordenada(0,2);
-        Coordenada otraCoordenada2 = new Coordenada(5,1);
 
-        Celda celdaGoku = new Celda(unaCoordenada);
-        Celda celdaFreezer = new Celda(dosCoordenada);
-        Tablero tablero = juego.getTablero();
-        tablero.colocarCeldaEnTablero(celdaGoku);
-        goku.naceEn(unaCoordenada);
-        tablero.colocarCeldaEnTablero(celdaFreezer);
-        freezer.naceEn(dosCoordenada);
+        Coordenada unaCoordenada = new Coordenada(0,9);
+        Coordenada unaCoordenada1 = new Coordenada(1,8);
 
-        juego.mover("Goku", "Arriba");
-        juego.atacar("Goku","Freezer","Basico");
+        juego.mover(unaCoordenada,unaCoordenada1);
 
-        assertTrue(goku.estaUbicadoEn(otraCoordenada));
-        assertEquals(380, freezer.getVida());
         assertEquals("Giu", juego.getJugadorActual().getNombre());
-
-        juego.atacar("Freezer","Goku","Basico");
-        juego.mover("Freezer","Derecha");
-
-        assertEquals(480, goku.getVida());
-        assertTrue(freezer.estaUbicadoEn(otraCoordenada2));
 
     }
-/*
+
     @Test
-    public void JuegoIntegracionPasanVariosTurnosYSeRealizanAtaquesEspeciales(){
-
+    public void JuegoJugadorZIntentaSeleccionarUnaPosicionDeTableroQueNoTienePersonajeException() {
         Juego juego = new Juego("Miqui","Giu");
-        Jugador jugadorActual = juego.getJugadorActual();
-        Personaje goku = jugadorActual.seleccionar("Goku");
-        Personaje freezer = jugadorActual.getRival().seleccionar("Freezer");
 
-        juego.mover("Goku", "Arriba");
-        juego.atacar("Goku","Freezer","Basico");
+        Coordenada unaCoordenada1 = new Coordenada(2,2);
 
-        assertEquals(380, freezer.getVida());
-        assertEquals("Giu", juego.getJugadorActual().getNombre());
+        thrown.expect(NoSeleccionoNingunPersonajeException.class);
+        juego.mover(unaCoordenada1, unaCoordenada1);
+    }
 
-        juego.atacar("Freezer","Goku","Basico");
-        juego.mover("Freezer","Derecha");
+    @Test
+    public void jugadorRealizaUnAtaqueBAsicoCambiaElTurno(){
+        Juego juego = new Juego("Miqui","Giu");
+        Coordenada cGoku = new Coordenada(0,9);
+        Coordenada cGoku1 = new Coordenada(1,8);
 
-        assertEquals(480, goku.getVida());
+        juego.mover(cGoku,cGoku1);
 
-        juego.mover("Gohan", "Arriba");
-        juego.atacar("Goku","Freezer","Basico");
+        Coordenada cEnemigo = new Coordenada(9,0);
+        Coordenada coordenada = new Coordenada(8,1);
+        cGoku = new Coordenada(3,6);
 
-        assertEquals(380, freezer.getVida());
-        assertEquals("Giu", juego.getJugadorActual().getNombre());
+        juego.mover(cEnemigo,coordenada);
 
-        juego.atacar("MajinBoo","Goku","Basico");
-        juego.mover("Freezer","Derecha");
+        cEnemigo = new Coordenada(6,3);
+        juego.mover(cGoku1,cGoku);
+        juego.mover(coordenada,cEnemigo);
+        cGoku1 = new Coordenada(5,3);
+        juego.mover(cGoku,cGoku1);
 
-        assertEquals(450, goku.getVida());
+        juego.atacar(cEnemigo, cGoku1);
 
-        juego.mover("Goku", "Arriba");
-        juego.atacar("Gohan","Freezer","Basico");
-
-        assertEquals(365, freezer.getVida());
         assertEquals("Miqui", juego.getJugadorActual().getNombre());
+    }
 
-        juego.atacar("Freezer","Goku","Basico");
-        juego.mover("Freezer","Derecha");
+    @Test
+    public void jugadorRealizaUnAtaqueEspecialCambiaElTurno(){
+        Juego juego = new Juego("Miqui","Giu");
+        Coordenada cGoku = new Coordenada(0,9);
+        Coordenada cGoku1 = new Coordenada(1,8);
 
-        assertEquals(430, goku.getVida());
+        juego.mover(cGoku,cGoku1);
 
-        juego.mover("Goku", "Arriba");
-        juego.atacar("Goku","Freezer","Basico");
+        Coordenada cEnemigo = new Coordenada(9,0);
+        Coordenada coordenada = new Coordenada(8,1);
+        cGoku = new Coordenada(3,6);
 
-        assertEquals(345, freezer.getVida());
+        juego.mover(cEnemigo,coordenada);
+
+        cEnemigo = new Coordenada(6,3);
+        juego.mover(cGoku1,cGoku);
+        juego.mover(coordenada,cEnemigo);
+        cGoku1 = new Coordenada(5,4);
+        juego.mover(cGoku,cGoku1);
+        coordenada = new Coordenada(4,3);
+        juego.mover(cEnemigo, coordenada);
+        cGoku = new Coordenada(5,3);
+        juego.mover(cGoku1,cGoku);
+
+        cEnemigo = new Coordenada(4,4);
+        juego.mover(coordenada,cEnemigo);
+        juego.atacarEspecial(cGoku,cEnemigo);
+
         assertEquals("Giu", juego.getJugadorActual().getNombre());
 
-        juego.atacar("Freezer","Goku","Basico");
-        juego.mover("Freezer","Derecha");
+    }
 
-        assertEquals(410, goku.getVida());
-    }*/
+    @Test
+    public void jugadorRealizaUnaTransformacionYNoCambiaElTurno(){
+        Juego juego = new Juego("Miqui","Giu");
+        Coordenada cGoku = new Coordenada(0,9);
+        Coordenada cGoku1 = new Coordenada(1,8);
+
+        juego.mover(cGoku,cGoku1);
+
+        Coordenada cEnemigo = new Coordenada(9,0);
+        Coordenada coordenada = new Coordenada(8,1);
+        cGoku = new Coordenada(3,6);
+
+        juego.mover(cEnemigo,coordenada);
+
+        cEnemigo = new Coordenada(6,3);
+        juego.mover(cGoku1,cGoku);
+        juego.mover(coordenada,cEnemigo);
+        cGoku1 = new Coordenada(5,4);
+        juego.mover(cGoku,cGoku1);
+        coordenada = new Coordenada(4,3);
+        juego.mover(cEnemigo, coordenada);
+        cGoku = new Coordenada(5,3);
+        juego.mover(cGoku1,cGoku);
+
+        cEnemigo = new Coordenada(4,4);
+        juego.mover(coordenada,cEnemigo);
+        juego.transformar(cGoku);
+
+        assertEquals("Miqui",juego.getJugadorActual().getNombre());
+
+    }
 }

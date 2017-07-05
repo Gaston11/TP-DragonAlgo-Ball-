@@ -19,7 +19,7 @@ public abstract class Personaje{
 
     public void naceEn(Coordenada coordenada){
 
-        this.coordenada = coordenada;//se necesita el new??en constructor??
+        this.coordenada = coordenada;
         this.versorPersonaje = new VersorDireccion(this.coordenada);
     }
 
@@ -66,6 +66,10 @@ public abstract class Personaje{
         return this.vida;
     }
 
+    public int getKi(){
+        return this.ki;
+    }
+
     public abstract void volverAlEstadoAnterior(Estado estado);
 
 
@@ -76,6 +80,10 @@ public abstract class Personaje{
     public abstract void ataqueBasico(PersonajeBueno enemigo);
 
     public abstract void ataqueBasico(PersonajeMalo enemigo);
+
+    public abstract void ataqueEspecial(PersonajeMalo enemigo);
+
+    public abstract void ataqueEspecial(PersonajeBueno enemigo);
 
     public abstract Coordenada moverArriba();
 

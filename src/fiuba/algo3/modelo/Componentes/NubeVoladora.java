@@ -87,7 +87,7 @@ public class NubeVoladora extends Consumible implements Estado{
     }
 
     @Override
-    public Estado transformarse(Gohan gohan, int kiActual) {
+    public Estado transformarse(Personaje gohan, int kiActual) {
         return estadoAnterior.transformarse(gohan, kiActual);
     }
 

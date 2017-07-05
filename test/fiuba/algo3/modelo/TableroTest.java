@@ -2,6 +2,7 @@ package fiuba.algo3.modelo;
 
 import fiuba.algo3.modelo.Personajes.*;
 import fiuba.algo3.modelo.excepciones.CeldaNoOcupadaException;
+import fiuba.algo3.modelo.excepciones.NoSePuedeMoverPersonajeException;
 import org.junit.Rule;
 import org.junit.Test;
 import static org.junit.Assert.assertTrue;
@@ -249,7 +250,9 @@ public class TableroTest {
         mitablero.colocarCeldaEnTablero( otraCelda );
 
         Coordenada nuevaCoordenada = goku.moverArriba();
+
         mitablero.moverPersonaje( goku, nuevaCoordenada );
+
         assertTrue(goku.estaUbicadoEn( unaCoordenada )); //vuelve a su posicion anterior
     }
 
@@ -273,7 +276,10 @@ public class TableroTest {
         mitablero.colocarCeldaEnTablero( otraCelda );
 
         Coordenada nuevaCoordenada = goku.moverArriba();
+
         mitablero.moverPersonaje( goku, nuevaCoordenada );
+
+
         assertTrue(goku.estaUbicadoEn( unaCoordenada )); //vuelve a su posicion anterior
     }
 
@@ -297,7 +303,11 @@ public class TableroTest {
         mitablero.colocarCeldaEnTablero( otraCelda );
 
         Coordenada nuevaCoordenada = goku.moverArriba();
-        mitablero.moverPersonaje( goku, nuevaCoordenada );
+        try{
+            mitablero.moverPersonaje( goku, nuevaCoordenada );
+        }catch (NoSePuedeMoverPersonajeException ignored){
+
+        }
         assertTrue(goku.estaUbicadoEn( unaCoordenada )); //vuelve a su posicion anterior
     }
 
@@ -322,6 +332,7 @@ public class TableroTest {
 
         Coordenada nuevaCoordenada = majinBoo.moverArriba();
         mitablero.moverPersonaje( majinBoo, nuevaCoordenada );
+
         assertTrue(majinBoo.estaUbicadoEn( unaCoordenada )); //vuelve a su posicion anterior
     }
 

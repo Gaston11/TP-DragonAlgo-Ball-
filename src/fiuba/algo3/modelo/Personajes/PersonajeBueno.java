@@ -11,6 +11,10 @@ public interface PersonajeBueno {
 
     void ataqueBasico(PersonajeBueno unPersonaje);
 
+    void ataqueEspecial(PersonajeMalo enemigo);
+
+    void transformar(Personaje goku, Personaje gohan, Personaje piccolo);
+
     boolean poseeMayorPoderPelea(int poderPelea);
 
     void recibirDanio(int cantidad);

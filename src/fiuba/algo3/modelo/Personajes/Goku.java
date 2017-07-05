@@ -59,6 +59,21 @@ public class Goku extends Personaje implements PersonajeBueno{
     }
 
     @Override
+    public void ataqueEspecial(PersonajeMalo enemigo) {
+        this.kamehameha(enemigo);
+    }
+
+    @Override
+    public void transformar(Personaje goku, Personaje gohan, Personaje piccolo) {
+        this.transformarse();
+    }
+
+    @Override
+    public void ataqueEspecial(PersonajeBueno enemigo) {
+        this.kamehameha(enemigo);
+    }
+
+    @Override
     public void ataqueBasico(PersonajeBueno amigo){
         throw new FuegoAmigoException();
     }

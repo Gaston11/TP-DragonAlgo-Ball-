@@ -3,9 +3,7 @@ package fiuba.algo3.modelo.Juego;
 import fiuba.algo3.modelo.Componentes.Coordenada;
 import fiuba.algo3.modelo.Personajes.*;
 import fiuba.algo3.modelo.excepciones.NoSePuedeMoverPersonajeException;
-import fiuba.algo3.modelo.excepciones.PersonajeInvalidoException;
-;import java.util.HashMap;
-import java.util.List;
+;import java.util.ArrayList;
 
 public abstract class Jugador {
 
@@ -13,48 +11,28 @@ public abstract class Jugador {
 
     public abstract Jugador getRival();
 
-    public abstract void asignarEquipo();
+    public abstract void asignarEquipo(ArrayList<PersonajeBueno> personajesBuenos);
+
+    public abstract void asignarEquipoRival(ArrayList<PersonajeMalo> personajeMalos);
 
     public abstract void asignarRival(Jugador jugador);
 
-    public abstract void ataqueBasico(String clave, String enemigo);
+    public abstract void ataqueBasico(Personaje personaje, Personaje enemigo);
 
-    public abstract void ataqueEspecial(String personaje, String enemigo);
+    public abstract void ataqueEspecial(Personaje personaje, Personaje enemigo);
 
-    public abstract Personaje seleccionar(String clave);
+    public abstract void transformar(Personaje personaje);
+
+    public abstract void mover(Personaje personaje, Coordenada coordenada);
 
     public String getNombre(){
         return this.nombre;
     }
 
-    public abstract PersonajeBueno seleccionarPersonajeBueno(String enemigo);
+    public abstract PersonajeBueno obtenerPersonajeZ(Personaje enemigo);
 
-    public abstract PersonajeMalo seleccionarPersonajeMalo(String clave);
-
-    public Coordenada mover(Personaje personaje, String direccion){
-
-        switch (direccion){
-            case "Arriba":
-                return personaje.moverArriba();
-            case "Abajo":
-                return personaje.moverAbajo();
-            case "Derecha":
-                return personaje.moverADerecha();
-            case "Izquierda":
-                return personaje.moverAIzquierda();
-            default: {
-                throw new NoSePuedeMoverPersonajeException();
-            }
-        }
-    }
-
-    public abstract void transformar(String personaje);
-
-    protected abstract boolean perteneceAEquipo(String personaje);
+    public abstract PersonajeMalo obtenerPersonajeEnemigo(Personaje personaje);
 
     public abstract boolean personajesMuertos();
 
-    public abstract List<Personaje> obtenerPersonajesDeJugador();
-
-    //public abstract void inicializarPersonajesEnTablero();
 }

@@ -9,6 +9,7 @@ public class Celda{
 	private Consumible consumible;
 
     public Celda(Coordenada unaCoordenada){
+        personaje = null;
         consumible = new Nada();
         this.coordenada = unaCoordenada;
     }
@@ -28,4 +29,8 @@ public class Celda{
     }
 
     public Personaje getPersonaje (){return this.personaje;}
+
+    public Boolean ocupadaConPersonaje() {
+        return (this.personaje != null);
+    }
 }

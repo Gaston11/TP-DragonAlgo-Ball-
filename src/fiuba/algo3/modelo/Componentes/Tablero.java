@@ -7,9 +7,7 @@ import fiuba.algo3.modelo.Personajes.Equipo;
 import fiuba.algo3.modelo.Personajes.EquipoEnemigos;
 import fiuba.algo3.modelo.Personajes.EquipoGuerrerosZ;
 import fiuba.algo3.modelo.Personajes.Personaje;
-import fiuba.algo3.modelo.excepciones.CeldaConCoordenadaNegativaException;
-import fiuba.algo3.modelo.excepciones.CeldaNoOcupadaException;
-import fiuba.algo3.modelo.excepciones.CeldaOcupadaException;
+import fiuba.algo3.modelo.excepciones.*;
 
 public class Tablero {
 
@@ -128,7 +126,7 @@ public class Tablero {
 
 	public void moverPersonaje(Personaje unPersonaje, Coordenada unaCoordenada){
 		Celda celdaNueva = new Celda(unaCoordenada);
-		if (this.celdaOcupada(celdaNueva)) {
+		if (this.celdaOcupadaConPersonaje(celdaNueva)) {
 			this.colocarPersonajeEnCoordenadaAnterior(unPersonaje); // hay un metodo arriba q sirve
 		}
 
@@ -142,6 +140,53 @@ public class Tablero {
 	}
 
 
+	public Personaje mover(Coordenada unaCoordenada, Coordenada unaCoordenada1) {
+		Celda celda = new Celda(unaCoordenada);
+		if(!celdaOcupadaConPersonaje(celda)){
+			throw new NoSeleccionoNingunPersonajeException();
+		}
+		celda = this.obtenerCelda(celda);
+		Personaje personaje = celda.getPersonaje();
+		this.moverPersonaje(personaje, unaCoordenada1);
+		return personaje;
+	}
 
+	private boolean celdaOcupadaConPersonaje(Celda celda) {
+		Iterator<Celda> iterador =this.celdasOcupadas.iterator();
+		Boolean poseePersonaje = false;
+		Celda celda1 = null;
+		while (iterador.hasNext() && !poseePersonaje){
+			celda1 = iterador.next();
+			if(celda1.getCoordenada().esLaMismaCoordenada(celda.getCoordenada())){
+				poseePersonaje = celda1.ocupadaConPersonaje();
+			}
+		}
+		return poseePersonaje;
+	}
 
+	private Celda obtenerCelda(Celda celda) {
+		Iterator<Celda> iterador =this.celdasOcupadas.iterator();
+		Boolean encontrado = false;
+		Celda celda1 = null;
+		while (iterador.hasNext() && !encontrado){
+			celda1 = iterador.next();
+			encontrado = celda1.getCoordenada().esLaMismaCoordenada(celda.getCoordenada());
+		}
+		return celda1;
+	}
+
+	public Personaje obtenerPersonajeEn(Coordenada coordenadaAtaca) {
+		Iterator<Celda> iterador =this.celdasOcupadas.iterator();
+		Boolean encontrado = false;
+		Celda celda1 = null;
+		while (iterador.hasNext() && !encontrado){
+			celda1 = iterador.next();
+			encontrado = celda1.getCoordenada().esLaMismaCoordenada(coordenadaAtaca);
+		}
+		if (!encontrado){
+			throw new NoSeleccionoNingunPersonajeException();
+		}
+		return celda1.getPersonaje();
+
+	}
 }

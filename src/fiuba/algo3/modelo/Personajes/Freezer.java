@@ -42,8 +42,23 @@ public class Freezer extends Personaje implements PersonajeMalo{
     }
 
     @Override
+    public void transformar(){
+        this.transformarse();
+    }
+
+    @Override
     public void ataqueBasico(PersonajeMalo amigo) {
         throw new FuegoAmigoException();
+    }
+
+    @Override
+    public void ataqueEspecial(PersonajeMalo enemigo) {
+        this.rayoMortal(enemigo);
+    }
+
+    @Override
+    public void ataqueEspecial(PersonajeBueno enemigo) {
+        this.rayoMortal(enemigo);
     }
 
     @Override

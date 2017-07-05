@@ -75,7 +75,7 @@ public class EstadoSegundaForma implements Estado {
     }
 
     @Override
-    public Estado transformarse(Gohan gohan, int ki){
+    public Estado transformarse(Personaje gohan, int ki){
         throw new NoSePuedeTransformarPersonajeException();
     }
 
