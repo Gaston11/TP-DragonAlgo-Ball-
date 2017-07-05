@@ -37,11 +37,7 @@ public abstract class Personaje{
         return (this.vida == vida);
     }
 
-    public void mover(Coordenada coordenada){
-        this.coordenada = coordenada;
-        this.versorPersonaje = new VersorDireccion(coordenada);
-        this.ki += this.kiPorTurno;
-    }
+    public abstract void mover(Coordenada coordenada);
 
     public void consumir(Consumible consumible){
         this.aumentarVida(consumible.aumentarVida());

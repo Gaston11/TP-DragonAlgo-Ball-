@@ -1,9 +1,6 @@
 package fiuba.algo3.modelo.Personajes;
 
-import fiuba.algo3.modelo.Componentes.Celda;
-import fiuba.algo3.modelo.Componentes.Consumible;
-import fiuba.algo3.modelo.Componentes.Coordenada;
-import fiuba.algo3.modelo.Componentes.EsferaDelDragon;
+import fiuba.algo3.modelo.Componentes.*;
 import fiuba.algo3.modelo.Personajes.Personaje;
 import fiuba.algo3.modelo.Personajes.PersonajeMalo;
 import fiuba.algo3.modelo.Personajes.PersonajeBueno;
@@ -94,6 +91,14 @@ public class Goku extends Personaje implements PersonajeBueno{
 
     public void kamehameha(PersonajeBueno amigo){
         throw new FuegoAmigoException();
+    }
+
+    @Override
+    public void mover(Coordenada coordenada) {
+        Coordenada coordenada1 = this.estado.obtenerCoordenadaValida(this.coordenada,coordenada);
+        this.coordenada = coordenada1;
+        this.versorPersonaje = new VersorDireccion(coordenada);
+        this.ki += this.kiPorTurno;
     }
 
     @Override

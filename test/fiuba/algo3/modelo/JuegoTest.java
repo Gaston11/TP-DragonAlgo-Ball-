@@ -65,7 +65,7 @@ public class JuegoTest {
         cEnemigo = new Coordenada(6,3);
         juego.mover(cGoku1,cGoku);
         juego.mover(coordenada,cEnemigo);
-        cGoku1 = new Coordenada(5,3);
+        cGoku1 = new Coordenada(5,4);
         juego.mover(cGoku,cGoku1);
 
         juego.atacar(cEnemigo, cGoku1);

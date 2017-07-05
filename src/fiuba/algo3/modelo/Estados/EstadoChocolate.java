@@ -7,6 +7,7 @@ import fiuba.algo3.modelo.Personajes.Gohan;
 import fiuba.algo3.modelo.Personajes.Personaje;
 import fiuba.algo3.modelo.Personajes.PersonajeBueno;
 import fiuba.algo3.modelo.Personajes.PersonajeMalo;
+import fiuba.algo3.modelo.excepciones.NoSePuedeMoverPersonajeException;
 import fiuba.algo3.modelo.excepciones.PersonajeEnEstadoChocolateExcepcion;
 
 /**
@@ -131,6 +132,11 @@ public class EstadoChocolate implements Estado {
     @Override
     public int getVelocidad() {
         return 0;
+    }
+
+    @Override
+    public Coordenada obtenerCoordenadaValida(Coordenada coordenadaIni, Coordenada coordenadaFin) {
+        throw new NoSePuedeMoverPersonajeException();
     }
 
 }

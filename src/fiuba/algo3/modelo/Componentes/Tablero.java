@@ -77,13 +77,27 @@ public class Tablero {
 
     	Coordenada esquinaSupIzq = new Coordenada(0,9);
     	Coordenada esquinaInfDer = new Coordenada(9,0);
+    	Coordenada esquinaSupIzq2 = new Coordenada(esquinaSupIzq.getCoordenadaX()+1,esquinaSupIzq.getCoordenadaY());
+		Coordenada esquinaSupIzq3 = new Coordenada(esquinaSupIzq.getCoordenadaX(),esquinaSupIzq.getCoordenadaY()-1);
+		Coordenada esquinaInfDer2 = new Coordenada(esquinaInfDer.getCoordenadaX()-1,esquinaInfDer.getCoordenadaY());
+		Coordenada esquinaInfDer3 = new Coordenada(esquinaInfDer.getCoordenadaX(),esquinaInfDer.getCoordenadaY()+1);
+
+		equipo1.get(0).naceEn(esquinaSupIzq);
+		equipo1.get(1).naceEn(esquinaSupIzq2);
+		equipo1.get(2).naceEn(esquinaSupIzq3);
+
+		equipo2.get(0).naceEn(esquinaInfDer);
+		equipo2.get(1).naceEn(esquinaInfDer2);
+		equipo2.get(2).naceEn(esquinaInfDer3);
 
     	//ubicar equipo 1
     	Celda celda1 = new Celda(esquinaSupIzq);
     	celda1.colocarPersonaje(equipo1.get( 0 ));
-    	Celda celda2 = new Celda(new Coordenada(esquinaSupIzq.getCoordenadaX()+1,esquinaSupIzq.getCoordenadaY()));
+
+    	Celda celda2 = new Celda(esquinaSupIzq2);
     	celda2.colocarPersonaje(equipo1.get( 1 ));
-    	Celda celda3 = new Celda(new Coordenada(esquinaSupIzq.getCoordenadaX(),esquinaSupIzq.getCoordenadaY()-1));
+
+    	Celda celda3 = new Celda(esquinaSupIzq3);
     	celda3.colocarPersonaje(equipo1.get( 2 ));
 		this.colocarCeldaEnTablero(celda1);
 		this.colocarCeldaEnTablero(celda2);
@@ -92,9 +106,9 @@ public class Tablero {
     	//ubicar equipo 2
 		Celda celda4 = new Celda(esquinaInfDer);
 		celda4.colocarPersonaje(equipo2.get( 0 ));
-		Celda celda5 = new Celda(new Coordenada(esquinaInfDer.getCoordenadaX()-1,esquinaInfDer.getCoordenadaY()));
+		Celda celda5 = new Celda(esquinaInfDer2);
 		celda5.colocarPersonaje(equipo2.get( 1 ));
-		Celda celda6 = new Celda(new Coordenada(esquinaInfDer.getCoordenadaX(),esquinaInfDer.getCoordenadaY()+1));
+		Celda celda6 = new Celda(esquinaInfDer3);
 		celda6.colocarPersonaje(equipo2.get( 2 ));
 		this.colocarCeldaEnTablero(celda4);
 		this.colocarCeldaEnTablero(celda5);

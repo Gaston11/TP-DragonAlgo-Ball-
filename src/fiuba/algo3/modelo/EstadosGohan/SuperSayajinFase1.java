@@ -216,5 +216,14 @@ public class SuperSayajinFase1 implements Estado {
         return this.velocidad;
     }
 
+    @Override
+    public Coordenada obtenerCoordenadaValida(Coordenada coordenadaIni, Coordenada coordenadaFin) {
+        int pasos = coordenadaIni.obtenerDistancia(coordenadaFin);
+        if (this.velocidad<pasos){
+            throw new NoSePuedeMoverPersonajeException();
+        }
+        return coordenadaFin;
+    }
+
 }
 

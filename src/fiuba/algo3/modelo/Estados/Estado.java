@@ -56,4 +56,6 @@ public interface Estado {
     public abstract int getPoderPelea();
 
     int getVelocidad();
+
+    Coordenada obtenerCoordenadaValida(Coordenada coordenadaIni, Coordenada coordenadaFin);
 }
