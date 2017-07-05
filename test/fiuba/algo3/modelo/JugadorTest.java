@@ -312,7 +312,7 @@ public class JugadorTest {
 
         Coordenada unaCoordenada = new Coordenada(0,0);
         Coordenada otraCoordenada = new Coordenada(2,0);
-        Coordenada coordenada2 = new Coordenada(0,4);
+        Coordenada coordenada2 = new Coordenada(0,2);
         gohan.naceEn(coordenada2);
         freezer.naceEn(unaCoordenada);
         goku.naceEn(otraCoordenada);

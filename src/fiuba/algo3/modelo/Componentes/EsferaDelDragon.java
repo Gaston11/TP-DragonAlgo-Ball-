@@ -5,6 +5,7 @@ import fiuba.algo3.modelo.Personajes.Gohan;
 import fiuba.algo3.modelo.Personajes.Personaje;
 import fiuba.algo3.modelo.Personajes.PersonajeBueno;
 import fiuba.algo3.modelo.Personajes.PersonajeMalo;
+import fiuba.algo3.modelo.excepciones.NoSePuedeMoverPersonajeException;
 
 public class EsferaDelDragon extends Consumible implements Estado{
 
@@ -192,5 +193,10 @@ public class EsferaDelDragon extends Consumible implements Estado{
     @Override
     public int getVelocidad() {
         return estadoAnterior.getVelocidad();
+    }
+
+    @Override
+    public Coordenada obtenerCoordenadaValida(Coordenada coordenadaIni, Coordenada coordenadaFin) {
+        return estadoAnterior.obtenerCoordenadaValida(coordenadaIni,coordenadaFin);
     }
 }

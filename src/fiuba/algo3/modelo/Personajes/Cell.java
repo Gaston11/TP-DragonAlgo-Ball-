@@ -1,10 +1,7 @@
 package fiuba.algo3.modelo.Personajes;
 
-import fiuba.algo3.modelo.Componentes.Consumible;
-import fiuba.algo3.modelo.Componentes.Coordenada;
-import fiuba.algo3.modelo.Componentes.EsferaDelDragon;
+import fiuba.algo3.modelo.Componentes.*;
 import fiuba.algo3.modelo.Personajes.Personaje;
-import fiuba.algo3.modelo.Componentes.Celda;
 import fiuba.algo3.modelo.Estados.Estado;
 import fiuba.algo3.modelo.EstadosCell.*;
 import fiuba.algo3.modelo.excepciones.FuegoAmigoException;
@@ -63,6 +60,13 @@ public class Cell extends Personaje implements PersonajeMalo{
 
     public void absorber(PersonajeMalo amigo){
         throw new FuegoAmigoException();
+    }
+
+    @Override
+    public void mover(Coordenada coordenada) {
+        this.coordenada = this.estado.obtenerCoordenadaValida(this.coordenada,coordenada);
+        this.versorPersonaje = new VersorDireccion(coordenada);
+        this.ki += this.kiPorTurno;
     }
 
     @Override

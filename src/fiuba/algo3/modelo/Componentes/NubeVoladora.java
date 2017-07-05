@@ -5,6 +5,7 @@ import fiuba.algo3.modelo.Personajes.Gohan;
 import fiuba.algo3.modelo.Personajes.Personaje;
 import fiuba.algo3.modelo.Personajes.PersonajeBueno;
 import fiuba.algo3.modelo.Personajes.PersonajeMalo;
+import fiuba.algo3.modelo.excepciones.NoSePuedeMoverPersonajeException;
 
 public class NubeVoladora extends Consumible implements Estado{
 
@@ -243,5 +244,14 @@ public class NubeVoladora extends Consumible implements Estado{
     @Override
     public int getVelocidad() {
         return this.velocidad;
+    }
+
+    @Override
+    public Coordenada obtenerCoordenadaValida(Coordenada coordenadaIni, Coordenada coordenadaFin) {
+        int pasos = coordenadaIni.obtenerDistancia(coordenadaFin);
+        if (this.velocidad<pasos){
+            throw new NoSePuedeMoverPersonajeException();
+        }
+        return coordenadaFin;
     }
 }

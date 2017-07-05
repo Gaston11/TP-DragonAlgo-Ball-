@@ -184,7 +184,7 @@ public class CellTest {
     @Test
     public void absorberVidaAGokuEstadoKaioKenProduce20porcMenosDeDanio(){
         Coordenada unaCoordenada = new Coordenada(0,0);
-        Coordenada otraCoordenada = new Coordenada(0,3);
+        Coordenada otraCoordenada = new Coordenada(0,2);
 
         Cell cell = new Cell();
         cell.naceEn(unaCoordenada);

@@ -1,9 +1,6 @@
 package fiuba.algo3.modelo.Personajes;
 
-import fiuba.algo3.modelo.Componentes.Celda;
-import fiuba.algo3.modelo.Componentes.Consumible;
-import fiuba.algo3.modelo.Componentes.Coordenada;
-import fiuba.algo3.modelo.Componentes.EsferaDelDragon;
+import fiuba.algo3.modelo.Componentes.*;
 import fiuba.algo3.modelo.Personajes.Personaje;
 import fiuba.algo3.modelo.excepciones.FuegoAmigoException;
 import fiuba.algo3.modelo.excepciones.NoSePuedeAtacarPersonajePorNoEstarEnDistanciaDeAtaqueException;
@@ -90,6 +87,13 @@ public class Piccolo extends Personaje implements PersonajeBueno {
     @Override
     public void convertimeEnChocolate(){
         this.estado = new EstadoChocolate(estado);
+    }
+
+    @Override
+    public void mover(Coordenada coordenada) {
+        this.coordenada = this.estado.obtenerCoordenadaValida(this.coordenada,coordenada);
+        this.versorPersonaje = new VersorDireccion(coordenada);
+        this.ki += this.kiPorTurno;
     }
 
     @Override
