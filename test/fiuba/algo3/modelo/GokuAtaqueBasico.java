@@ -73,13 +73,13 @@ public class GokuAtaqueBasico {
         freezer.naceEn(otraCoordenada1);
 
         //freezer.ataqueBasico(goku); tantas veces como sea necesario para que goku tenga vida critica
-        for (int i=0; i<13; i++){
+        for (int i=0; i<18; i++){
             freezer.ataqueBasico(goku);
         }
 
         goku.ataqueBasico(freezer);
 
-        assertTrue(freezer.poseeVida(380));
+        assertTrue(freezer.poseeVida(376));
     }
 
     @Test
@@ -101,12 +101,12 @@ public class GokuAtaqueBasico {
         Freezer freezer = new Freezer();
         freezer.naceEn(otraCoordenada2);
 
-        for (int i=0; i<13; i++){
+        for (int i=0; i<18; i++){
             freezer.ataqueBasico(goku);
         }
         goku.ataqueBasico(freezer);
 
-        assertTrue(freezer.poseeVida(360));
+        assertTrue(freezer.poseeVida(352));
     }
 
     @Test
