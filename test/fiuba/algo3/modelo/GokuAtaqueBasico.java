@@ -15,6 +15,9 @@ import org.junit.rules.ExpectedException;
 
 public class GokuAtaqueBasico {
 
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+
     @Test
     public void seUbicaAGokuYAFreezerSeAtacanConAtaqueBasicoSegunDistancias(){
 
@@ -47,7 +50,10 @@ public class GokuAtaqueBasico {
         Freezer freezer = new Freezer();
         freezer.naceEn(otraCoordenada);
 
+        thrown.expect(NoSePuedeAtacarPersonajePorNoEstarEnDistanciaDeAtaqueException.class);
         goku.ataqueBasico(freezer);
+
+        thrown.expect(NoSePuedeAtacarPersonajePorNoEstarEnDistanciaDeAtaqueException.class);
         freezer.ataqueBasico(goku);
 
         assertTrue(freezer.poseeVida(400));
@@ -73,7 +79,7 @@ public class GokuAtaqueBasico {
 
         goku.ataqueBasico(freezer);
 
-        assertTrue(freezer.poseeVida(376));
+        assertTrue(freezer.poseeVida(380));
     }
 
     @Test
@@ -100,7 +106,7 @@ public class GokuAtaqueBasico {
         }
         goku.ataqueBasico(freezer);
 
-        assertTrue(freezer.poseeVida(352));
+        assertTrue(freezer.poseeVida(360));
     }
 
     @Test
@@ -134,7 +140,7 @@ public class GokuAtaqueBasico {
         }
         goku.ataqueBasico(freezer);
 
-        assertTrue(freezer.poseeVida(328));
+        assertTrue(freezer.poseeVida(340));
     }
 
     @Test
@@ -164,7 +170,7 @@ public class GokuAtaqueBasico {
         majinboo.naceEn(otraCoordenada);
 
         goku.ataqueBasico(majinboo);
-        assertTrue(majinboo.poseeVida(280));
+        assertTrue(majinboo.poseeVida(284));
     }
 
 

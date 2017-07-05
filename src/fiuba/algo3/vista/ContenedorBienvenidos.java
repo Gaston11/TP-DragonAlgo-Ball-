@@ -1,29 +1,24 @@
 package fiuba.algo3.vista;
 
 import fiuba.algo3.eventos.BotonEntrarEventHandler;
+import fiuba.algo3.modelo.Juego.Juego;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.scene.image.Image;
-
-import java.awt.*;
-
-import static javafx.scene.layout.BackgroundRepeat.*;
 
 public class ContenedorBienvenidos extends VBox {
 
     Stage stage;
 
-    public ContenedorBienvenidos(Stage stage, Scene proximaEscena) {
+    public ContenedorBienvenidos(Stage stage) {
 
         super();
 
@@ -59,7 +54,11 @@ public class ContenedorBienvenidos extends VBox {
         etiqueta.setFont(Font.font("Tahoma", FontWeight.EXTRA_BOLD, 18));
         etiqueta.setText("Elija jugadores ");
 
-        BotonEntrarEventHandler botonEntrarHandler = new BotonEntrarEventHandler(stage, proximaEscena, texto.getPromptText(), texto2.getPromptText());
+        ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage, new Juego(texto.getPromptText(), texto2.getPromptText()));
+        //Scene escenaJuego = new Scene(contenedorPrincipal, 640, 480); //necesito tamanio ?? seria tablero
+        Scene escenaJuego = new Scene(contenedorPrincipal);
+
+        BotonEntrarEventHandler botonEntrarHandler = new BotonEntrarEventHandler(stage, escenaJuego);
         botonEntrar.setOnAction(botonEntrarHandler);
 
         this.getChildren().addAll(etiqueta,layout, layout2, botonEntrar );

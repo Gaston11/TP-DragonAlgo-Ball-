@@ -37,7 +37,7 @@ public class PiccoloAtaquesBasicoYEspecial {
 
         piccolo.ataqueBasico(majinBoo);
 
-        assertTrue(majinBoo.poseeVida(280));
+        assertTrue(majinBoo.poseeVida(284));
         assertTrue(piccolo.poseeKi(25));
     }
 
@@ -103,7 +103,7 @@ public class PiccoloAtaquesBasicoYEspecial {
         piccolo.makankosappo(majinBoo);
 
         assertTrue(piccolo.poseeKi(20));
-        assertTrue(majinBoo.poseeVida(260));
+        assertTrue(majinBoo.poseeVida(250));
 
     }
 
