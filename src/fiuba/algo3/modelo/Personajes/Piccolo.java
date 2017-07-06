@@ -162,4 +162,9 @@ public class Piccolo extends Personaje implements PersonajeBueno {
     public int getPoderPelea() {
         return estado.getPoderPelea();
     }
+
+    @Override
+    public String getNombre() {
+        return "Piccolo";
+    }
 }

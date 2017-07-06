@@ -174,4 +174,8 @@ public class Goku extends Personaje implements PersonajeBueno{
         return estado.getPoderPelea();
     }
 
+    @Override
+    public String getNombre() {
+        return "Goku";
+    }
 }

@@ -154,4 +154,9 @@ public class MajinBoo extends Personaje implements PersonajeMalo{
     public int getPoderPelea() {
         return estado.getPoderPelea();
     }
+
+    @Override
+    public String getNombre() {
+        return "MajinBoo";
+    }
 }

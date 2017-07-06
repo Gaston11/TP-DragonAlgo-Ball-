@@ -171,4 +171,9 @@ public class Gohan extends Personaje implements PersonajeBueno{
     public int getPoderPelea() {
         return estado.getPoderPelea();
     }
+
+    @Override
+    public String getNombre() {
+        return "Gohan";
+    }
 }

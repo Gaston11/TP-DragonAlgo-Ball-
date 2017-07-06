@@ -159,4 +159,8 @@ public class Freezer extends Personaje implements PersonajeMalo{
         return estado.getPoderPelea();
     }
 
+    @Override
+    public String getNombre() {
+        return "Freezer";
+    }
 }
