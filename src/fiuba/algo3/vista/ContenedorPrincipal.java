@@ -28,6 +28,13 @@ public class ContenedorPrincipal extends BorderPane {
     private static final int X_CASILLEROS = WIDTH / TAMANIO_CASILLERO;
     private static final int Y_CASILLEROS = HEIGHT / TAMANIO_CASILLERO;
 
+    public class Casillero extends StackPane{
+
+        public Casillero(int x, int y) {
+
+        }
+    }
+
 
 
 /* aca irian los personajes para ubicarlos en el tablero y pasarselo a la imagen */
@@ -185,4 +192,5 @@ public class ContenedorPrincipal extends BorderPane {
 */
 
 //aca habria que mandar los personajes y moverlos segun requisitos del jugador
+
 
