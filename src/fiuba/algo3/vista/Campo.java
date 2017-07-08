@@ -4,6 +4,7 @@ import fiuba.algo3.modelo.Componentes.Celda;
 import fiuba.algo3.modelo.Componentes.Coordenada;
 import fiuba.algo3.modelo.Componentes.Tablero;
 import fiuba.algo3.modelo.Personajes.Personaje;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -40,6 +41,7 @@ public class Campo extends BorderPane{
             contenedorFilas.getChildren().add(contenedorColumnas);
         }
         root.getChildren().add(contenedorFilas);
+
 
         return root;
     }
