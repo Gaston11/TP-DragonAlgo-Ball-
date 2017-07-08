@@ -1,12 +1,15 @@
 package fiuba.algo3.vista;
 
 import fiuba.algo3.modelo.Juego.Juego;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
@@ -22,18 +25,13 @@ public class ContenedorPrincipal extends BorderPane {
     Casillero[][] casilleros;
 
     private static final int TAMANIO_CASILLERO = 40;
-    private static final int WIDTH = 400;
-    private static final int HEIGHT = 400;
+    private static final int ANCHO = 400;
+    private static final int ALTO = 400;
 
-    private static final int X_CASILLEROS = WIDTH / TAMANIO_CASILLERO;
-    private static final int Y_CASILLEROS = HEIGHT / TAMANIO_CASILLERO;
+    private static final int X_CASILLEROS = ANCHO / TAMANIO_CASILLERO;
+    private static final int Y_CASILLEROS = ALTO / TAMANIO_CASILLERO;
+    private GridPane grillaCentral;
 
-    public class Casillero extends StackPane{
-
-        public Casillero(int x, int y) {
-
-        }
-    }
 
 
 
@@ -44,7 +42,7 @@ public class ContenedorPrincipal extends BorderPane {
         this.setMenu(stage);
         this.modelo = juego;
         this.setCentro();
-        //this.setConsola();
+        this.setConsola();
         this.setBotonera();
         this.setDerecha();
     }
@@ -115,65 +113,77 @@ public class ContenedorPrincipal extends BorderPane {
         this.setTop(menuBar);
     }
 
-    /*
-    private void setBotonera(Robot robot) {
 
-        Button botonArriba = new Button();
-        botonMover.setText("Arriba");
-        BotonMoverHandler moveButtonHandler = new BotonMoverHandler(vistaRobot, robot);
-        botonMover.setOnAction(moveButtonHandler);
-
-        Button botonDireccion = new Button();
-        botonDireccion.setText("Cambiar direccion");
-        BotonDireccionHandler directionButtonHandler = new BotonDireccionHandler(robot);
-        botonDireccion.setOnAction(directionButtonHandler);
-
-        VBox contenedorVertical = new VBox(botonMover, botonDireccion);
-        contenedorVertical.setSpacing(10);
-        contenedorVertical.setPadding(new Insets(15));
-
-        this.setLeft(contenedorVertical);
-
-    }*/
-
-    private void setCentro() {
-
-        //canvasCentral = new Canvas(400, 400);
+    /*private void setCentro() {
+        canvasCentral = new Canvas(400, 400);
         //vistaRobot = new VistaRobot(robot, canvasCentral);
         //vistaRobot.dibujar();
-        Pane centro = new Pane();
-        centro.setPrefSize(WIDTH, HEIGHT);
+        //AnchorPane centro = new AnchorPane();
+        Pane centro2 = new Pane();
+        GridPane centro3 = new GridPane();
+        centro2.setPrefSize(ANCHO, ALTO);
         this.casilleros = new Casillero[X_CASILLEROS][Y_CASILLEROS];
+        Image imagen = new Image("file:res/imagenes/pasto.jpg");
+        BackgroundSize backgroundSize = new BackgroundSize(50, 50, true, true, true, false);
+        BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, backgroundSize);
 
         for (int y = 0; y < Y_CASILLEROS; y++) {
             for (int x = 0; x < X_CASILLEROS; x++) {
                 Casillero casillero = new Casillero(x, y);
-
+                //casillero.setBackground(new Background(imagenDeFondo));
+                casillero.cambiarImagen(imagen);
                 casilleros[x][y] = casillero;
 
-                centro.getChildren().add(casillero);
+                centro2.getChildren().add(casillero);
+                centro3.add(casillero, y, x);
             }
         }
-
-//        contenedorCentral = new VBox(canvasCentral);
+       contenedorCentral = new VBox(canvasCentral);
 //        contenedorCentral.setAlignment(Pos.CENTER);
 //        contenedorCentral.setSpacing(20);
 //        contenedorCentral.setPadding(new Insets(25));
-        Image imagen = new Image("file:res/imagenes/FondoNameku.png");
-        BackgroundSize backgroundSize = new BackgroundSize(centro.getWidth(), centro.getHeight(), true, true, true, false);
-        BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, backgroundSize);
-        centro.setBackground(new Background(imagenDeFondo));
+        //Image imagen = new Image("file:res/imagenes/pasto.png");
+        //ImageView imagenView = new ImageView(imagen);
+        //imagenView.setFitHeight(ALTO);
+        //imagenView.setFitWidth(ANCHO);
+        //BackgroundSize backgroundSize = new BackgroundSize(centro.getWidth(), centro.getHeight(), true, true, true, false);
+        //BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, backgroundSize);
+        //centro2.setBackground(new Background(imagenDeFondo));
 
-        this.setCenter(centro);
+        //centro.getChildren().add(centro2);
+        //centro.setCenterShape(true);
+        this.contenedorCentral.getChildren().add(centro2);
+        this.setCenter(this.contenedorCentral);
+        //this.setCenter(centro2);
+    }*/
+
+    private void setCentro() {
+        this.grillaCentral = new GridPane();
+        this.grillaCentral.setHgap(0);
+        this.grillaCentral.setVgap(0);
+        this.casilleros = new Casillero[10][10];
+        Image imagenPasto = new Image("file:res/imagenes/pasto.jpg");
+
+        for(int i = 0; i < 10; i++){
+            for(int j = 0; j < 10; j++){
+                Casillero casillero = new Casillero(i,j);
+                //casillero.cambiarImagen(imagenPasto);
+                //casillero.ajustarTamanio(20);
+                casillero.setearImagen(imagenPasto, 70, 70, true);
+                this.casilleros[i][j] = casillero;
+
+                this.grillaCentral.add(casillero, i, j);
+            }
+        }
+
+        this.setCenter(this.grillaCentral);
     }
 
     private void setDerecha(){
-        this.informacionEnemigo = new Canvas(200, this.getHeight());
+        VBox informacionEnemigo = new VBox(20);
             this.setRight(this.informacionEnemigo);
         }
-    }
 
-    /*
     private void setConsola() {
 
         // TODO cambiar por el modelo de Consola...
@@ -189,7 +199,7 @@ public class ContenedorPrincipal extends BorderPane {
 
         this.setBottom(contenedorConsola);
     }
-*/
+}
 
 //aca habria que mandar los personajes y moverlos segun requisitos del jugador
 

@@ -55,8 +55,10 @@ public class ContenedorBienvenidos extends VBox {
         etiqueta.setText("Elija jugadores ");
 
         ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage, new Juego(texto.getPromptText(), texto2.getPromptText()));
+        ContenedorPrincipalV2 contenedorPrincipalV2 = new ContenedorPrincipalV2(stage, new Juego(texto.getPromptText(), texto2.getPromptText()));
         //Scene escenaJuego = new Scene(contenedorPrincipal, 640, 480); //necesito tamanio ?? seria tablero
         Scene escenaJuego = new Scene(contenedorPrincipal);
+        Scene escenaJuegoV2 = new Scene(contenedorPrincipalV2);
 
         BotonEntrarEventHandler botonEntrarHandler = new BotonEntrarEventHandler(stage, escenaJuego);
         botonEntrar.setOnAction(botonEntrarHandler);
