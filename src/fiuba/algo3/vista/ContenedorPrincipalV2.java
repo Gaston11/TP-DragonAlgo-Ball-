@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 
 public class ContenedorPrincipalV2 extends BorderPane {
-
+/*
     private final Stage stage;
     private Juego juego;
     private GridPane grillaCentral;
@@ -39,5 +39,5 @@ public class ContenedorPrincipalV2 extends BorderPane {
         this.setCenter(this.grillaCentral);
     }
 
-
+*/
 }
