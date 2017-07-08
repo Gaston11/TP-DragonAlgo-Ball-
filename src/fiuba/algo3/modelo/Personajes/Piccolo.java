@@ -7,6 +7,8 @@ import fiuba.algo3.modelo.excepciones.NoSePuedeAtacarPersonajePorNoEstarEnDistan
 import fiuba.algo3.modelo.excepciones.NoSePuedeAtacarPersonajePorNoPoseerKiSuficienteException;
 import fiuba.algo3.modelo.Estados.*;
 import fiuba.algo3.modelo.EstadosPiccolo.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class Piccolo extends Personaje implements PersonajeBueno {
 
@@ -161,5 +163,16 @@ public class Piccolo extends Personaje implements PersonajeBueno {
     @Override
     public int getPoderPelea() {
         return estado.getPoderPelea();
+    }
+
+    @Override
+    public ImageView dibujar() {
+        Image imagenGoku = new Image("file:src/fiuba/algo3/vista/imagenes/Piccolo.jpg");
+        ImageView contenedorImage = new ImageView();
+        contenedorImage.setFitHeight(50);
+        contenedorImage.setFitWidth(50);
+        contenedorImage.setImage(imagenGoku);
+        contenedorImage.setOpacity(1);
+        return contenedorImage;
     }
 }

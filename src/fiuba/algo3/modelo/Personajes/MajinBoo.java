@@ -7,6 +7,8 @@ import fiuba.algo3.modelo.EstadosMajinBoo.*;
 import fiuba.algo3.modelo.excepciones.FuegoAmigoException;
 import fiuba.algo3.modelo.excepciones.NoSePuedeAtacarPersonajePorNoEstarEnDistanciaDeAtaqueException;
 import fiuba.algo3.modelo.excepciones.NoSePuedeConvertirAlPersonajeEnEstadoChocolateException;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class MajinBoo extends Personaje implements PersonajeMalo{
 
@@ -153,5 +155,16 @@ public class MajinBoo extends Personaje implements PersonajeMalo{
     @Override
     public int getPoderPelea() {
         return estado.getPoderPelea();
+    }
+
+    @Override
+    public ImageView dibujar() {
+        Image imagenGoku = new Image("file:src/fiuba/algo3/vista/imagenes/majinBoo.png");
+        ImageView contenedorImage = new ImageView();
+        contenedorImage.setFitHeight(50);
+        contenedorImage.setFitWidth(50);
+        contenedorImage.setImage(imagenGoku);
+        contenedorImage.setOpacity(1);
+        return contenedorImage;
     }
 }

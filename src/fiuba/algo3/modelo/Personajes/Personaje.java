@@ -2,13 +2,11 @@ package fiuba.algo3.modelo.Personajes;
 
 import fiuba.algo3.modelo.Componentes.Consumible;
 import fiuba.algo3.modelo.Estados.Estado;
-import fiuba.algo3.modelo.Componentes.Celda;
 import fiuba.algo3.modelo.Componentes.VersorDireccion;
-import fiuba.algo3.modelo.Personajes.Gohan;
 import fiuba.algo3.modelo.Componentes.Coordenada;
 import fiuba.algo3.modelo.excepciones.PersonajeEstaMuertoException;
 
-public abstract class Personaje{
+public abstract class Personaje implements Imagen {
     protected int maxVida;
     protected int vida;
     protected int ki;
@@ -102,4 +100,6 @@ public abstract class Personaje{
     public boolean estaMuerto() {
         return this.vida<=0;
     }
+
+    //public abstract ImageView dibujar();
 }

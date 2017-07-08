@@ -9,6 +9,8 @@ import fiuba.algo3.modelo.EstadosGoku.*;
 import fiuba.algo3.modelo.excepciones.FuegoAmigoException;
 import fiuba.algo3.modelo.excepciones.NoSePuedeAtacarPersonajePorNoEstarEnDistanciaDeAtaqueException;
 import fiuba.algo3.modelo.excepciones.NoSePuedeAtacarPersonajePorNoPoseerKiSuficienteException;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.util.ConcurrentModificationException;
 
@@ -174,4 +176,14 @@ public class Goku extends Personaje implements PersonajeBueno{
         return estado.getPoderPelea();
     }
 
+    @Override
+    public ImageView dibujar() {
+        Image imagenGoku = new Image("file:src/fiuba/algo3/vista/imagenes/goku.png");
+        ImageView contenedorImage = new ImageView();
+        contenedorImage.setFitHeight(50);
+        contenedorImage.setFitWidth(50);
+        contenedorImage.setImage(imagenGoku);
+        contenedorImage.setOpacity(1);
+        return contenedorImage;
+    }
 }

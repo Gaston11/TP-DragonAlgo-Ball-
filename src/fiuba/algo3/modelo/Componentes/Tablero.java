@@ -21,7 +21,7 @@ public class Tablero {
     }
     
     
-    private boolean celdaOcupada(Celda unaCelda){
+    public boolean celdaOcupada(Celda unaCelda){
     	Iterator<Celda> iterador =this.celdasOcupadas.iterator();
     	boolean encontrado = false;
     	Celda celda;
@@ -165,7 +165,7 @@ public class Tablero {
 		return personaje;
 	}
 
-	private boolean celdaOcupadaConPersonaje(Celda celda) {
+	public boolean celdaOcupadaConPersonaje(Celda celda) {
 		Iterator<Celda> iterador =this.celdasOcupadas.iterator();
 		Boolean poseePersonaje = false;
 		Celda celda1 = null;
@@ -178,7 +178,7 @@ public class Tablero {
 		return poseePersonaje;
 	}
 
-	private Celda obtenerCelda(Celda celda) {
+	public Celda obtenerCelda(Celda celda) {
 		Iterator<Celda> iterador =this.celdasOcupadas.iterator();
 		Boolean encontrado = false;
 		Celda celda1 = null;

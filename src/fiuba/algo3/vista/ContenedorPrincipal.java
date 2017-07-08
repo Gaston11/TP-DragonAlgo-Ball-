@@ -1,12 +1,14 @@
 package fiuba.algo3.vista;
 
 import fiuba.algo3.modelo.Juego.Juego;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
@@ -19,7 +21,8 @@ public class ContenedorPrincipal extends BorderPane {
     Canvas canvasCentral;
     Canvas informacionEnemigo;
     VBox contenedorCentral;
-    Casillero[][] casilleros;
+    Campo campo;
+    Juego juego;
 
     private static final int TAMANIO_CASILLERO = 40;
     private static final int WIDTH = 400;
@@ -28,25 +31,20 @@ public class ContenedorPrincipal extends BorderPane {
     private static final int X_CASILLEROS = WIDTH / TAMANIO_CASILLERO;
     private static final int Y_CASILLEROS = HEIGHT / TAMANIO_CASILLERO;
 
-    public class Casillero extends StackPane{
-
-        public Casillero(int x, int y) {
-
-        }
-    }
-
-
 
 /* aca irian los personajes para ubicarlos en el tablero y pasarselo a la imagen */
 
-    public ContenedorPrincipal(Stage stage, Juego juego) {
+    public ContenedorPrincipal(Stage stage, String jZ, String jEnemigo) {
 
+        this.juego = new Juego(jZ, jEnemigo);
         this.setMenu(stage);
         this.modelo = juego;
         this.setCentro();
-        //this.setConsola();
+        campo = new Campo();
+        this.setCenter(campo.contenido(juego.getTablero()));
         this.setBotonera();
         this.setDerecha();
+        this.setConsola();
     }
 
     private HBox elegirPersonaje(){
@@ -63,35 +61,36 @@ public class ContenedorPrincipal extends BorderPane {
 
     }
 
+    private void juego(){
+
+        while (juego.obtenerGanador() == null){
+
+
+
+        }
+    }
+
     private void setBotonera(){
 
-        Button botonArriba = new Button();
-        botonArriba.setText("Arriba");
-
-        Button botonAbajo = new Button();
-        botonAbajo.setText("Abajo");
-
-        Button botonDerecha = new Button();
-        botonDerecha.setText("Derecha");
-
-        Button botonIzquierda = new Button();
-        botonIzquierda.setText("Izquierda");
-
         //HBox contenedorPersonaje = this.elegirPersonaje();
-        HBox contenedorHorizontal = new HBox(botonIzquierda, botonDerecha);
-        contenedorHorizontal.setAlignment(Pos.CENTER);
-        VBox contenedorVertical = new VBox( botonArriba, contenedorHorizontal, botonAbajo);
-        contenedorVertical.setAlignment(Pos.CENTER);
+        Button botonTransformar = new Button();
+        botonTransformar.setText("Transformar");
+
+        VBox contenedorVertical = new VBox();
 
         VBox contenedorAtaques = this.menuAtaques();
 
-        contenedorVertical.getChildren().add(contenedorAtaques);
+        contenedorVertical.getChildren().addAll(contenedorAtaques, botonTransformar);
+        contenedorVertical.setSpacing(10);
         this.setLeft(contenedorVertical);
     }
 
     private VBox menuAtaques(){
         Label etiquetaAtaque = new Label();
         etiquetaAtaque.setText(" Ataques ");
+        etiquetaAtaque.setFont(Font.font("Tahoma", FontWeight.BLACK, 20));
+        etiquetaAtaque.setTextFill(Color.BLACK);
+
         Button botonAtaqueBasico = new Button();
         botonAtaqueBasico.setText("Basico");
 
@@ -141,9 +140,9 @@ public class ContenedorPrincipal extends BorderPane {
         //canvasCentral = new Canvas(400, 400);
         //vistaRobot = new VistaRobot(robot, canvasCentral);
         //vistaRobot.dibujar();
-        Pane centro = new Pane();
+       Pane centro = new Pane();
         centro.setPrefSize(WIDTH, HEIGHT);
-        this.casilleros = new Casillero[X_CASILLEROS][Y_CASILLEROS];
+       /*  this.casilleros = new Casillero[X_CASILLEROS][Y_CASILLEROS];
 
         for (int y = 0; y < Y_CASILLEROS; y++) {
             for (int x = 0; x < X_CASILLEROS; x++) {
@@ -153,12 +152,13 @@ public class ContenedorPrincipal extends BorderPane {
 
                 centro.getChildren().add(casillero);
             }
-        }
+        }*/
 
 //        contenedorCentral = new VBox(canvasCentral);
 //        contenedorCentral.setAlignment(Pos.CENTER);
 //        contenedorCentral.setSpacing(20);
 //        contenedorCentral.setPadding(new Insets(25));
+        centro.setPrefSize(WIDTH,HEIGHT);
         Image imagen = new Image("file:res/imagenes/FondoNameku.png");
         BackgroundSize backgroundSize = new BackgroundSize(centro.getWidth(), centro.getHeight(), true, true, true, false);
         BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, backgroundSize);
@@ -169,28 +169,35 @@ public class ContenedorPrincipal extends BorderPane {
 
     private void setDerecha(){
         this.informacionEnemigo = new Canvas(200, this.getHeight());
-            this.setRight(this.informacionEnemigo);
-        }
+        this.setRight(this.informacionEnemigo);
+
     }
 
-    /*
+
     private void setConsola() {
 
         // TODO cambiar por el modelo de Consola...
         Label etiqueta = new Label();
-        etiqueta.setText("consola...");
+        etiqueta.setText("Turno jugador...");
         etiqueta.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 14));
         etiqueta.setTextFill(Color.WHITE);
 
+        Label etiquetaJugador = new Label();
+        etiquetaJugador.setText(juego.getJugadorActual().getNombre());
+        etiquetaJugador.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 14));
+        etiquetaJugador.setTextFill(Color.WHITE);
+
         VBox contenedorConsola = new VBox(etiqueta);
+        contenedorConsola.getChildren().add(etiquetaJugador);
         contenedorConsola.setSpacing(10);
         contenedorConsola.setPadding(new Insets(15));
         contenedorConsola.setStyle("-fx-background-color: black;");
 
         this.setBottom(contenedorConsola);
     }
-*/
+
 
 //aca habria que mandar los personajes y moverlos segun requisitos del jugador
 
 
+}
