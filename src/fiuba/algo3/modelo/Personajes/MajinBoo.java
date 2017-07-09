@@ -167,4 +167,9 @@ public class MajinBoo extends Personaje implements PersonajeMalo{
         contenedorImage.setOpacity(1);
         return contenedorImage;
     }
+
+    @Override
+    public String getNombre() {
+        return "MajinBoo";
+    }
 }

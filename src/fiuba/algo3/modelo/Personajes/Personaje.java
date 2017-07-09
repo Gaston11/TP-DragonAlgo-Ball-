@@ -1,12 +1,13 @@
 package fiuba.algo3.modelo.Personajes;
 
 import fiuba.algo3.modelo.Componentes.Consumible;
+import fiuba.algo3.modelo.Componentes.Ubicable;
 import fiuba.algo3.modelo.Estados.Estado;
 import fiuba.algo3.modelo.Componentes.VersorDireccion;
 import fiuba.algo3.modelo.Componentes.Coordenada;
 import fiuba.algo3.modelo.excepciones.PersonajeEstaMuertoException;
 
-public abstract class Personaje implements Ubicable {
+public abstract class Personaje implements Ubicable, UbicableV2 {
     protected int maxVida;
     protected int vida;
     protected int ki;

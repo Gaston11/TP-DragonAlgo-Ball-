@@ -4,7 +4,7 @@ import fiuba.algo3.modelo.Estados.Estado;
 import fiuba.algo3.modelo.Personajes.Personaje;
 import fiuba.algo3.modelo.Personajes.PersonajeMalo;
 
-public abstract class Consumible {
+public abstract class Consumible implements Ubicable {
 
     protected int turnos;
     protected Coordenada coordenada;

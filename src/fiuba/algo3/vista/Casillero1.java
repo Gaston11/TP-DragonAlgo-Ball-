@@ -1,9 +1,10 @@
 package fiuba.algo3.vista;
 
 import fiuba.algo3.eventos.ElegirCasilleroEventHandler;
-import fiuba.algo3.modelo.Personajes.Ubicable;
+import fiuba.algo3.modelo.Componentes.Ubicable;
 import fiuba.algo3.modelo.Personajes.Personaje;
-import fiuba.algo3.modelo.Personajes.Ubicable;
+import fiuba.algo3.modelo.Personajes.UbicableV2;
+import fiuba.algo3.modelo.Personajes.UbicableV2;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
@@ -17,9 +18,14 @@ public class Casillero1 extends StackPane {
     protected int x;
     protected int y;
     protected ImageView imagen;
+<<<<<<< HEAD
     protected Ubicable ubicable;
     //protected ContenedorPersonaje contenedor;
 
+=======
+    protected UbicableV2 ubicable;
+    protected Rectangle cuadroResaltado;
+>>>>>>> f128d9c756cbda0ecc2863a050ea3cb2d344b039
 
     public Casillero1(int x, int y) {
         this.x = x;
@@ -28,11 +34,12 @@ public class Casillero1 extends StackPane {
         this.ubicable = null;
 
         Rectangle borde = new Rectangle(50, 50,50,50);
-
+        cuadroResaltado = new Rectangle(50, 50,50,50);
+        cuadroResaltado.setOpacity(0);
         borde.setFill(Color.TRANSPARENT);
         borde.setStroke(Color.BLACK);
         this.setOnMouseClicked(new ElegirCasilleroEventHandler(this));
-        this.getChildren().addAll(borde, imagen);
+        this.getChildren().addAll(borde, imagen, cuadroResaltado);
         //this.getChildren().add(borde);
     }
 
@@ -53,14 +60,14 @@ public class Casillero1 extends StackPane {
         return y;
     }
 
-    public void dibujarUbicable(Ubicable ubicable) {
+    public void dibujarUbicable(UbicableV2 ubicable) {
         Vista imagen = new Vista(ubicable);
         this.imagen = imagen.obtenerImagen();
         this.ubicable = ubicable;
         this.getChildren().add(this.imagen);
     }
 
-    public Ubicable getUbicable(){
+    public UbicableV2 getUbicable(){
         return this.ubicable;
     }
 
@@ -69,4 +76,17 @@ public class Casillero1 extends StackPane {
         this.getChildren().add(imagen);
     }
 
+<<<<<<< HEAD
+=======
+    public void marcarBorde() {
+        cuadroResaltado.setFill(Color.YELLOW);
+        cuadroResaltado.setStroke(Color.YELLOW);
+        cuadroResaltado.setOpacity(0.4);
+        //this.getChildren().add(cuadroResaltado);
+    }
+
+    public void desmarcarCelda(){
+        cuadroResaltado.setOpacity(0);
+    }
+>>>>>>> f128d9c756cbda0ecc2863a050ea3cb2d344b039
 }

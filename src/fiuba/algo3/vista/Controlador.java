@@ -3,7 +3,7 @@ package fiuba.algo3.vista;
 import fiuba.algo3.eventos.BotonAtaqueBasicoEventHandler;
 import fiuba.algo3.eventos.BotonMoverEventHandler;
 import fiuba.algo3.eventos.BotonTransformarEventHandler;
-import fiuba.algo3.modelo.Personajes.Ubicable;
+import fiuba.algo3.modelo.Personajes.UbicableV2;
 
 /**
  * Created by noe on 08/07/17.
@@ -15,6 +15,8 @@ public class Controlador {
     private ContenedorPrincipal contenedor;
     private BotonAtaqueBasicoEventHandler botonAtaqueBasico;
     private BotonTransformarEventHandler botonTransformar;
+    private Casillero1 casilleroAnterior;
+
 
 
     public static Controlador getControlador(){
@@ -22,6 +24,10 @@ public class Controlador {
             Controlador.instance = new Controlador();
         }
         return Controlador.instance;
+    }
+
+    private Controlador(){
+        this.casilleroAnterior = new Casillero1(0,0);
     }
 
     public void setBotonMover(BotonMoverEventHandler botonMover){
@@ -33,6 +39,9 @@ public class Controlador {
     }
 
     public void setUbicable(Casillero1 casillero){
+        this.casilleroAnterior.desmarcarCelda();
+        casillero.marcarBorde();
+        this.casilleroAnterior = casillero;
         botonMover.setUbicable(casillero);
         botonAtaqueBasico.setUbicable(casillero);
         botonTransformar.setUbicable(casillero);

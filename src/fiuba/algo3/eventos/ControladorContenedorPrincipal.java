@@ -11,10 +11,10 @@ import java.util.Map;
 public class ControladorContenedorPrincipal {
     Map<String, VistaUbicable> diccionarioVistas;
 
-    public ControladorContenedorPrincipal(){
-        diccionarioVistas = new HashMap<>();
-        diccionarioVistas.put("Goku", new VistaGoku());
-    }
+    //public ControladorContenedorPrincipal(){
+    //    diccionarioVistas = new HashMap<>();
+    //    diccionarioVistas.put("Goku", new VistaGoku());
+    //}
 
 
 

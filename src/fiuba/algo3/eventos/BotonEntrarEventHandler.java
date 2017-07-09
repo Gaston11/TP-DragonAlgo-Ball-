@@ -12,10 +12,12 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
     Scene proximaEscena;
 
     //public BotonEntrarEventHandler(Stage stage, Scene proximaEscena, String nombre1, String nombre2) {
-    public BotonEntrarEventHandler(Stage stage, Scene proximaEscena){
+    public BotonEntrarEventHandler(Stage stage, String nombreJugadorZ, String nommbreJugadorEnemigos){
         this.stage = stage;
         this.proximaEscena = proximaEscena;
 
+        ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage, nombreJugadorZ, nommbreJugadorEnemigos);
+        this.proximaEscena = new Scene(contenedorPrincipal);
 
     }
 

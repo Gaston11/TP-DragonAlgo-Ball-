@@ -33,4 +33,8 @@ public class Celda{
     public Boolean ocupadaConPersonaje() {
         return (this.personaje != null);
     }
+
+    public Consumible getConsumible() {
+        return consumible;
+    }
 }

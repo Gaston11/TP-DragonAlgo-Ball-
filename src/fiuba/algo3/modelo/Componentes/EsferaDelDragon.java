@@ -199,4 +199,9 @@ public class EsferaDelDragon extends Consumible implements Estado{
     public Coordenada obtenerCoordenadaValida(Coordenada coordenadaIni, Coordenada coordenadaFin) {
         return estadoAnterior.obtenerCoordenadaValida(coordenadaIni,coordenadaFin);
     }
+
+    @Override
+    public String getNombre() {
+        return "Esfera de dragón";
+    }
 }

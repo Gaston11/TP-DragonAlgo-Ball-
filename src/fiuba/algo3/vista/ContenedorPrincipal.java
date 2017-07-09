@@ -26,6 +26,7 @@ public class ContenedorPrincipal extends BorderPane {
     VBox contenedorCentral;
     Campo campo;
     Juego juego;
+    Consola contenedorConsola;
 
     private static final int TAMANIO_CASILLERO = 40;
     private static final int WIDTH = 400;
@@ -45,10 +46,14 @@ public class ContenedorPrincipal extends BorderPane {
         campo = new Campo();
         this.setRight(campo.contenedor());
         this.setCenter(campo.contenido(juego.getTablero()));
+        this.contenedorConsola = new Consola();
         this.setBotonera();
         //this.setDerecha();
         this.setConsola();
         Controlador.getControlador().setContenedor(this);
+        this.escribirConsola("Nombre jugador Equipo Z: " + jZ);
+        this.escribirConsola("Nombre jugador Equipo Z: " + jEnemigo);
+        this.escribirConsola("Turno jugador: " + this.juego.getJugadorActual().getNombre());
     }
 
     private void juego(){
@@ -56,7 +61,7 @@ public class ContenedorPrincipal extends BorderPane {
         if (juego.obtenerGanador() == null){
 
 
-            
+
 
 
         }
@@ -67,7 +72,7 @@ public class ContenedorPrincipal extends BorderPane {
 
         Button botonMover = new Button();
         botonMover.setText("Mover");
-        BotonMoverEventHandler moverEventHandler = new BotonMoverEventHandler(juego,campo);
+        BotonMoverEventHandler moverEventHandler = new BotonMoverEventHandler(juego, this);
         botonMover.setOnAction(moverEventHandler);
         Controlador.getControlador().setBotonMover(moverEventHandler);
         //HBox contenedorPersonaje = this.elegirPersonaje();
@@ -147,32 +152,24 @@ public class ContenedorPrincipal extends BorderPane {
 
 
     private void setConsola() {
-
-        // TODO cambiar por el modelo de Consola...
-        Label etiqueta = new Label();
-        etiqueta.setText("Turno jugador...");
-        etiqueta.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 14));
-        etiqueta.setTextFill(Color.WHITE);
-
-        Label etiquetaJugador = new Label();
-        String nombre = juego.getJugadorActual().getNombre();
-        etiquetaJugador.setText(nombre);
-        etiquetaJugador.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 14));
-        etiquetaJugador.setTextFill(Color.WHITE);
-
-        VBox contenedorConsola = new VBox(etiqueta);
-        contenedorConsola.getChildren().add(etiquetaJugador);
-        contenedorConsola.setSpacing(10);
-        contenedorConsola.setPadding(new Insets(15));
-        contenedorConsola.setStyle("-fx-background-color: black;");
-
+        String textoEnConsola = "Turno jugador: " + this.juego.getJugadorActual().getNombre().toString();
+        this.contenedorConsola.escribirEnConsola( textoEnConsola );
         this.setBottom(contenedorConsola);
+    }
+
+    public void escribirConsola(String texto){
+        this.contenedorConsola.escribirEnConsola(texto);
+    }
+
+    public void escribirConsola(String texto, Color color){
+        this.contenedorConsola.escribirEnConsola(texto, color);
     }
 
     public void actualizar() {
         this.setCenter(campo.contenido(juego.getTablero()));
         this.setRight(campo.contenedor());
         this.setConsola();
+        this.escribirConsola("Turno jugador: " + this.juego.getJugadorActual().getNombre());
     }
 
 }

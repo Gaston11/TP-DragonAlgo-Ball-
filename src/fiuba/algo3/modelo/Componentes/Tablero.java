@@ -203,4 +203,17 @@ public class Tablero {
 		return celda1.getPersonaje();
 
 	}
+
+	public Consumible obtenerUbicable(Coordenada coordenada) {
+		try {
+			Celda celda = this.obtenerCelda(coordenada);
+			return celda.getConsumible();
+		}catch (Exception ex){
+			return new Nada();
+		}
+	}
+
+	public Celda obtenerCelda(Coordenada coordenada) {
+		return this.celdasOcupadas.stream().filter(c -> c.getCoordenada().esLaMismaCoordenada(coordenada)).findFirst().get();
+	}
 }
