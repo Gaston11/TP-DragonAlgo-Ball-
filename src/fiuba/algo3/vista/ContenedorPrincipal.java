@@ -1,5 +1,6 @@
 package fiuba.algo3.vista;
 
+import fiuba.algo3.eventos.BotonMoverEventHandler;
 import fiuba.algo3.modelo.Juego.Juego;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -45,6 +46,7 @@ public class ContenedorPrincipal extends BorderPane {
         this.setBotonera();
         this.setDerecha();
         this.setConsola();
+        Controlador.getControlador().setContenedor(this);
     }
 
     private HBox elegirPersonaje(){
@@ -63,24 +65,33 @@ public class ContenedorPrincipal extends BorderPane {
 
     private void juego(){
 
-        while (juego.obtenerGanador() == null){
+        if (juego.obtenerGanador() == null){
 
+
+            
 
 
         }
+        //mostrar El ganador con un mensaje
     }
 
     private void setBotonera(){
 
+        Button botonMover = new Button();
+        botonMover.setText("Mover");
+        BotonMoverEventHandler moverEventHandler = new BotonMoverEventHandler(juego,campo);
+        botonMover.setOnAction(moverEventHandler);
+        Controlador.getControlador().setBotonMover(moverEventHandler);
         //HBox contenedorPersonaje = this.elegirPersonaje();
         Button botonTransformar = new Button();
         botonTransformar.setText("Transformar");
+        //BotonTransformarEventHandler campo
 
         VBox contenedorVertical = new VBox();
 
         VBox contenedorAtaques = this.menuAtaques();
 
-        contenedorVertical.getChildren().addAll(contenedorAtaques, botonTransformar);
+        contenedorVertical.getChildren().addAll(botonMover,contenedorAtaques, botonTransformar);
         contenedorVertical.setSpacing(10);
         this.setLeft(contenedorVertical);
     }
@@ -183,7 +194,8 @@ public class ContenedorPrincipal extends BorderPane {
         etiqueta.setTextFill(Color.WHITE);
 
         Label etiquetaJugador = new Label();
-        etiquetaJugador.setText(juego.getJugadorActual().getNombre());
+        String nombre = juego.getJugadorActual().getNombre();
+        etiquetaJugador.setText(nombre);
         etiquetaJugador.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 14));
         etiquetaJugador.setTextFill(Color.WHITE);
 
@@ -194,6 +206,11 @@ public class ContenedorPrincipal extends BorderPane {
         contenedorConsola.setStyle("-fx-background-color: black;");
 
         this.setBottom(contenedorConsola);
+    }
+
+    public void actualizar() {
+        this.setCenter(campo.contenido(juego.getTablero()));
+        this.setConsola();
     }
 
 

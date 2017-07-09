@@ -52,7 +52,7 @@ public class Campo extends BorderPane{
         Celda celda = new Celda(coordenada);
         if(tablero.celdaOcupada(celda)){
             if(tablero.celdaOcupadaConPersonaje(celda)){
-                casillero.dibujarPersonaje(tablero.obtenerCelda(celda).getPersonaje());
+                casillero.dibujarUbicable(tablero.obtenerCelda(celda).getPersonaje());
             }
             /*else {
                 casillero.dibujarConsumible(casillero);

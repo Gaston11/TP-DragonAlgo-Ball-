@@ -1,6 +1,8 @@
 package fiuba.algo3.vista;
 
+import fiuba.algo3.modelo.Personajes.Ubicable;
 import fiuba.algo3.modelo.Personajes.Personaje;
+import fiuba.algo3.modelo.Personajes.Ubicable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
@@ -14,6 +16,7 @@ public class Casillero1 extends StackPane {
     int x;
     int y;
     ImageView imagen;
+    Ubicable ubicable;
 
 
     public Casillero1(int x, int y) {
@@ -48,10 +51,19 @@ public class Casillero1 extends StackPane {
         return y;
     }
 
-    public void dibujarPersonaje(Personaje personaje) {
-        Vista imagen = new Vista(personaje);
+    public void dibujarUbicable(Ubicable ubicable) {
+        Vista imagen = new Vista(ubicable);
         this.imagen = imagen.obtenerImagen();
+        this.ubicable = ubicable;
         //this.imagen = imagen.dibujarPersonaje();
         this.getChildren().add(this.imagen);
+    }
+
+    public Ubicable getUbicable(){
+        return this.ubicable;
+    }
+
+    public void borrarImagen() {
+        imagen = this.dibujarImagen();
     }
 }

@@ -6,7 +6,7 @@ import fiuba.algo3.modelo.Componentes.VersorDireccion;
 import fiuba.algo3.modelo.Componentes.Coordenada;
 import fiuba.algo3.modelo.excepciones.PersonajeEstaMuertoException;
 
-public abstract class Personaje implements Imagen {
+public abstract class Personaje implements Ubicable {
     protected int maxVida;
     protected int vida;
     protected int ki;
@@ -101,5 +101,8 @@ public abstract class Personaje implements Imagen {
         return this.vida<=0;
     }
 
-    //public abstract ImageView dibujar();
+    @Override
+    public boolean esUnPersonaje(){
+        return true;
+    }
 }

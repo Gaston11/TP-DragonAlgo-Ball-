@@ -1,6 +1,7 @@
 package fiuba.algo3.vista;
 
 import fiuba.algo3.modelo.Personajes.Personaje;
+import fiuba.algo3.modelo.Personajes.Ubicable;
 import javafx.scene.image.ImageView;
 
 /**
@@ -9,14 +10,20 @@ import javafx.scene.image.ImageView;
 public class Vista {
 
 
-    private ImageView personaje;
+    private ImageView ubicableImagen;
+    private Ubicable ubicable;
 
-    public Vista(Personaje personaje){
-        this.personaje = personaje.dibujar();
+    public Vista(Ubicable personaje){
+        this.ubicableImagen = personaje.dibujar();
+        this.ubicable = personaje;
     }
 
 
     public ImageView obtenerImagen() {
-        return this.personaje;
+        return this.ubicableImagen;
+    }
+
+    public Ubicable getPersonaje(){
+        return ubicable;
     }
 }
