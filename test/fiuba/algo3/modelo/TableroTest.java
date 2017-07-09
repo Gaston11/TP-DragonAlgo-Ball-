@@ -350,7 +350,7 @@ public class TableroTest {
 
         tablero.colocarCeldaEnTablero(celdaConConsumible);
 
-        assertEquals(semilla, tablero.obtenerUbicable(otraCoordenada));
+        assertEquals(semilla, tablero.obtenerConsumible(otraCoordenada));
     }
 
     /*

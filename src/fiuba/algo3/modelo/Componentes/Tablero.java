@@ -204,7 +204,7 @@ public class Tablero {
 
 	}
 
-	public Consumible obtenerUbicable(Coordenada coordenada) {
+	public Consumible obtenerConsumible(Coordenada coordenada) {
 		try {
 			Celda celda = this.obtenerCelda(coordenada);
 			return celda.getConsumible();
