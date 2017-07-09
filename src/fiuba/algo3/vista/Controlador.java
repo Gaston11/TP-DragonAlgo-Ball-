@@ -16,6 +16,7 @@ public class Controlador {
     private Casillero1 casilleroAnterior;
 
 
+
     public static Controlador getControlador(){
         if (Controlador.instance == null){
             Controlador.instance = new Controlador();

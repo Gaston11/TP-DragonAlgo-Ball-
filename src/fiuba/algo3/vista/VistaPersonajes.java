@@ -17,7 +17,9 @@ public abstract class VistaPersonajes implements VistaUbicable{
         this.urls = new HashMap<>();
     }
 
-    public void dibujarEnCampo(){}
+    public void dibujarEnCampo(){
+
+    }
 
     public abstract void dibujarEnCostado();
 

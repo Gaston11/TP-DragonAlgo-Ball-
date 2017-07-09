@@ -1,5 +1,6 @@
 package fiuba.algo3.modelo;
 
+import fiuba.algo3.modelo.Componentes.Semilla;
 import fiuba.algo3.modelo.Personajes.*;
 import fiuba.algo3.modelo.excepciones.CeldaNoOcupadaException;
 import fiuba.algo3.modelo.excepciones.NoSePuedeMoverPersonajeException;
@@ -334,6 +335,22 @@ public class TableroTest {
         mitablero.moverPersonaje( majinBoo, nuevaCoordenada );
 
         assertTrue(majinBoo.estaUbicadoEn( unaCoordenada )); //vuelve a su posicion anterior
+    }
+
+
+    @Test
+    public void obtenerConsumibleEnCasilleroDeterminado(){
+        Coordenada otraCoordenada = new Coordenada(0,0);
+        Celda celdaConConsumible = new Celda(otraCoordenada);
+        Tablero tablero = new Tablero(10);
+
+        Semilla semilla = new Semilla();
+        semilla.posicionarEn(otraCoordenada);
+        celdaConConsumible.colocarConsumible(semilla);
+
+        tablero.colocarCeldaEnTablero(celdaConConsumible);
+
+        assertEquals(semilla, tablero.obtenerUbicable(otraCoordenada));
     }
 
     /*
