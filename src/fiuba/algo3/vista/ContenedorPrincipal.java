@@ -43,25 +43,12 @@ public class ContenedorPrincipal extends BorderPane {
         this.setMenu(stage);
         this.modelo = juego;
         campo = new Campo();
+        this.setRight(campo.contenedor());
         this.setCenter(campo.contenido(juego.getTablero()));
         this.setBotonera();
-        this.setDerecha();
+        //this.setDerecha();
         this.setConsola();
         Controlador.getControlador().setContenedor(this);
-    }
-
-    private HBox elegirPersonaje(){
-
-        javafx.scene.control.Label etiqueta = new javafx.scene.control.Label();
-        etiqueta.setFont(Font.font("Tahoma", FontWeight.BOLD, 18));;
-        etiqueta.setText("Personaje: ");
-
-        javafx.scene.control.TextField nombre = new javafx.scene.control.TextField();
-
-        HBox layout = new HBox();
-        layout.getChildren().addAll(etiqueta, nombre);
-        return layout;
-
     }
 
     private void juego(){
@@ -106,7 +93,9 @@ public class ContenedorPrincipal extends BorderPane {
 
         Button botonAtaqueBasico = new Button();
         botonAtaqueBasico.setText("Basico");
-        BotonAtaqueBasicoEventHandler ataqueBasicoEventHandler = new BotonAtaqueBasicoEventHandler();
+        BotonAtaqueBasicoEventHandler ataqueBasicoEventHandler = new BotonAtaqueBasicoEventHandler(juego);
+        botonAtaqueBasico.setOnAction(ataqueBasicoEventHandler);
+        Controlador.getControlador().setBotonAtaqueBasico(ataqueBasicoEventHandler);
 
         Button botonAtaqueEspecial = new Button();
         botonAtaqueEspecial.setText("Especial");
@@ -181,11 +170,8 @@ public class ContenedorPrincipal extends BorderPane {
 
     public void actualizar() {
         this.setCenter(campo.contenido(juego.getTablero()));
+        this.setRight(campo.contenedor());
         this.setConsola();
     }
-
-
-//aca habria que mandar los personajes y moverlos segun requisitos del jugador
-
 
 }

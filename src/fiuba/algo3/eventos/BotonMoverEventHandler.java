@@ -4,7 +4,6 @@ import fiuba.algo3.modelo.Componentes.Celda;
 import fiuba.algo3.modelo.Componentes.Coordenada;
 import fiuba.algo3.modelo.Juego.Juego;
 import fiuba.algo3.modelo.Personajes.Ubicable;
-import fiuba.algo3.modelo.Personajes.Personaje;
 import fiuba.algo3.modelo.excepciones.CeldaOcupadaException;
 import fiuba.algo3.modelo.excepciones.NoSePuedeMoverPersonajeException;
 import fiuba.algo3.modelo.excepciones.PersonajeInvalidoNoEsPersonajeBuenoException;
@@ -12,7 +11,6 @@ import fiuba.algo3.modelo.excepciones.PersonajeInvalidoNoEsPersonajeMaloExceptio
 import fiuba.algo3.vista.Campo;
 import fiuba.algo3.vista.Casillero1;
 import fiuba.algo3.vista.Controlador;
-import fiuba.algo3.vista.Vista;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
@@ -47,6 +45,7 @@ public class BotonMoverEventHandler implements EventHandler<ActionEvent> {
             this.coordenadaFin = coordenada;
             this.casillero = casillero;
         }
+
     }
 
     @Override
@@ -80,9 +79,10 @@ public class BotonMoverEventHandler implements EventHandler<ActionEvent> {
         }
 
         this.inicializarValores();
+        Controlador.getControlador().inicializarBotones();
     }
 
-    private void inicializarValores() {
+    public void inicializarValores() {
         this.personaje = null;
         this.coordenadaFin=null;
         this.coordenadaIni=null;

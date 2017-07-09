@@ -18,9 +18,11 @@ import javafx.scene.shape.Rectangle;
 public class Campo extends BorderPane{
 
     private static int dimension = 10;
+    private VBox contenedor;
 
     public Parent contenido(Tablero tablero) {
 
+        contenedor = new VBox();
         Pane root = new Pane();
         root.setPrefSize(400, 400);
 
@@ -53,11 +55,17 @@ public class Campo extends BorderPane{
         if(tablero.celdaOcupada(celda)){
             if(tablero.celdaOcupadaConPersonaje(celda)){
                 casillero.dibujarUbicable(tablero.obtenerCelda(celda).getPersonaje());
+                ContenedorPersonaje contenedorPersonaje = new ContenedorPersonaje(tablero.obtenerPersonajeEn(coordenada));
+                contenedor.getChildren().add(contenedorPersonaje.informacionPersonaje());
             }
             /*else {
                 casillero.dibujarConsumible(casillero);
             }*/
         }
 
+    }
+
+    public VBox contenedor(){
+        return contenedor;
     }
 }

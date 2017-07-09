@@ -18,6 +18,7 @@ public class Casillero1 extends StackPane {
     protected int y;
     protected ImageView imagen;
     protected Ubicable ubicable;
+    //protected ContenedorPersonaje contenedor;
 
 
     public Casillero1(int x, int y) {
@@ -67,4 +68,5 @@ public class Casillero1 extends StackPane {
         imagen = this.dibujarImagen();
         this.getChildren().add(imagen);
     }
+
 }
