@@ -1,7 +1,6 @@
 package fiuba.algo3.vista;
 
 import fiuba.algo3.eventos.ElegirCasilleroEventHandler;
-import fiuba.algo3.modelo.Componentes.Ubicable;
 import fiuba.algo3.modelo.Personajes.Personaje;
 import fiuba.algo3.modelo.Personajes.UbicableV2;
 import fiuba.algo3.modelo.Personajes.UbicableV2;
@@ -18,14 +17,9 @@ public class Casillero1 extends StackPane {
     protected int x;
     protected int y;
     protected ImageView imagen;
-<<<<<<< HEAD
-    protected Ubicable ubicable;
     //protected ContenedorPersonaje contenedor;
-
-=======
     protected UbicableV2 ubicable;
     protected Rectangle cuadroResaltado;
->>>>>>> f128d9c756cbda0ecc2863a050ea3cb2d344b039
 
     public Casillero1(int x, int y) {
         this.x = x;
@@ -76,8 +70,6 @@ public class Casillero1 extends StackPane {
         this.getChildren().add(imagen);
     }
 
-<<<<<<< HEAD
-=======
     public void marcarBorde() {
         cuadroResaltado.setFill(Color.YELLOW);
         cuadroResaltado.setStroke(Color.YELLOW);
@@ -88,5 +80,4 @@ public class Casillero1 extends StackPane {
     public void desmarcarCelda(){
         cuadroResaltado.setOpacity(0);
     }
->>>>>>> f128d9c756cbda0ecc2863a050ea3cb2d344b039
 }

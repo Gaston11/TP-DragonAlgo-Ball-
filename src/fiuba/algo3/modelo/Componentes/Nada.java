@@ -19,4 +19,9 @@ public class Nada extends Consumible {
     public String getNombre() {
         return "Nada";
     }
+
+    @Override
+    public boolean esUnPersonaje() {
+        return false;
+    }
 }

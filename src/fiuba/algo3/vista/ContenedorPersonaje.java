@@ -1,16 +1,15 @@
 package fiuba.algo3.vista;
 
-import fiuba.algo3.modelo.Personajes.Ubicable;
 import fiuba.algo3.modelo.Personajes.Personaje;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
-
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import fiuba.algo3.modelo.Componentes.Ubicable;
 
 /**
  * Created by noe on 09/07/17.

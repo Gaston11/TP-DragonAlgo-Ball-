@@ -4,7 +4,6 @@ import fiuba.algo3.modelo.Componentes.Celda;
 import fiuba.algo3.modelo.Componentes.Coordenada;
 import fiuba.algo3.modelo.Juego.Juego;
 import fiuba.algo3.modelo.Personajes.Personaje;
-import fiuba.algo3.modelo.Personajes.Ubicable;
 import fiuba.algo3.modelo.excepciones.*;
 import fiuba.algo3.vista.Casillero1;
 import fiuba.algo3.vista.Controlador;

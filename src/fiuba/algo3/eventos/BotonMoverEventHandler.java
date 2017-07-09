@@ -3,23 +3,16 @@ package fiuba.algo3.eventos;
 import fiuba.algo3.modelo.Componentes.Celda;
 import fiuba.algo3.modelo.Componentes.Coordenada;
 import fiuba.algo3.modelo.Juego.Juego;
-<<<<<<< HEAD
-import fiuba.algo3.modelo.Personajes.Ubicable;
-=======
 import fiuba.algo3.modelo.Personajes.Personaje;
 import fiuba.algo3.modelo.Personajes.UbicableV2;
->>>>>>> f128d9c756cbda0ecc2863a050ea3cb2d344b039
 import fiuba.algo3.modelo.excepciones.CeldaOcupadaException;
 import fiuba.algo3.modelo.excepciones.NoSePuedeMoverPersonajeException;
 import fiuba.algo3.modelo.excepciones.PersonajeInvalidoNoEsPersonajeBuenoException;
 import fiuba.algo3.modelo.excepciones.PersonajeInvalidoNoEsPersonajeMaloException;
-<<<<<<< HEAD
 import fiuba.algo3.vista.Campo;
 import fiuba.algo3.vista.Casillero1;
 import fiuba.algo3.vista.Controlador;
-=======
 import fiuba.algo3.vista.*;
->>>>>>> f128d9c756cbda0ecc2863a050ea3cb2d344b039
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;

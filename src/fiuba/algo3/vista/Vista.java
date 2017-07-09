@@ -1,6 +1,6 @@
 package fiuba.algo3.vista;
 
-import fiuba.algo3.modelo.Componentes.Ubicable;
+//import fiuba.algo3.modelo.Componentes.Ubicable;
 import fiuba.algo3.modelo.Personajes.UbicableV2;
 import javafx.scene.image.ImageView;
 

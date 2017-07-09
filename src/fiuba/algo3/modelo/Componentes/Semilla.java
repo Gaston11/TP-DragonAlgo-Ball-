@@ -27,4 +27,9 @@ public class Semilla extends Consumible {
     public String getNombre() {
         return "Semilla del ermitaño";
     }
+
+    @Override
+    public boolean esUnPersonaje() {
+        return false;
+    }
 }

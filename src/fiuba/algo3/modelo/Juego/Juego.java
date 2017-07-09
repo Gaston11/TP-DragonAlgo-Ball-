@@ -67,16 +67,9 @@ public class Juego {
     }
 
     public void mover(Coordenada coordenadaIni, Coordenada coordenadaFin){
-<<<<<<< HEAD
         Personaje personaje = tablero.obtenerPersonajeEn(coordenadaIni);
         jugadorActual.mover(personaje, coordenadaFin);
         tablero.mover(coordenadaIni,coordenadaFin);
-
-=======
-        Personaje personaje = this.tablero.obtenerPersonajeEn(coordenadaIni);
-        jugadorActual.mover(personaje, coordenadaFin);
-        tablero.mover(coordenadaIni, coordenadaFin);
->>>>>>> f128d9c756cbda0ecc2863a050ea3cb2d344b039
         this.cambiarTurno();
     }
 

@@ -204,4 +204,9 @@ public class EsferaDelDragon extends Consumible implements Estado{
     public String getNombre() {
         return "Esfera de dragón";
     }
+
+    @Override
+    public boolean esUnPersonaje() {
+        return false;
+    }
 }

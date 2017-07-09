@@ -259,4 +259,9 @@ public class NubeVoladora extends Consumible implements Estado{
     public String getNombre() {
         return "Nube voladora";
     }
+
+    @Override
+    public boolean esUnPersonaje() {
+        return false;
+    }
 }
