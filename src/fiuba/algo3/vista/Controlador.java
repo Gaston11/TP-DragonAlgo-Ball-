@@ -1,6 +1,7 @@
 package fiuba.algo3.vista;
 
 import fiuba.algo3.eventos.BotonMoverEventHandler;
+import fiuba.algo3.eventos.BotonTransformarEventHandler;
 import fiuba.algo3.modelo.Personajes.Ubicable;
 
 /**
@@ -11,8 +12,8 @@ public class Controlador {
     private static Controlador instance = null;
     private BotonMoverEventHandler botonMover;
     private ContenedorPrincipal contenedor;
-    //private BotonTransformarEventHandler botonFusionar;
-    //private ContenedorElegirJugadores contenedorJuego;
+    private BotonTransformarEventHandler botonTransformar;
+
 
     public static Controlador getControlador(){
         if (Controlador.instance == null){
@@ -35,5 +36,9 @@ public class Controlador {
 
     public void actualizar(){
         this.contenedor.actualizar();
+    }
+
+    public void setBotonTransformar(BotonTransformarEventHandler botonTransformar) {
+        this.botonTransformar = botonTransformar;
     }
 }

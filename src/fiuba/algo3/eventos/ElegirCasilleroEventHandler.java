@@ -1,5 +1,6 @@
 package fiuba.algo3.eventos;
 
+import fiuba.algo3.modelo.Personajes.Ubicable;
 import fiuba.algo3.vista.Casillero1;
 import fiuba.algo3.vista.Controlador;
 import javafx.event.EventHandler;
@@ -17,7 +18,7 @@ public class ElegirCasilleroEventHandler implements EventHandler<MouseEvent> {
     }
 
     @Override
-    public void handle(MouseEvent event) {
+    public void handle(MouseEvent arg0) {
         Controlador.getControlador().setUbicable(casillero);
     }
 }

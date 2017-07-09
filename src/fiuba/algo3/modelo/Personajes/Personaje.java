@@ -102,6 +102,11 @@ public abstract class Personaje implements Ubicable {
     }
 
     @Override
+    public Coordenada getCoordenada(){
+        return this.coordenada;
+    }
+
+    @Override
     public boolean esUnPersonaje(){
         return true;
     }

@@ -60,12 +60,4 @@ public class Campo extends BorderPane{
         }
 
     }
-
-    /*
-    private void dibujarPersonaje(Casillero1 casillero, Celda celda) {
-        this.vista(casillero, celda);
-    }*/
-
-    //Casillero1 casillero, Celda celda
-
 }

@@ -1,6 +1,8 @@
 package fiuba.algo3.vista;
 
+import fiuba.algo3.eventos.BotonAtaqueBasicoEventHandler;
 import fiuba.algo3.eventos.BotonMoverEventHandler;
+import fiuba.algo3.eventos.BotonTransformarEventHandler;
 import fiuba.algo3.modelo.Juego.Juego;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -40,7 +42,6 @@ public class ContenedorPrincipal extends BorderPane {
         this.juego = new Juego(jZ, jEnemigo);
         this.setMenu(stage);
         this.modelo = juego;
-        this.setCentro();
         campo = new Campo();
         this.setCenter(campo.contenido(juego.getTablero()));
         this.setBotonera();
@@ -85,8 +86,9 @@ public class ContenedorPrincipal extends BorderPane {
         //HBox contenedorPersonaje = this.elegirPersonaje();
         Button botonTransformar = new Button();
         botonTransformar.setText("Transformar");
-        //BotonTransformarEventHandler campo
-
+        BotonTransformarEventHandler transformarEventHandler = new BotonTransformarEventHandler(juego, campo);
+        botonTransformar.setOnAction(transformarEventHandler);
+        Controlador.getControlador().setBotonTransformar(transformarEventHandler);
         VBox contenedorVertical = new VBox();
 
         VBox contenedorAtaques = this.menuAtaques();
@@ -104,6 +106,7 @@ public class ContenedorPrincipal extends BorderPane {
 
         Button botonAtaqueBasico = new Button();
         botonAtaqueBasico.setText("Basico");
+        BotonAtaqueBasicoEventHandler ataqueBasicoEventHandler = new BotonAtaqueBasicoEventHandler();
 
         Button botonAtaqueEspecial = new Button();
         botonAtaqueEspecial.setText("Especial");
@@ -145,38 +148,6 @@ public class ContenedorPrincipal extends BorderPane {
         this.setLeft(contenedorVertical);
 
     }*/
-
-    private void setCentro() {
-
-        //canvasCentral = new Canvas(400, 400);
-        //vistaRobot = new VistaRobot(robot, canvasCentral);
-        //vistaRobot.dibujar();
-       Pane centro = new Pane();
-        centro.setPrefSize(WIDTH, HEIGHT);
-       /*  this.casilleros = new Casillero[X_CASILLEROS][Y_CASILLEROS];
-
-        for (int y = 0; y < Y_CASILLEROS; y++) {
-            for (int x = 0; x < X_CASILLEROS; x++) {
-                Casillero casillero = new Casillero(x, y);
-
-                casilleros[x][y] = casillero;
-
-                centro.getChildren().add(casillero);
-            }
-        }*/
-
-//        contenedorCentral = new VBox(canvasCentral);
-//        contenedorCentral.setAlignment(Pos.CENTER);
-//        contenedorCentral.setSpacing(20);
-//        contenedorCentral.setPadding(new Insets(25));
-        centro.setPrefSize(WIDTH,HEIGHT);
-        Image imagen = new Image("file:res/imagenes/FondoNameku.png");
-        BackgroundSize backgroundSize = new BackgroundSize(centro.getWidth(), centro.getHeight(), true, true, true, false);
-        BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, backgroundSize);
-        centro.setBackground(new Background(imagenDeFondo));
-
-        this.setCenter(centro);
-    }
 
     private void setDerecha(){
         this.informacionEnemigo = new Canvas(200, this.getHeight());
