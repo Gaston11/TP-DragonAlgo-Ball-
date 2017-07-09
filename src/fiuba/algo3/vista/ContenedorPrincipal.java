@@ -26,6 +26,7 @@ public class ContenedorPrincipal extends BorderPane {
     VBox contenedorCentral;
     Campo campo;
     Juego juego;
+    Consola miConsola;
 
     private static final int TAMANIO_CASILLERO = 40;
     private static final int WIDTH = 400;
@@ -46,6 +47,7 @@ public class ContenedorPrincipal extends BorderPane {
         this.setCenter(campo.contenido(juego.getTablero()));
         this.setBotonera();
         this.setDerecha();
+        this.miConsola = new Consola();
         this.setConsola();
         Controlador.getControlador().setContenedor(this);
     }
@@ -159,7 +161,7 @@ public class ContenedorPrincipal extends BorderPane {
     private void setConsola() {
 
         // TODO cambiar por el modelo de Consola...
-        Label etiqueta = new Label();
+        /*Label etiqueta = new Label();
         etiqueta.setText("Turno jugador...");
         etiqueta.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 14));
         etiqueta.setTextFill(Color.WHITE);
@@ -175,8 +177,10 @@ public class ContenedorPrincipal extends BorderPane {
         contenedorConsola.setSpacing(10);
         contenedorConsola.setPadding(new Insets(15));
         contenedorConsola.setStyle("-fx-background-color: black;");
-
-        this.setBottom(contenedorConsola);
+        */
+        String textoEnConsola = "Turno jugador: " + this.juego.getJugadorActual().getNombre();
+        this.miConsola.escribirEnConsola( textoEnConsola );
+        this.setBottom(miConsola);
     }
 
     public void actualizar() {
