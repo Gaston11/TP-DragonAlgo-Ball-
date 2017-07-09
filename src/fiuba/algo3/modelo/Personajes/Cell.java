@@ -170,4 +170,8 @@ public class Cell extends Personaje implements PersonajeMalo{
         return contenedorImage;
     }
 
+    @Override
+    public String getNombre() {
+        return "Cell";
+    }
 }

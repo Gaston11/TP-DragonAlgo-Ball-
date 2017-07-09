@@ -186,4 +186,9 @@ public class Goku extends Personaje implements PersonajeBueno{
         contenedorImage.setOpacity(1);
         return contenedorImage;
     }
+
+    @Override
+    public String getNombre() {
+        return "Goku";
+    }
 }

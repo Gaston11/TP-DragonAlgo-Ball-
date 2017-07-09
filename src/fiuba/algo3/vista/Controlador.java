@@ -2,7 +2,7 @@ package fiuba.algo3.vista;
 
 import fiuba.algo3.eventos.BotonMoverEventHandler;
 import fiuba.algo3.eventos.BotonTransformarEventHandler;
-import fiuba.algo3.modelo.Personajes.Ubicable;
+import fiuba.algo3.modelo.Personajes.UbicableV2;
 
 /**
  * Created by noe on 08/07/17.

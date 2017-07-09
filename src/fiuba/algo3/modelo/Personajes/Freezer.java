@@ -172,4 +172,8 @@ public class Freezer extends Personaje implements PersonajeMalo{
         return contenedorImage;
     }
 
+    @Override
+    public String getNombre() {
+        return "Freezer";
+    }
 }

@@ -1,6 +1,6 @@
 package fiuba.algo3.eventos;
 
-import fiuba.algo3.modelo.Personajes.Ubicable;
+import fiuba.algo3.modelo.Personajes.UbicableV2;
 import fiuba.algo3.vista.Casillero1;
 import fiuba.algo3.vista.Controlador;
 import javafx.event.EventHandler;
