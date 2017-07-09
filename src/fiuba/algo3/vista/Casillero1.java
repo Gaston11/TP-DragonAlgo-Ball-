@@ -19,7 +19,7 @@ public class Casillero1 extends StackPane {
     protected int y;
     protected ImageView imagen;
     protected UbicableV2 ubicable;
-
+    protected Rectangle cuadroResaltado;
 
     public Casillero1(int x, int y) {
         this.x = x;
@@ -28,11 +28,12 @@ public class Casillero1 extends StackPane {
         this.ubicable = null;
 
         Rectangle borde = new Rectangle(50, 50,50,50);
-
+        cuadroResaltado = new Rectangle(50, 50,50,50);
+        cuadroResaltado.setOpacity(0);
         borde.setFill(Color.TRANSPARENT);
         borde.setStroke(Color.BLACK);
         this.setOnMouseClicked(new ElegirCasilleroEventHandler(this));
-        this.getChildren().addAll(borde, imagen);
+        this.getChildren().addAll(borde, imagen, cuadroResaltado);
         //this.getChildren().add(borde);
     }
 
@@ -67,5 +68,16 @@ public class Casillero1 extends StackPane {
     public void borrarImagen() {
         imagen = this.dibujarImagen();
         this.getChildren().add(imagen);
+    }
+
+    public void marcarBorde() {
+        cuadroResaltado.setFill(Color.YELLOW);
+        cuadroResaltado.setStroke(Color.YELLOW);
+        cuadroResaltado.setOpacity(0.4);
+        //this.getChildren().add(cuadroResaltado);
+    }
+
+    public void desmarcarCelda(){
+        cuadroResaltado.setOpacity(0);
     }
 }

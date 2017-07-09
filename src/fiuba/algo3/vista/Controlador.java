@@ -13,6 +13,7 @@ public class Controlador {
     private BotonMoverEventHandler botonMover;
     private ContenedorPrincipal contenedor;
     private BotonTransformarEventHandler botonTransformar;
+    private Casillero1 casilleroAnterior;
 
 
     public static Controlador getControlador(){
@@ -20,6 +21,10 @@ public class Controlador {
             Controlador.instance = new Controlador();
         }
         return Controlador.instance;
+    }
+
+    private Controlador(){
+        this.casilleroAnterior = new Casillero1(0,0);
     }
 
     public void setBotonMover(BotonMoverEventHandler botonMover){
@@ -31,6 +36,9 @@ public class Controlador {
     }
 
     public void setUbicable(Casillero1 casillero){
+        this.casilleroAnterior.desmarcarCelda();
+        casillero.marcarBorde();
+        this.casilleroAnterior = casillero;
         botonMover.setUbicable(casillero);
     }
 

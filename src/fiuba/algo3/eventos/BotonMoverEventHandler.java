@@ -3,8 +3,8 @@ package fiuba.algo3.eventos;
 import fiuba.algo3.modelo.Componentes.Celda;
 import fiuba.algo3.modelo.Componentes.Coordenada;
 import fiuba.algo3.modelo.Juego.Juego;
-import fiuba.algo3.modelo.Componentes.Ubicable;
 import fiuba.algo3.modelo.Personajes.Personaje;
+import fiuba.algo3.modelo.Personajes.UbicableV2;
 import fiuba.algo3.modelo.excepciones.CeldaOcupadaException;
 import fiuba.algo3.modelo.excepciones.NoSePuedeMoverPersonajeException;
 import fiuba.algo3.modelo.excepciones.PersonajeInvalidoNoEsPersonajeBuenoException;
@@ -26,7 +26,7 @@ public class BotonMoverEventHandler implements EventHandler<ActionEvent> {
     private Juego juego;
     private ContenedorPrincipal contenedor;
     private Casillero1 casillero;
-    private Ubicable personaje = null;
+    private UbicableV2 personaje = null;
     private Coordenada coordenadaIni = null;
     private Coordenada coordenadaFin = null;
 
@@ -54,7 +54,6 @@ public class BotonMoverEventHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
-
         if (this.personaje == null){
             contenedor.escribirConsola("Se presionó Mover sin tener personaje seleccionado");
             this.alertaNoSeleccionoPersonaje();
