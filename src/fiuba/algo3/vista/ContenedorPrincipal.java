@@ -73,9 +73,10 @@ public class ContenedorPrincipal extends BorderPane {
         //HBox contenedorPersonaje = this.elegirPersonaje();
         Button botonTransformar = new Button();
         botonTransformar.setText("Transformar");
-        BotonTransformarEventHandler transformarEventHandler = new BotonTransformarEventHandler(juego, campo);
+        BotonTransformarEventHandler transformarEventHandler = new BotonTransformarEventHandler(juego);
         botonTransformar.setOnAction(transformarEventHandler);
         Controlador.getControlador().setBotonTransformar(transformarEventHandler);
+
         VBox contenedorVertical = new VBox();
 
         VBox contenedorAtaques = this.menuAtaques();
