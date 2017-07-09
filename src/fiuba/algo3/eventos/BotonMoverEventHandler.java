@@ -9,15 +9,14 @@ import fiuba.algo3.modelo.excepciones.CeldaOcupadaException;
 import fiuba.algo3.modelo.excepciones.NoSePuedeMoverPersonajeException;
 import fiuba.algo3.modelo.excepciones.PersonajeInvalidoNoEsPersonajeBuenoException;
 import fiuba.algo3.modelo.excepciones.PersonajeInvalidoNoEsPersonajeMaloException;
-import fiuba.algo3.vista.Campo;
-import fiuba.algo3.vista.Casillero1;
-import fiuba.algo3.vista.Controlador;
-import fiuba.algo3.vista.Vista;
+import fiuba.algo3.vista.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
+import javafx.scene.paint.*;
 
 import java.awt.*;
+import java.awt.Color;
 
 /**
  * Created by noe on 08/07/17.
@@ -25,15 +24,15 @@ import java.awt.*;
 public class BotonMoverEventHandler implements EventHandler<ActionEvent> {
 
     private Juego juego;
-    private Campo campo;
+    private ContenedorPrincipal contenedor;
     private Casillero1 casillero;
     private Ubicable personaje = null;
     private Coordenada coordenadaIni = null;
     private Coordenada coordenadaFin = null;
 
-    public BotonMoverEventHandler(Juego juego, Campo tablero){
+    public BotonMoverEventHandler(Juego juego, ContenedorPrincipal contenedor){
 
-        this.campo = tablero;
+        this.contenedor = contenedor;
         this.juego = juego;
 
     }
@@ -43,38 +42,55 @@ public class BotonMoverEventHandler implements EventHandler<ActionEvent> {
         if(juego.getTablero().celdaOcupadaConPersonaje(new Celda(coordenada))){
             this.coordenadaIni = coordenada;
             this.personaje = juego.getTablero().obtenerPersonajeEn(coordenada);
+            this.coordenadaFin = null;
+            contenedor.escribirConsola("en Set ubicable CON personaje");
         }else {
             this.coordenadaFin = coordenada;
             this.casillero = casillero;
+            contenedor.escribirConsola("en Set ubicable SIN personaje");
         }
+
     }
 
     @Override
     public void handle(ActionEvent event) {
 
         if (this.personaje == null){
+            contenedor.escribirConsola("Se presionó Mover sin tener personaje seleccionado");
             this.alertaNoSeleccionoPersonaje();
         }
         if (this.personaje != null && this.coordenadaFin == null){
+            contenedor.escribirConsola("Se presionó Mover sin tener casillero destino seleccionado");
             this.alertaNoSeleccionoUnaUbicacion();
         }
 
         if(this.personaje != null && this.coordenadaFin != null) {
             try {
+                contenedor.escribirConsola("Intentando Mover");
                 juego.mover(this.coordenadaIni, this.coordenadaFin);
+                contenedor.escribirConsola("Mover Exitoso");
                 Controlador.getControlador().actualizar();
+
             } catch (PersonajeInvalidoNoEsPersonajeBuenoException e) {
                 this.alertaPersonajeNoPerteceASuEquipoZ();
                 this.inicializarValores();
+                contenedor.escribirConsola("PersonajeInvalidoNoEsPersonajeBuenoException", javafx.scene.paint.Color.RED);
             } catch (PersonajeInvalidoNoEsPersonajeMaloException e) {
                 this.alertaPersonajeNoPerteceASuEquipoEnemigo();
                 this.inicializarValores();
+                contenedor.escribirConsola("PersonajeInvalidoNoEsPersonajeMaloException", javafx.scene.paint.Color.RED);;
             } catch (CeldaOcupadaException e) {
                 this.mensajeCeldaOcupada();
                 this.inicializarValores();
+                contenedor.escribirConsola("CeldaOcupadaException", javafx.scene.paint.Color.RED);
             } catch (NoSePuedeMoverPersonajeException e){
                 this.mensajeVelocidadMenorALaDistancia();
                 this.inicializarValores();
+                contenedor.escribirConsola("NoSePuedeMoverPersonajeException", javafx.scene.paint.Color.RED);
+            } catch (Exception e){
+                this.inicializarValores();
+                contenedor.escribirConsola("Excepción no manejada", javafx.scene.paint.Color.RED);
+
             }
 
         }

@@ -55,10 +55,7 @@ public class ContenedorBienvenidos extends VBox {
         HBox layout2 = new HBox();
         layout2.getChildren().addAll( etiquetaJugadorEnemigo, texto2);
 
-        ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage, texto.getText(), texto2.getText());
-        Scene escenaJuego = new Scene(contenedorPrincipal);
-
-        BotonEntrarEventHandler botonEntrarHandler = new BotonEntrarEventHandler(stage, escenaJuego);
+        BotonEntrarEventHandler botonEntrarHandler = new BotonEntrarEventHandler(stage, texto.getText(), texto2.getText());
         botonEntrar.setOnAction(botonEntrarHandler);
 
         this.getChildren().addAll(layout, layout2, botonEntrar );
