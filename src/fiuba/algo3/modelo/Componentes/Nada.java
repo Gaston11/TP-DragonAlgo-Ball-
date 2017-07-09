@@ -14,4 +14,9 @@ public class Nada extends Consumible {
     public Estado agregarEstado(Estado estado, Personaje personaje) {
         return estado;
     }
+
+    @Override
+    public String getNombre() {
+        return "Nada";
+    }
 }

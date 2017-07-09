@@ -23,4 +23,8 @@ public class Semilla extends Consumible {
     }
 
 
+    @Override
+    public String getNombre() {
+        return "Semilla del ermitaño";
+    }
 }

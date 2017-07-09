@@ -254,4 +254,9 @@ public class NubeVoladora extends Consumible implements Estado{
         }
         return coordenadaFin;
     }
+
+    @Override
+    public String getNombre() {
+        return "Nube voladora";
+    }
 }
