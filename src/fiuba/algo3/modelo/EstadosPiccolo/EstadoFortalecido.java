@@ -218,5 +218,10 @@ public class EstadoFortalecido implements Estado {
         return coordenadaFin;
     }
 
+    @Override
+    public String getDireccion() {
+        return "file:src/fiuba/algo3/vista/imagenes/piccoloFortalecido.jpg";
+    }
+
 }
 

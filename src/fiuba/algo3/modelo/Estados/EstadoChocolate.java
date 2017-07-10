@@ -146,4 +146,9 @@ public class EstadoChocolate implements Estado {
         throw new NoSePuedeMoverPersonajeException();
     }
 
+    @Override
+    public String getDireccion() {
+        return "file:src/fiuba/algo3/vista/imagenes/estadoChocolate.jpg";
+    }
+
 }

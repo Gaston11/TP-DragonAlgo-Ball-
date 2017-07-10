@@ -32,4 +32,14 @@ public class Semilla extends Consumible {
     public boolean esUnPersonaje() {
         return false;
     }
+
+    @Override
+    public Coordenada getCoordenada() {
+        return this.coordenada;
+    }
+
+    @Override
+    public String getDireccion(){
+        return "file:src/fiuba/algo3/vista/imagenes/semilla2.png";
+    }
 }

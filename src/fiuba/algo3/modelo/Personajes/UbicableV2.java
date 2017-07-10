@@ -5,7 +5,9 @@ import javafx.scene.image.ImageView;
 
 public interface UbicableV2 {
 
-    ImageView dibujar();
+    String getDireccion();
+
+    String getNombre();
 
     boolean esUnPersonaje();
 

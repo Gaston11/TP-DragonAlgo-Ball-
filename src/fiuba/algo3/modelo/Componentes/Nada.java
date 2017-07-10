@@ -16,6 +16,11 @@ public class Nada extends Consumible {
     }
 
     @Override
+    public String getDireccion() {
+        return "";
+    }
+
+    @Override
     public String getNombre() {
         return "Nada";
     }
@@ -23,5 +28,10 @@ public class Nada extends Consumible {
     @Override
     public boolean esUnPersonaje() {
         return false;
+    }
+
+    @Override
+    public Coordenada getCoordenada() {
+        return null;
     }
 }

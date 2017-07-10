@@ -1,6 +1,8 @@
 package fiuba.algo3.vista;
 
 import fiuba.algo3.eventos.ElegirCasilleroEventHandler;
+import fiuba.algo3.modelo.Componentes.Consumible;
+import fiuba.algo3.modelo.Componentes.Ubicable;
 import fiuba.algo3.modelo.Personajes.Personaje;
 import fiuba.algo3.modelo.Personajes.UbicableV2;
 import fiuba.algo3.modelo.Personajes.UbicableV2;
@@ -83,5 +85,9 @@ public class Casillero1 extends StackPane {
 
     public void dibujarPersonajeTransformado(UbicableV2 ubicable) {
 
+    }
+
+    public void setImagen(ImageView imagen) {
+        this.imagen = imagen;
     }
 }

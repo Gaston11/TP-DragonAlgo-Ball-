@@ -214,5 +214,10 @@ public class EstadoBooOriginal implements Estado {
         return coordenadaFin;
     }
 
+    @Override
+    public String getDireccion() {
+        return "file:src/fiuba/algo3/vista/imagenes/booOriginal.jpg";
+    }
+
 }
 

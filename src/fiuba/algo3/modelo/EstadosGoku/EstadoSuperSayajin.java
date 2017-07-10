@@ -222,5 +222,10 @@ public class EstadoSuperSayajin implements Estado {
 
     }
 
+    @Override
+    public String getDireccion() {
+        return "file:src/fiuba/algo3/vista/imagenes/gokuSuperSayajin.png";
+    }
+
 }
 

@@ -226,5 +226,10 @@ public class EstadoKaioKen implements Estado {
         return coordenadaFin;
     }
 
+    @Override
+    public String getDireccion() {
+        return "file:src/fiuba/algo3/vista/imagenes/gokuKaioKen.png";
+    }
+
 }
 

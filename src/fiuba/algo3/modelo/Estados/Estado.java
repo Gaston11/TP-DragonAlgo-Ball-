@@ -58,4 +58,6 @@ public interface Estado {
     int getVelocidad();
 
     Coordenada obtenerCoordenadaValida(Coordenada coordenadaIni, Coordenada coordenadaFin);
+
+    String getDireccion();
 }

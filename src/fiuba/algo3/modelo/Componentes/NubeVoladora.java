@@ -32,6 +32,16 @@ public class NubeVoladora extends Consumible implements Estado{
         return this;
     }
 
+    @Override
+    public String getDireccion() {
+        return "file:src/fiuba/algo3/vista/imagenes/nube2.png";
+    }
+
+    @Override
+    public String getNombre() {
+        return "Nube voladora";
+    }
+
     public void agregarPersonaje(Personaje personaje){
         this.personaje = personaje;
     }
@@ -254,14 +264,19 @@ public class NubeVoladora extends Consumible implements Estado{
         }
         return coordenadaFin;
     }
-
+/*
     @Override
     public String getNombre() {
         return "Nube voladora";
     }
-
+*/
     @Override
     public boolean esUnPersonaje() {
         return false;
+    }
+
+    @Override
+    public Coordenada getCoordenada() {
+        return this.coordenada;
     }
 }

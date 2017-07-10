@@ -168,14 +168,8 @@ public class Piccolo extends Personaje implements PersonajeBueno {
     }
 
     @Override
-    public ImageView dibujar() {
-        Image imagenGoku = new Image("file:src/fiuba/algo3/vista/imagenes/Piccolo.jpg");
-        ImageView contenedorImage = new ImageView();
-        contenedorImage.setFitHeight(50);
-        contenedorImage.setFitWidth(50);
-        contenedorImage.setImage(imagenGoku);
-        contenedorImage.setOpacity(1);
-        return contenedorImage;
+    public String getDireccion() {
+        return estado.getDireccion();
     }
 
     @Override

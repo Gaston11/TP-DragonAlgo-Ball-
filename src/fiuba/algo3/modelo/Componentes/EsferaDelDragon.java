@@ -24,6 +24,11 @@ public class EsferaDelDragon extends Consumible implements Estado{
     }
 
     @Override
+    public String getDireccion() {
+        return "file:src/fiuba/algo3/vista/imagenes/bola2.png";
+    }
+
+    @Override
     public int aumentarVida() {
         return 0;
     }
@@ -202,11 +207,16 @@ public class EsferaDelDragon extends Consumible implements Estado{
 
     @Override
     public String getNombre() {
-        return "Esfera de dragón";
+        return "Esfera del dragon";
     }
 
     @Override
     public boolean esUnPersonaje() {
         return false;
+    }
+
+    @Override
+    public Coordenada getCoordenada() {
+        return this.coordenada;
     }
 }

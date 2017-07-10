@@ -217,6 +217,11 @@ public class SuperSayajinFase2 implements Estado {
         return coordenadaFin;
     }
 
+    @Override
+    public String getDireccion() {
+        return "file:src/fiuba/algo3/vista/imagenes/gohanSuperSayajin2.png";
+    }
+
 
 }
 

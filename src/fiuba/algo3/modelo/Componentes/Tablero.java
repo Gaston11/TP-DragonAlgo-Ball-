@@ -229,4 +229,8 @@ public class Tablero {
         }
 
     }
+
+    public int getDimension() {
+        return dimension;
+    }
 }
