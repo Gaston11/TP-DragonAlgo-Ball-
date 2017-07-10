@@ -3,9 +3,6 @@ package fiuba.algo3.modelo.Componentes;
 import java.util.*;
 import java.util.Iterator;
 
-import fiuba.algo3.modelo.Personajes.Equipo;
-import fiuba.algo3.modelo.Personajes.EquipoEnemigos;
-import fiuba.algo3.modelo.Personajes.EquipoGuerrerosZ;
 import fiuba.algo3.modelo.Personajes.Personaje;
 import fiuba.algo3.modelo.excepciones.*;
 
