@@ -5,10 +5,7 @@ import fiuba.algo3.modelo.Componentes.Coordenada;
 import fiuba.algo3.modelo.Juego.Juego;
 import fiuba.algo3.modelo.Personajes.Personaje;
 import fiuba.algo3.modelo.Personajes.UbicableV2;
-import fiuba.algo3.modelo.excepciones.CeldaOcupadaException;
-import fiuba.algo3.modelo.excepciones.NoSePuedeMoverPersonajeException;
-import fiuba.algo3.modelo.excepciones.PersonajeInvalidoNoEsPersonajeBuenoException;
-import fiuba.algo3.modelo.excepciones.PersonajeInvalidoNoEsPersonajeMaloException;
+import fiuba.algo3.modelo.excepciones.*;
 import fiuba.algo3.vista.Campo;
 import fiuba.algo3.vista.Casillero1;
 import fiuba.algo3.vista.Controlador;
@@ -32,6 +29,7 @@ public class BotonMoverEventHandler implements EventHandler<ActionEvent> {
     private UbicableV2 personaje = null;
     private Coordenada coordenadaIni = null;
     private Coordenada coordenadaFin = null;
+    private Alertas alerta = new Alertas();
 
     public BotonMoverEventHandler(Juego juego, ContenedorPrincipal contenedor){
 
@@ -89,10 +87,9 @@ public class BotonMoverEventHandler implements EventHandler<ActionEvent> {
                 this.mensajeVelocidadMenorALaDistancia();
                 this.inicializarValores();
                 contenedor.escribirConsola("NoSePuedeMoverPersonajeException", javafx.scene.paint.Color.RED);
-            } catch (Exception e){
+            } catch (Exception e) {
                 this.inicializarValores();
                 contenedor.escribirConsola("Excepción no manejada", javafx.scene.paint.Color.RED);
-
             }
 
         }

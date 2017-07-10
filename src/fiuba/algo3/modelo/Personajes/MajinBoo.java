@@ -47,6 +47,7 @@ public class MajinBoo extends Personaje implements PersonajeMalo{
         if (this.ki<kiNecesario) {
             throw new NoSePuedeConvertirAlPersonajeEnEstadoChocolateException();
         }
+        this.ki-=kiNecesario;
         enemigo.convertimeEnChocolate();
     }
 

@@ -99,7 +99,7 @@ public class Gohan extends Personaje implements PersonajeBueno{
 
     @Override
     public void convertimeEnChocolate() {
-        this.estado = new EstadoChocolate(estado);
+        this.estado = new EstadoChocolate(estado,this);
     }
 
     public void masenko(PersonajeMalo enemigo){

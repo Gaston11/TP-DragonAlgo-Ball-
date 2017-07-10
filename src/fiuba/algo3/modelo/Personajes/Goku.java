@@ -9,6 +9,7 @@ import fiuba.algo3.modelo.EstadosGoku.*;
 import fiuba.algo3.modelo.excepciones.FuegoAmigoException;
 import fiuba.algo3.modelo.excepciones.NoSePuedeAtacarPersonajePorNoEstarEnDistanciaDeAtaqueException;
 import fiuba.algo3.modelo.excepciones.NoSePuedeAtacarPersonajePorNoPoseerKiSuficienteException;
+import fiuba.algo3.modelo.excepciones.PersonajeEnEstadoChocolateExcepcion;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -79,16 +80,18 @@ public class Goku extends Personaje implements PersonajeBueno{
 
 
     public void kamehameha(PersonajeMalo enemigo){
+
         int distancia = enemigo.calcularDistanciaDesde(this.coordenada);
         if (!estado.distanciaPermitida(distancia)){
+
             throw new NoSePuedeAtacarPersonajePorNoEstarEnDistanciaDeAtaqueException();
         }
-
         if(ki<kiNecesario){
             throw new NoSePuedeAtacarPersonajePorNoPoseerKiSuficienteException();
         }
         estado.ataqueEspecial(enemigo,this);
         this.ki -= kiNecesario;
+
     }
 
     public void kamehameha(PersonajeBueno amigo){
@@ -97,10 +100,12 @@ public class Goku extends Personaje implements PersonajeBueno{
 
     @Override
     public void mover(Coordenada coordenada) {
+
         Coordenada coordenada1 = this.estado.obtenerCoordenadaValida(this.coordenada,coordenada);
         this.coordenada = coordenada1;
         this.versorPersonaje = new VersorDireccion(coordenada);
         this.ki += this.kiPorTurno;
+
     }
 
     @Override
@@ -116,7 +121,7 @@ public class Goku extends Personaje implements PersonajeBueno{
 
     @Override
     public void convertimeEnChocolate() {
-        this.estado = new EstadoChocolate(estado);
+        this.estado = new EstadoChocolate(estado,this);
     }
 
 

@@ -16,11 +16,13 @@ import fiuba.algo3.modelo.excepciones.PersonajeEnEstadoChocolateExcepcion;
 public class EstadoChocolate implements Estado {
 
     private int turnosDuracion;
+    private Personaje personaje;
     private Estado estado;
 
-    public EstadoChocolate(Estado estadoActual){
+    public EstadoChocolate(Estado estadoActual, Personaje personaje){
         this.turnosDuracion = 3;
-        estado = estadoActual;
+        this.estado = estadoActual;
+        this.personaje = personaje;
     }
 
     public Estado decrementarDuracion(){
@@ -136,6 +138,11 @@ public class EstadoChocolate implements Estado {
 
     @Override
     public Coordenada obtenerCoordenadaValida(Coordenada coordenadaIni, Coordenada coordenadaFin) {
+        turnosDuracion -= 1;
+        if (turnosDuracion > 0) {
+            throw new PersonajeEnEstadoChocolateExcepcion();
+        }
+        personaje.volverAlEstadoAnterior(estado);
         throw new NoSePuedeMoverPersonajeException();
     }
 

@@ -82,7 +82,16 @@ public class Alertas {
     public void alertaNoPoseeSuficienteKiParaRealizarElAtaque() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Excepcion");
-        alert.setHeaderText(" Posee suficiente ki para atacar.");
+        alert.setHeaderText(" No posee suficiente ki para atacar.");
+        String mensaje = " Intente nuevamente.";
+        alert.setContentText(mensaje);
+        alert.show();
+    }
+
+    public void alertaPersonajeEnEstadoChocolate() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Excepcion");
+        alert.setHeaderText("Personaje en estado chocolate.");
         String mensaje = " Intente nuevamente.";
         alert.setContentText(mensaje);
         alert.show();
