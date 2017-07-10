@@ -90,4 +90,15 @@ public class Casillero1 extends StackPane {
     public void setImagen(ImageView imagen) {
         this.imagen = imagen;
     }
+
+    public void dibujarConsumible(Consumible consumible) {
+        Image imagen = new Image(consumible.getDireccion());
+        ImageView contenedorImagen = new ImageView();
+        contenedorImagen.setFitHeight(50);
+        contenedorImagen.setFitWidth(50);
+        contenedorImagen.setImage(imagen);
+        contenedorImagen.setOpacity(1);
+        this.imagen = contenedorImagen;
+        this.getChildren().add(this.imagen);
+    }
 }

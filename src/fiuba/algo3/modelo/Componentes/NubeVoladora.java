@@ -7,10 +7,12 @@ import fiuba.algo3.modelo.Personajes.PersonajeBueno;
 import fiuba.algo3.modelo.Personajes.PersonajeMalo;
 import fiuba.algo3.modelo.excepciones.NoSePuedeMoverPersonajeException;
 
+import java.awt.image.DirectColorModel;
+
 public class NubeVoladora extends Consumible implements Estado{
 
     private int turnos;
-    private Estado estadoAnterior;
+    private Estado estadoAnterior = null;
     private Personaje personaje;
     private int velocidad;
 
@@ -34,7 +36,13 @@ public class NubeVoladora extends Consumible implements Estado{
 
     @Override
     public String getDireccion() {
-        return "file:src/fiuba/algo3/vista/imagenes/nube2.png";
+        String direccion;
+        if(estadoAnterior==null){
+            direccion = "file:src/fiuba/algo3/vista/imagenes/nube2.png";
+        }else{
+            direccion = estadoAnterior.getDireccion();
+        }
+        return direccion;
     }
 
     @Override

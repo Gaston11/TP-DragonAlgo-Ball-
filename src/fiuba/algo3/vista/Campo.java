@@ -34,7 +34,7 @@ public class Campo extends BorderPane{
         contenedor = new VBox();
         Pane root = new Pane();
         root.setPrefSize(400, 400);
-        //this.generarConsumibles(tablero);
+        this.generarConsumibles(tablero);
 
         VBox contenedorFilas = new VBox();
         for (int fil = 0; fil < 10; fil++) {
@@ -64,6 +64,7 @@ public class Campo extends BorderPane{
         Consumible consumible = consumibles.get(numero.nextInt(consumibles.size()-1));
         consumible.posicionarEn(coordenada);
         Celda celdaConConsumible = new Celda(coordenada);
+        celdaConConsumible.colocarConsumible(consumible);
         tablero.colocarCeldaEnTablero(celdaConConsumible);
     }
 
@@ -77,7 +78,7 @@ public class Campo extends BorderPane{
                 ContenedorPersonaje contenedorPersonaje = new ContenedorPersonaje(tablero.obtenerPersonajeEn(coordenada));
                 contenedor.getChildren().add(contenedorPersonaje.informacionPersonaje());
             }else {
-                //casillero.dibujarUbicable(tablero.obtenerConsumible(coordenada));
+                casillero.dibujarConsumible(tablero.obtenerConsumible(coordenada));
             }
 
         }

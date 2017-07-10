@@ -17,7 +17,7 @@ public class Nada extends Consumible {
 
     @Override
     public String getDireccion() {
-        return "";
+        return "file:src/fiuba/algo3/vista/imagenes/nube1.png";
     }
 
     @Override
