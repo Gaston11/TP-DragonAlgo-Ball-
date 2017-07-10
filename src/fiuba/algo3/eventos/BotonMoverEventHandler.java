@@ -90,6 +90,7 @@ public class BotonMoverEventHandler implements EventHandler<ActionEvent> {
             } catch (Exception e) {
                 this.inicializarValores();
                 contenedor.escribirConsola("Excepción no manejada", javafx.scene.paint.Color.RED);
+                Alertas.alertaGenerica("Movimiento inválido");
             }
 
         }

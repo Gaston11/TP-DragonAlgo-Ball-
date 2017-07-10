@@ -154,7 +154,7 @@ public class Tablero {
 	}
 
 
-	public Personaje mover(Coordenada unaCoordenada, Coordenada unaCoordenada1) {
+	public boolean mover(Coordenada unaCoordenada, Coordenada unaCoordenada1) {
 		Celda celda = new Celda(unaCoordenada);
 		if(!celdaOcupadaConPersonaje(celda)){
 			throw new NoSeleccionoNingunPersonajeException();
@@ -162,7 +162,7 @@ public class Tablero {
 		celda = this.obtenerCelda(celda);
 		Personaje personaje = celda.getPersonaje();
 		this.moverPersonaje(personaje, unaCoordenada1);
-		return personaje;
+		return true;
 	}
 
 	public boolean celdaOcupadaConPersonaje(Celda celda) {
