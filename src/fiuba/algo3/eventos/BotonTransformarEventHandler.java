@@ -20,6 +20,7 @@ public class BotonTransformarEventHandler implements EventHandler<ActionEvent> {
 
     private Juego juego;
     private Coordenada coordenada = null;
+    private Alertas alerta = new Alertas();
 
     public BotonTransformarEventHandler(Juego juego){
         this.juego = juego;
@@ -37,62 +38,26 @@ public class BotonTransformarEventHandler implements EventHandler<ActionEvent> {
     public void handle(ActionEvent event) {
 
         if(coordenada == null){
-            this.alertaNoSeleccionoNingunPersonaje();
+            alerta.alertaNoSeleccionoNingunPersonaje();
         }
 
         if (coordenada != null){
             try {
                 juego.transformar(coordenada);
             }catch (PersonajeInvalidoNoEsPersonajeBuenoException e){
-                this.alertaNoPerteneceEquipoZ();
+                alerta.alertaNoPerteneceEquipoZ();
                 this.inicializarValores();
             } catch (PersonajeInvalidoNoEsPersonajeMaloException e){
-                this.alertaNoPerteneceEquipoEnemigo();
+                alerta.alertaNoPerteneceEquipoEnemigo();
                 this.inicializarValores();
             }catch (NoSePuedeTransformarPersonajeException e){
-                this.alertaNoSePuedeTransformar();
+                alerta.alertaNoSePuedeTransformar();
                 this.inicializarValores();
             }
         }
         Controlador.getControlador().actualizar();
         Controlador.getControlador().inicializarBotones();
         this.inicializarValores();
-    }
-
-    private void alertaNoSePuedeTransformar() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Excepcion");
-        alert.setHeaderText("No se puede transformar.");
-        String mensaje = "Intente nuevamente";
-        alert.setContentText(mensaje);
-        alert.show();
-    }
-
-    private void alertaNoPerteneceEquipoEnemigo() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Excepcion");
-        alert.setHeaderText("No pertenece a equipo enemigo.");
-        String mensaje = "Intente nuevamente";
-        alert.setContentText(mensaje);
-        alert.show();
-    }
-
-    private void alertaNoPerteneceEquipoZ() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Excepcion");
-        alert.setHeaderText("No pertenece a equipo Z");
-        String mensaje = "Intente nuevamente";
-        alert.setContentText(mensaje);
-        alert.show();
-    }
-
-    private void alertaNoSeleccionoNingunPersonaje() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Excepcion");
-        alert.setHeaderText("No selecciono ningun personaje.");
-        String mensaje = "Intente nuevamente";
-        alert.setContentText(mensaje);
-        alert.show();
     }
 
     public void inicializarValores() {

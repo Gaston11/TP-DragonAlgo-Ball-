@@ -1,6 +1,7 @@
 package fiuba.algo3.vista;
 
 import fiuba.algo3.eventos.BotonAtaqueBasicoEventHandler;
+import fiuba.algo3.eventos.BotonAtaqueEspecialEventHandler;
 import fiuba.algo3.eventos.BotonMoverEventHandler;
 import fiuba.algo3.eventos.BotonTransformarEventHandler;
 import fiuba.algo3.modelo.Componentes.Coordenada;
@@ -20,6 +21,7 @@ public class Controlador {
     private BotonMoverEventHandler botonMover;
     private ContenedorPrincipal contenedor;
     private BotonAtaqueBasicoEventHandler botonAtaqueBasico;
+    private BotonAtaqueEspecialEventHandler botonAtaqueEspecial;
     private BotonTransformarEventHandler botonTransformar;
     private Casillero1 casilleroAnterior;
     private Juego juego;
@@ -55,6 +57,7 @@ public class Controlador {
         this.casilleroAnterior = casillero;
         botonMover.setUbicable(casillero);
         botonAtaqueBasico.setUbicable(casillero);
+        botonAtaqueEspecial.setUbicable(casillero);
         botonTransformar.setUbicable(casillero);
     }
 
@@ -74,5 +77,9 @@ public class Controlador {
         botonMover.inicializarValores();
         botonAtaqueBasico.inicializarValores();
         botonTransformar.inicializarValores();
+    }
+
+    public void setBotonAtaqueEspecial(BotonAtaqueEspecialEventHandler botonAtaqueEspecial) {
+        this.botonAtaqueEspecial = botonAtaqueEspecial;
     }
 }

@@ -1,6 +1,7 @@
 package fiuba.algo3.vista;
 
 import fiuba.algo3.eventos.BotonAtaqueBasicoEventHandler;
+import fiuba.algo3.eventos.BotonAtaqueEspecialEventHandler;
 import fiuba.algo3.eventos.BotonMoverEventHandler;
 import fiuba.algo3.eventos.BotonTransformarEventHandler;
 import fiuba.algo3.modelo.Juego.Juego;
@@ -106,6 +107,9 @@ public class ContenedorPrincipal extends BorderPane {
 
         Button botonAtaqueEspecial = new Button();
         botonAtaqueEspecial.setText("Especial");
+        BotonAtaqueEspecialEventHandler ataqueEspecialEventHandler = new BotonAtaqueEspecialEventHandler(juego);
+        botonAtaqueEspecial.setOnAction(ataqueEspecialEventHandler);
+        Controlador.getControlador().setBotonAtaqueEspecial(ataqueEspecialEventHandler);
 
         VBox contenedor = new VBox( etiquetaAtaque, botonAtaqueBasico,botonAtaqueEspecial);
         contenedor.setSpacing(10);
@@ -123,22 +127,6 @@ public class ContenedorPrincipal extends BorderPane {
         this.menuBar = new BarraDeMenu(stage);
         this.setTop(menuBar);
     }
-
-    /*
-    private void setBotonera(Robot robot) {
-        Button botonArriba = new Button();
-        botonMover.setText("Arriba");
-        BotonMoverHandler moveButtonHandler = new BotonMoverHandler(vistaRobot, robot);
-        botonMover.setOnAction(moveButtonHandler);
-        Button botonDireccion = new Button();
-        botonDireccion.setText("Cambiar direccion");
-        BotonDireccionHandler directionButtonHandler = new BotonDireccionHandler(robot);
-        botonDireccion.setOnAction(directionButtonHandler);
-        VBox contenedorVertical = new VBox(botonMover, botonDireccion);
-        contenedorVertical.setSpacing(10);
-        contenedorVertical.setPadding(new Insets(15));
-        this.setLeft(contenedorVertical);
-    }*/
 
     private void setDerecha(){
         this.informacionEnemigo = new Canvas(200, this.getHeight());

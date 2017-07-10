@@ -1,6 +1,5 @@
 package fiuba.algo3.eventos;
 
-import fiuba.algo3.modelo.Componentes.Celda;
 import fiuba.algo3.modelo.Componentes.Coordenada;
 import fiuba.algo3.modelo.Juego.Juego;
 import fiuba.algo3.modelo.Personajes.Personaje;
@@ -9,25 +8,25 @@ import fiuba.algo3.vista.Casillero1;
 import fiuba.algo3.vista.Controlador;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.Alert;
 
 /**
- * Created by noe on 08/07/17.
+ * Created by noe on 10/07/17.
  */
-public class BotonAtaqueBasicoEventHandler implements EventHandler<ActionEvent> {
+public class BotonAtaqueEspecialEventHandler implements EventHandler<ActionEvent>{
 
     private Juego juego;
     private Personaje atacante = null;
-    private Coordenada coordAtacante;
     private Personaje atacado = null;
+    private Coordenada coordAtacante;
     private Coordenada coordAtacado;
     private Alertas alerta = new Alertas();
 
-    public BotonAtaqueBasicoEventHandler(Juego juego){
+    public BotonAtaqueEspecialEventHandler(Juego juego){
         this.juego = juego;
+
     }
 
-    public void setUbicable(Casillero1 casillero) {
+    public void setUbicable(Casillero1 casillero){
         Coordenada coordenada = new Coordenada(casillero.getFila(), casillero.getColumna());
         if (juego.getTablero().celdaOcupadaConPersonaje(coordenada)) {
             if (atacante == null && atacado == null) {
@@ -46,43 +45,44 @@ public class BotonAtaqueBasicoEventHandler implements EventHandler<ActionEvent> 
         }
     }
 
+    private void inicializarValores() {
+        atacado = null;
+        atacante = null;
+        coordAtacante = null;
+        coordAtacado = null;
+    }
+
     @Override
     public void handle(ActionEvent event) {
 
-        if(atacado == null || atacante == null){
+        if (atacante == null && atacado == null){
             alerta.alertaNoSeleccionoNingunPersonaje();
         }
 
         try {
-            juego.atacar(coordAtacante,coordAtacado);
+            juego.atacarEspecial(coordAtacante,coordAtacado);
             Controlador.getControlador().actualizar();
-            }catch (PersonajeInvalidoNoEsPersonajeMaloException e){
-                alerta.alertaPersonajeNoEsEnemigo();
-                this.inicializarValores();
-            }catch (PersonajeInvalidoNoEsPersonajeBuenoException e){
-                alerta.alertaPersonajeNoEsZ();
-                this.inicializarValores();
-            }catch (NoSePuedeCalcularLaDistanciaException e){
-                alerta.alertaPersonajeAtacadoNoSePuedeCalcularDistancia();
-                this.inicializarValores();
-            }catch (NoSePuedeAtacarPersonajePorNoEstarEnDistanciaDeAtaqueException e){
-                alerta.alertaPersonajeAtacadoNoSeEncuentraDentroDeDistanciaDeAtaque();
-                this.inicializarValores();
-            }catch (NoSeleccionoNingunPersonajeException e) {
-                alerta.alertaNoSeleccionoNingunPersonaje();
-                this.inicializarValores();
-            }
+        }catch (PersonajeInvalidoNoEsPersonajeMaloException e){
+            alerta.alertaPersonajeNoEsEnemigo();
+            this.inicializarValores();
+        }catch (PersonajeInvalidoNoEsPersonajeBuenoException e){
+            alerta.alertaPersonajeNoEsZ();
+            this.inicializarValores();
+        }catch (NoSePuedeCalcularLaDistanciaException e){
+            alerta.alertaPersonajeAtacadoNoSePuedeCalcularDistancia();
+            this.inicializarValores();
+        }catch (NoSePuedeAtacarPersonajePorNoEstarEnDistanciaDeAtaqueException e){
+            alerta.alertaPersonajeAtacadoNoSeEncuentraDentroDeDistanciaDeAtaque();
+            this.inicializarValores();
+        }catch (NoSeleccionoNingunPersonajeException e) {
+            alerta.alertaNoSeleccionoNingunPersonaje();
+            this.inicializarValores();
+        } catch (NoSePuedeAtacarPersonajePorNoPoseerKiSuficienteException e){
+            alerta.alertaNoPoseeSuficienteKiParaRealizarElAtaque();
+            this.inicializarValores();
+        }
 
         Controlador.getControlador().inicializarBotones();
         this.inicializarValores();
-
     }
-
-    public void inicializarValores() {
-        coordAtacado = null;
-        coordAtacante = null;
-        atacado = null;
-        atacante = null;
-    }
-
 }
