@@ -49,16 +49,15 @@ public final class Alertas {
         alertaGenerica("Personaje en estado chocolate");
     }
 
-<<<<<<< HEAD
-    public void mostrarGanador(String s) {
+    public static void mostrarGanador(String s) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Excepcion");
-        alert.setHeaderText("Tenemos un ganador!");
+        alert.setHeaderText("Tenemos un ganador!!");
         String mensaje = s;
         alert.setContentText(mensaje);
         alert.show();
     }
-=======
+
     public static void alertaGenerica(String texto){
         alertaGenerica(texto, "error");
     }
@@ -75,5 +74,4 @@ public final class Alertas {
         alerta.show();
     }
 
->>>>>>> 476a5dd7067d81ff37c63f209562387108d06099
 }

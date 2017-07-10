@@ -1,6 +1,7 @@
 package fiuba.algo3.vista;
 
 import fiuba.algo3.modelo.Personajes.Cell;
+import javafx.scene.image.ImageView;
 
 /**
  * Created by Nico on 9/7/2017.
@@ -20,5 +21,10 @@ public class VistaCell extends VistaPersonajes{
     @Override
     public void dibujarEnCostado() {
 
+    }
+
+    @Override
+    public ImageView dibujarTransformacion() {
+        
     }
 }

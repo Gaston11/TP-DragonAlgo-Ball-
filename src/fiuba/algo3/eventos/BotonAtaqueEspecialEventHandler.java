@@ -79,19 +79,14 @@ public class BotonAtaqueEspecialEventHandler implements EventHandler<ActionEvent
         } catch (NoSePuedeAtacarPersonajePorNoPoseerKiSuficienteException e){
             Alertas.alertaNoPoseeSuficienteKiParaRealizarElAtaque();
             this.inicializarValores();
-<<<<<<< HEAD
         } catch (PersonajeEnEstadoChocolateExcepcion ignored) {
-            alerta.alertaPersonajeEnEstadoChocolate();
-=======
-        } catch (PersonajeEnEstadoChocolateExcepcion ignored){
             Alertas.alertaPersonajeEnEstadoChocolate();
->>>>>>> 476a5dd7067d81ff37c63f209562387108d06099
             this.inicializarValores();
         }catch (PersonajeEstaMuertoException e){
             juego.getTablero().liberarCeldaEnTablero(coordAtacado);
-            this.inicializarValores();
+            Controlador.getControlador().actualizar();
         } catch (TenemosUnGanadorException e){
-            alerta.mostrarGanador(juego.obtenerGanador());
+            Alertas.mostrarGanador(juego.obtenerGanador());
             this.inicializarValores();
         }
 

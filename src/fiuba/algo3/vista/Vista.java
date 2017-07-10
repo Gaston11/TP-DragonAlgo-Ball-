@@ -11,6 +11,7 @@ public class Vista extends ImageView{
 
 
     private ImageView ubicableImagen;
+    private VistaPersonajes estado;
     private UbicableV2 ubicable;
 
     public Vista(UbicableV2 personaje){

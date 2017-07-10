@@ -20,6 +20,7 @@ public class BotonTransformarEventHandler implements EventHandler<ActionEvent> {
 
     private Juego juego;
     private Coordenada coordenada = null;
+    private Casillero1 casillero;
     private Alertas alerta = new Alertas();
 
     public BotonTransformarEventHandler(Juego juego){
@@ -29,7 +30,8 @@ public class BotonTransformarEventHandler implements EventHandler<ActionEvent> {
     public void setUbicable(Casillero1 casillero) {
 
         if (casillero.getUbicable().esUnPersonaje()){
-            coordenada = new Coordenada(casillero.getFila(),casillero.getColumna());
+            this.coordenada = new Coordenada(casillero.getFila(),casillero.getColumna());
+            this.casillero = casillero;
         }
 
     }
@@ -44,6 +46,7 @@ public class BotonTransformarEventHandler implements EventHandler<ActionEvent> {
         if (coordenada != null){
             try {
                 juego.transformar(coordenada);
+                casillero.dibujarPersonajeTransformado(casillero.getUbicable());
             }catch (PersonajeInvalidoNoEsPersonajeBuenoException e){
                 alerta.alertaNoPerteneceEquipoZ();
                 this.inicializarValores();

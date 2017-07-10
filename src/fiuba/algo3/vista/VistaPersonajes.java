@@ -43,4 +43,6 @@ public abstract class VistaPersonajes implements VistaUbicable{
         this.urls.put("urlImagenTablero", urlImagenTableroTransformado);
         this.urls.put("urlCostado", urlImagenCostadoTransformado);
     }
+
+    public abstract ImageView dibujarTransformacion();
 }

@@ -80,4 +80,8 @@ public class Casillero1 extends StackPane {
     public void desmarcarCelda(){
         cuadroResaltado.setOpacity(0);
     }
+
+    public void dibujarPersonajeTransformado(UbicableV2 ubicable) {
+
+    }
 }
