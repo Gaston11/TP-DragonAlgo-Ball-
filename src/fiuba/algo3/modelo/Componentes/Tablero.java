@@ -149,18 +149,22 @@ public class Tablero {
 
 	public boolean mover(Coordenada unaCoordenada, Coordenada unaCoordenada1) {
 		Celda celda = new Celda(unaCoordenada);
+
 		if(!celdaOcupadaConPersonaje(celda)){
 			throw new NoSeleccionoNingunPersonajeException();
 		}
+
 		celda = this.obtenerCelda(celda);
 		Celda celdaFin = this.obtenerCelda(unaCoordenada1);
 		Personaje personaje = celda.getPersonaje();
+
 		if ((celdaFin!=null) && (celdaFin.getPersonaje() == null)){
 			celdaFin.colocarPersonaje(personaje);
 			this.liberarCeldaEnTablero(unaCoordenada);
 		}else {
 			this.moverPersonaje(personaje, unaCoordenada1);
 		}
+
 		return true;
 	}
 
