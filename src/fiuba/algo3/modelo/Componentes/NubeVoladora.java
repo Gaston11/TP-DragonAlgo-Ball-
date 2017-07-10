@@ -290,6 +290,7 @@ public class NubeVoladora extends Consumible implements Estado{
 
     @Override
     public Coordenada getCoordenada() {
+
         return this.coordenada;
     }
 }
