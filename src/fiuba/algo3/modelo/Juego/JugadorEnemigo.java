@@ -26,16 +26,15 @@ public class JugadorEnemigo extends Jugador{
     }
 
     @Override
-    public void ataqueBasico(Personaje personaje, Personaje enemigo) {
+    public boolean ataqueBasico(Personaje personaje, Personaje enemigo) {
 
-        this.obtenerPersonajeEnemigo(personaje).ataqueBasico(this.rival.obtenerPersonajeZ(enemigo));
+        return this.obtenerPersonajeEnemigo(personaje).ataqueBasico(this.rival.obtenerPersonajeZ(enemigo));
 
     }
 
     @Override
-    public void ataqueEspecial(Personaje personaje, Personaje enemigo) {
-
-        this.obtenerPersonajeEnemigo(personaje).ataqueEspecial(this.rival.obtenerPersonajeZ(enemigo));
+    public boolean ataqueEspecial(Personaje personaje, Personaje enemigo) {
+        return this.obtenerPersonajeEnemigo(personaje).ataqueEspecial(this.rival.obtenerPersonajeZ(enemigo));
     }
 
     @Override

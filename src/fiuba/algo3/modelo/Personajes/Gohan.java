@@ -1,12 +1,8 @@
 package fiuba.algo3.modelo.Personajes;
 
 import fiuba.algo3.modelo.Componentes.Consumible;
-import fiuba.algo3.modelo.Componentes.EsferaDelDragon;
 import fiuba.algo3.modelo.Componentes.VersorDireccion;
 import fiuba.algo3.modelo.Estados.*;
-import fiuba.algo3.modelo.Personajes.Personaje;
-import fiuba.algo3.modelo.Personajes.PersonajeBueno;
-import fiuba.algo3.modelo.Personajes.PersonajeMalo;
 import fiuba.algo3.modelo.Componentes.Coordenada;
 import fiuba.algo3.modelo.EstadosGohan.EstadoNormal;
 import fiuba.algo3.modelo.Estados.Estado;
@@ -64,17 +60,19 @@ public class Gohan extends Personaje implements PersonajeBueno{
     }
 
     @Override
-    public void ataqueBasico(PersonajeMalo unPersonaje) {
+    public boolean ataqueBasico(PersonajeMalo unPersonaje) {
         int distancia = unPersonaje.calcularDistanciaDesde(this.coordenada);
         if (!estado.distanciaPermitida(distancia)){
             throw new NoSePuedeAtacarPersonajePorNoEstarEnDistanciaDeAtaqueException();
         }
         estado.ataqueBasico(unPersonaje,this);
+        return true;
     }
 
     @Override
-    public void ataqueEspecial(PersonajeMalo enemigo) {
+    public boolean ataqueEspecial(PersonajeMalo enemigo) {
         this.masenko(enemigo);
+        return true;
     }
 
     @Override
@@ -83,12 +81,13 @@ public class Gohan extends Personaje implements PersonajeBueno{
     }
 
     @Override
-    public void ataqueEspecial(PersonajeBueno enemigo) {
+    public boolean ataqueEspecial(PersonajeBueno enemigo) {
         this.masenko(enemigo);
+        return true;
     }
 
     @Override
-    public void ataqueBasico(PersonajeBueno unPersonaje) {
+    public boolean ataqueBasico(PersonajeBueno unPersonaje) {
         throw new FuegoAmigoException();
     }
 

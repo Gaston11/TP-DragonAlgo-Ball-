@@ -1,7 +1,6 @@
 package fiuba.algo3.modelo.Personajes;
 
 import fiuba.algo3.modelo.Componentes.*;
-import fiuba.algo3.modelo.Personajes.Personaje;
 import fiuba.algo3.modelo.Estados.Estado;
 import fiuba.algo3.modelo.EstadosCell.*;
 import fiuba.algo3.modelo.excepciones.FuegoAmigoException;
@@ -38,12 +37,13 @@ public class Cell extends Personaje implements PersonajeMalo{
     }
 
     @Override
-    public void  ataqueBasico(PersonajeBueno enemigo){
+    public boolean ataqueBasico(PersonajeBueno enemigo){
         int distancia = enemigo.calcularDistanciaDesde(this.coordenada);
         if (!estado.distanciaPermitida(distancia)){
             throw new NoSePuedeAtacarPersonajePorNoEstarEnDistanciaDeAtaqueException();
         }
         estado.ataqueBasico(enemigo,this);
+        return true;
     }
 
     public void absorber(PersonajeBueno enemigo){
@@ -83,18 +83,20 @@ public class Cell extends Personaje implements PersonajeMalo{
     }
 
     @Override
-    public void ataqueBasico(PersonajeMalo amigo){
+    public boolean ataqueBasico(PersonajeMalo amigo){
         throw new FuegoAmigoException();
     }
 
     @Override
-    public void ataqueEspecial(PersonajeMalo enemigo) {
+    public boolean ataqueEspecial(PersonajeMalo enemigo) {
         this.absorber(enemigo);
+        return true;
     }
 
     @Override
-    public void ataqueEspecial(PersonajeBueno enemigo) {
+    public boolean ataqueEspecial(PersonajeBueno enemigo) {
         this.absorber(enemigo);
+        return true;
     }
 
     @Override

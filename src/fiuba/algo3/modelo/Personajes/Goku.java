@@ -48,19 +48,20 @@ public class Goku extends Personaje implements PersonajeBueno{
     }
 
     @Override
-    public void ataqueBasico(PersonajeMalo enemigo){
+    public boolean ataqueBasico(PersonajeMalo enemigo){
 
         int distancia = enemigo.calcularDistanciaDesde(this.coordenada);
         if (!estado.distanciaPermitida(distancia)){
             throw new NoSePuedeAtacarPersonajePorNoEstarEnDistanciaDeAtaqueException();
         }
         estado.ataqueBasico(enemigo,this);
-
+        return true;
     }
 
     @Override
-    public void ataqueEspecial(PersonajeMalo enemigo) {
+    public boolean ataqueEspecial(PersonajeMalo enemigo) {
         this.kamehameha(enemigo);
+        return true;
     }
 
     @Override
@@ -69,12 +70,13 @@ public class Goku extends Personaje implements PersonajeBueno{
     }
 
     @Override
-    public void ataqueEspecial(PersonajeBueno enemigo) {
+    public boolean ataqueEspecial(PersonajeBueno enemigo) {
         this.kamehameha(enemigo);
+        return true;
     }
 
     @Override
-    public void ataqueBasico(PersonajeBueno amigo){
+    public boolean ataqueBasico(PersonajeBueno amigo){
         throw new FuegoAmigoException();
     }
 

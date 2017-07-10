@@ -1,5 +1,6 @@
 package fiuba.algo3.vista;
 
+import fiuba.algo3.eventos.Alertas;
 import fiuba.algo3.eventos.BotonEntrarEventHandler;
 import fiuba.algo3.modelo.Juego.Juego;
 import javafx.geometry.Insets;
@@ -14,6 +15,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 
 public class ContenedorBienvenidos extends VBox {
 
@@ -56,7 +59,22 @@ public class ContenedorBienvenidos extends VBox {
         layout2.getChildren().addAll( etiquetaJugadorEnemigo, texto2);
 
         BotonEntrarEventHandler botonEntrarHandler = new BotonEntrarEventHandler(stage, texto.getText(), texto2.getText());
-        botonEntrar.setOnAction(botonEntrarHandler);
+        //botonEntrar.setOnAction(botonEntrarHandler);
+        botonEntrar.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                if ((texto.getText() != null && !texto.getText().isEmpty())
+                    && texto2.getText() != null && !texto2.getText().isEmpty()) {
+                    ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage, texto.getText(), texto2.getText());
+                    stage.setScene(new Scene(contenedorPrincipal));
+                    stage.setFullScreenExitHint("");
+                    stage.setFullScreen(true);
+                } else {
+                    Alertas.alertaGenerica("Falta ingresar el nombre de alguno de los jugadores");
+                }
+            }
+        });
+
 
         this.getChildren().addAll(layout, layout2, botonEntrar );
     }
