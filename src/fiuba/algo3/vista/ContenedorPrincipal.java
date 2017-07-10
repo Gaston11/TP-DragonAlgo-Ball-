@@ -76,7 +76,7 @@ public class ContenedorPrincipal extends BorderPane {
 
         VBox contenedorAtaques = this.menuAtaques();
 
-        contenedorVertical.getChildren().addAll(botonMover,contenedorAtaques, botonTransformar, botonFinalizarTurno);
+        contenedorVertical.getChildren().addAll(contenedorAtaques, botonMover, botonTransformar, botonFinalizarTurno);
         contenedorVertical.setSpacing(10);
         this.setLeft(contenedorVertical);
     }
@@ -141,7 +141,6 @@ public class ContenedorPrincipal extends BorderPane {
         this.setCenter(campo.contenido(juego.getTablero()));
         this.setRight(campo.contenedor());
         this.setConsola();
-        this.escribirConsola("Turno jugador: " + this.juego.getJugadorActual().getNombre());
     }
 
 }

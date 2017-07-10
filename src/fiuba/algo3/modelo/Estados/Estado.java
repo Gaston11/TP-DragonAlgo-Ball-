@@ -53,6 +53,8 @@ public interface Estado {
 
     public abstract Coordenada moverAInferiorIzquierda(VersorDireccion unVersor);
 
+    public abstract int kiPorTurno();
+
     public abstract int getPoderPelea();
 
     int getVelocidad();
@@ -60,4 +62,6 @@ public interface Estado {
     Coordenada obtenerCoordenadaValida(Coordenada coordenadaIni, Coordenada coordenadaFin);
 
     String getDireccion();
+
+
 }

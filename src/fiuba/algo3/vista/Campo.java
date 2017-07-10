@@ -54,7 +54,6 @@ public class Campo extends BorderPane{
         }
         root.getChildren().add(contenedorFilas);
 
-
         return root;
     }
 

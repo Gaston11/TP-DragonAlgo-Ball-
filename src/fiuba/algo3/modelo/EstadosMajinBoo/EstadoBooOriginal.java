@@ -196,6 +196,11 @@ public class EstadoBooOriginal implements Estado {
     }
 
     @Override
+    public int kiPorTurno() {
+        return 5;
+    }
+
+    @Override
     public int getPoderPelea() {
         return poderPelea;
     }
