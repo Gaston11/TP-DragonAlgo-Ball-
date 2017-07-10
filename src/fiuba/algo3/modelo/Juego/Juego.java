@@ -113,4 +113,5 @@ public class Juego {
         Personaje personaje = tablero.obtenerPersonajeEn(cGoku);
         jugadorActual.transformar(personaje);
     }
+
 }

@@ -1,16 +1,11 @@
 package fiuba.algo3.vista;
 
-import fiuba.algo3.eventos.BotonAtaqueBasicoEventHandler;
-import fiuba.algo3.eventos.BotonAtaqueEspecialEventHandler;
-import fiuba.algo3.eventos.BotonMoverEventHandler;
-import fiuba.algo3.eventos.BotonTransformarEventHandler;
+import fiuba.algo3.eventos.*;
 import fiuba.algo3.modelo.Juego.Juego;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -58,18 +53,6 @@ public class ContenedorPrincipal extends BorderPane {
         this.escribirConsola("Turno jugador: " + this.juego.getJugadorActual().getNombre());
     }
 
-    private void juego(){
-
-        if (juego.obtenerGanador() == null){
-
-
-
-
-
-        }
-        //mostrar El ganador con un mensaje
-    }
-
     private void setBotonera(){
 
         Button botonMover = new Button();
@@ -77,7 +60,7 @@ public class ContenedorPrincipal extends BorderPane {
         BotonMoverEventHandler moverEventHandler = new BotonMoverEventHandler(juego, this);
         botonMover.setOnAction(moverEventHandler);
         Controlador.getControlador().setBotonMover(moverEventHandler);
-        //HBox contenedorPersonaje = this.elegirPersonaje();
+
         Button botonTransformar = new Button();
         botonTransformar.setText("Transformar");
         BotonTransformarEventHandler transformarEventHandler = new BotonTransformarEventHandler(juego);

@@ -74,6 +74,12 @@ public class BotonAtaqueBasicoEventHandler implements EventHandler<ActionEvent> 
             }catch (PersonajeEnEstadoChocolateExcepcion e) {
                 alerta.alertaPersonajeEnEstadoChocolate();
                 this.inicializarValores();
+            }catch (PersonajeEstaMuertoException e){
+                juego.getTablero().liberarCeldaEnTablero(coordAtacado);
+                this.inicializarValores();
+            } catch (TenemosUnGanadorException e){
+                alerta.mostrarGanador(juego.obtenerGanador());
+                this.inicializarValores();
             }
 
         Controlador.getControlador().inicializarBotones();

@@ -96,4 +96,13 @@ public class Alertas {
         alert.setContentText(mensaje);
         alert.show();
     }
+
+    public void mostrarGanador(String s) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Excepcion");
+        alert.setHeaderText("Tenemos un ganador!");
+        String mensaje = s;
+        alert.setContentText(mensaje);
+        alert.show();
+    }
 }

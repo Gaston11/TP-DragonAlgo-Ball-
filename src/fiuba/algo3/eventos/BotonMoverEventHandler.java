@@ -87,6 +87,9 @@ public class BotonMoverEventHandler implements EventHandler<ActionEvent> {
                 this.mensajeVelocidadMenorALaDistancia();
                 this.inicializarValores();
                 contenedor.escribirConsola("NoSePuedeMoverPersonajeException", javafx.scene.paint.Color.RED);
+            } catch (TenemosUnGanadorException e){
+                alerta.mostrarGanador(juego.obtenerGanador());
+                this.inicializarValores();
             } catch (Exception e) {
                 this.inicializarValores();
                 contenedor.escribirConsola("Excepción no manejada", javafx.scene.paint.Color.RED);

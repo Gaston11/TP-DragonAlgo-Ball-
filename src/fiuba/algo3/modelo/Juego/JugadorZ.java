@@ -81,10 +81,13 @@ public class JugadorZ extends Jugador{
         int i =0;
         while(estaMuerto && i<personajesZ.size()){
             estaMuerto = ((Personaje)personajesZ.get(i)).estaMuerto();
+            if (estaMuerto){
+                personajesZ.remove(i);
+            }
             i++;
         }
 
-        return estaMuerto;
+        return (personajesZ.size()==0);
     }
 
     @Override

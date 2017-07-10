@@ -6,15 +6,7 @@ import fiuba.algo3.eventos.BotonMoverEventHandler;
 import fiuba.algo3.eventos.BotonTransformarEventHandler;
 import fiuba.algo3.modelo.Componentes.Coordenada;
 import fiuba.algo3.modelo.Juego.Juego;
-import fiuba.algo3.modelo.Personajes.UbicableV2;
-import javafx.scene.control.*;
-import javafx.scene.control.TextField;
 
-import java.awt.*;
-
-/**
- * Created by noe on 08/07/17.
- */
 public class Controlador {
 
     private static Controlador instance = null;
