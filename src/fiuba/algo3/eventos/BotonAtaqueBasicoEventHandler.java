@@ -71,6 +71,9 @@ public class BotonAtaqueBasicoEventHandler implements EventHandler<ActionEvent> 
             }catch (NoSeleccionoNingunPersonajeException e) {
                 Alertas.alertaNoSeleccionoNingunPersonaje();
                 this.inicializarValores();
+            }catch (PersonajeEnEstadoChocolateExcepcion e) {
+                alerta.alertaPersonajeEnEstadoChocolate();
+                this.inicializarValores();
             }
 
         Controlador.getControlador().inicializarBotones();

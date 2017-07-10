@@ -88,7 +88,7 @@ public class Piccolo extends Personaje implements PersonajeBueno {
 
     @Override
     public void convertimeEnChocolate(){
-        this.estado = new EstadoChocolate(estado);
+        this.estado = new EstadoChocolate(estado,this);
     }
 
     @Override

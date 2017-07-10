@@ -79,6 +79,9 @@ public class BotonAtaqueEspecialEventHandler implements EventHandler<ActionEvent
         } catch (NoSePuedeAtacarPersonajePorNoPoseerKiSuficienteException e){
             Alertas.alertaNoPoseeSuficienteKiParaRealizarElAtaque();
             this.inicializarValores();
+        } catch (PersonajeEnEstadoChocolateExcepcion ignored){
+            alerta.alertaPersonajeEnEstadoChocolate();
+            this.inicializarValores();
         }
 
         Controlador.getControlador().inicializarBotones();
