@@ -82,17 +82,14 @@ public class BotonAtaqueEspecialEventHandler implements EventHandler<ActionEvent
         } catch (PersonajeEnEstadoChocolateExcepcion ignored) {
             Alertas.alertaPersonajeEnEstadoChocolate();
             this.inicializarValores();
-<<<<<<< HEAD
         }catch (PersonajeEstaMuertoException e){
             juego.getTablero().liberarCeldaEnTablero(coordAtacado);
             Controlador.getControlador().actualizar();
         } catch (TenemosUnGanadorException e){
             Alertas.mostrarGanador(juego.obtenerGanador());
-=======
         }catch (JugadorYaRealizoAtaqueException ex) {
             Alertas.alertaGenerica("Ya realizó un ataque este turno. O bien mueva un personaje " +
                     "o seleccione Finalizar Turno");
->>>>>>> 5c6b3b07ba698aaa415789bea46d207d05b8afb2
             this.inicializarValores();
         }
 
