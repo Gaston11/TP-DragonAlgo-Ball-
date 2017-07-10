@@ -127,6 +127,11 @@ public class EstadoChocolate implements Estado {
     public Coordenada moverAInferiorIzquierda(VersorDireccion unVersor){throw new PersonajeEnEstadoChocolateExcepcion();}
 
     @Override
+    public int kiPorTurno() {
+        return 0;
+    }
+
+    @Override
     public int getPoderPelea() {
         return 0;
     }
