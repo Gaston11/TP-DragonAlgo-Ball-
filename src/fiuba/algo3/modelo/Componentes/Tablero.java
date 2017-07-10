@@ -216,4 +216,8 @@ public class Tablero {
 	public Celda obtenerCelda(Coordenada coordenada) {
 		return this.celdasOcupadas.stream().filter(c -> c.getCoordenada().esLaMismaCoordenada(coordenada)).findFirst().get();
 	}
+
+    public boolean celdaOcupadaConPersonaje(Coordenada coordenada) {
+		return this.obtenerCelda(coordenada).getPersonaje() != null;
+    }
 }
