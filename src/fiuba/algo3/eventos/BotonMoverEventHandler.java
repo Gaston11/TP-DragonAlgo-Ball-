@@ -83,16 +83,24 @@ public class BotonMoverEventHandler implements EventHandler<ActionEvent> {
                 this.mensajeCeldaOcupada();
                 this.inicializarValores();
                 contenedor.escribirConsola("CeldaOcupadaException", javafx.scene.paint.Color.RED);
-            } catch (NoSePuedeMoverPersonajeException e){
+            } catch (NoSePuedeMoverPersonajeException e) {
                 this.mensajeVelocidadMenorALaDistancia();
                 this.inicializarValores();
                 contenedor.escribirConsola("NoSePuedeMoverPersonajeException", javafx.scene.paint.Color.RED);
+<<<<<<< HEAD
             } catch (TenemosUnGanadorException e){
                 alerta.mostrarGanador(juego.obtenerGanador());
                 this.inicializarValores();
+=======
+            }catch (JugadorYaRealizoMovimientoException e){
+                this.inicializarValores();
+                contenedor.escribirConsola("Jugador ya realizó movimiento", javafx.scene.paint.Color.RED);
+                Alertas.alertaGenerica("Ya realizó movimiento. O ejecute un ataque o seleccione Finalizar turno");
+>>>>>>> 5c6b3b07ba698aaa415789bea46d207d05b8afb2
             } catch (Exception e) {
                 this.inicializarValores();
                 contenedor.escribirConsola("Excepción no manejada", javafx.scene.paint.Color.RED);
+                Alertas.alertaGenerica("Movimiento inválido");
             }
 
         }

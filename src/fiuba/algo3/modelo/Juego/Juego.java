@@ -4,6 +4,8 @@ import fiuba.algo3.modelo.Componentes.Coordenada;
 import fiuba.algo3.modelo.Componentes.Tablero;
 import fiuba.algo3.modelo.Componentes.VersorDireccion;
 import fiuba.algo3.modelo.Personajes.*;
+import fiuba.algo3.modelo.excepciones.JugadorYaRealizoAtaqueException;
+import fiuba.algo3.modelo.excepciones.JugadorYaRealizoMovimientoException;
 import fiuba.algo3.modelo.excepciones.TenemosUnGanadorException;
 
 import java.util.ArrayList;
@@ -18,6 +20,8 @@ public class Juego {
     private ArrayList<PersonajeBueno> personajesZ;
     private ArrayList<PersonajeMalo> personajesEnemigos;
     private Jugador jugadorGanador;
+    private boolean yaMovio;
+    private boolean yaAtaco;
 
 
     public Juego(String jZ, String jEnemigo) {
@@ -67,38 +71,57 @@ public class Juego {
     }
 
     public void mover(Coordenada coordenadaIni, Coordenada coordenadaFin){
+        if(yaMovio)
+            throw new JugadorYaRealizoMovimientoException();
+
         Personaje personaje = tablero.obtenerPersonajeEn(coordenadaIni);
         jugadorActual.mover(personaje, coordenadaFin);
-        tablero.mover(coordenadaIni,coordenadaFin);
+        yaMovio = tablero.mover(coordenadaIni, coordenadaFin);
         this.cambiarTurno();
     }
 
     public void atacar(Coordenada coordenadaAtaca, Coordenada coordenadaAtacado) {
+        if(yaAtaco)
+            throw new JugadorYaRealizoAtaqueException();
         Personaje personajeAtaca = tablero.obtenerPersonajeEn(coordenadaAtaca);
         Personaje personajeAtacado = tablero.obtenerPersonajeEn(coordenadaAtacado);
-        jugadorActual.ataqueBasico(personajeAtaca, personajeAtacado);
+        yaAtaco = jugadorActual.ataqueBasico(personajeAtaca, personajeAtacado);
         this.cambiarTurno();
+        //Borrar
+        //this.finalizarTurnoJugadorActual();
+    }
 
+    public void finalizarTurnoJugadorActual(){
+        yaAtaco = true;
+        yaMovio = true;
+        cambiarTurno();
     }
 
     public void atacarEspecial(Coordenada coordenadaAtaca, Coordenada coordenadaAtacado){
+        if(yaAtaco)
+            throw new JugadorYaRealizoAtaqueException();
         Personaje personajeAtaca = tablero.obtenerPersonajeEn(coordenadaAtaca);
         Personaje personajeAtacado = tablero.obtenerPersonajeEn(coordenadaAtacado);
-        jugadorActual.ataqueEspecial(personajeAtaca, personajeAtacado);
+        yaAtaco = jugadorActual.ataqueEspecial(personajeAtaca, personajeAtacado);
         this.cambiarTurno();
+        //Borrar
+        //this.finalizarTurnoJugadorActual();
     }
     public Jugador getJugadorActual() {
         return jugadorActual;
     }
 
-    public void cambiarTurno() {
-        if (!jugadorActual.personajesMuertos()) {
-            jugadorActual = jugadorActual.getRival();
-        } else {
-            jugadorGanador = jugadorActual.getRival();
-            throw new TenemosUnGanadorException();
+    private void cambiarTurno() {
+        if(yaMovio && yaAtaco) {
+            if (!jugadorActual.personajesMuertos()) {
+                jugadorActual = jugadorActual.getRival();
+                yaAtaco = false;
+                yaMovio = false;
+            } else {
+                jugadorGanador = jugadorActual.getRival();
+                throw new TenemosUnGanadorException();
+            }
         }
-
     }
 
     public String obtenerGanador(){

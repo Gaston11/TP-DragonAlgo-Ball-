@@ -67,11 +67,16 @@ public class ContenedorPrincipal extends BorderPane {
         botonTransformar.setOnAction(transformarEventHandler);
         Controlador.getControlador().setBotonTransformar(transformarEventHandler);
 
+        Button botonFinalizarTurno = new Button();
+        botonFinalizarTurno.setText("Finalizar turno");
+        BotonFinalizarTurnoEventHandler finalizarTurnoEventHandler = new BotonFinalizarTurnoEventHandler(this.juego);
+        botonFinalizarTurno.setOnAction(finalizarTurnoEventHandler);
+
         VBox contenedorVertical = new VBox();
 
         VBox contenedorAtaques = this.menuAtaques();
 
-        contenedorVertical.getChildren().addAll(botonMover,contenedorAtaques, botonTransformar);
+        contenedorVertical.getChildren().addAll(botonMover,contenedorAtaques, botonTransformar, botonFinalizarTurno);
         contenedorVertical.setSpacing(10);
         this.setLeft(contenedorVertical);
     }

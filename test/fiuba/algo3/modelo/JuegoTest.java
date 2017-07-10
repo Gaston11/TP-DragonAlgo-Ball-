@@ -25,7 +25,7 @@ public class JuegoTest {
     public ExpectedException thrown = ExpectedException.none();
 
     @Test //Puede atacar o transformarse Pero no significa que cambia el turno pero solo lo puede hacer una vez
-    public void JuegoIntegracionTurnoDeCadaJugadorCuandoMuevePersonajeCambiaTurnoJuegaJugadorEnemigo() {
+    public void cuandoMuevePersonajeNoCambiaTurnoSiNoEjecutoAtaque() {
 
         Juego juego = new Juego("Miqui","Giu");
 
@@ -34,9 +34,10 @@ public class JuegoTest {
 
         juego.mover(unaCoordenada,unaCoordenada1);
 
-        assertEquals("Giu", juego.getJugadorActual().getNombre());
+        assertEquals("Miqui", juego.getJugadorActual().getNombre());
 
     }
+
 
     @Test
     public void JuegoJugadorZIntentaSeleccionarUnaPosicionDeTableroQueNoTienePersonajeException() {
@@ -49,60 +50,75 @@ public class JuegoTest {
     }
 
     @Test
-    public void jugadorRealizaUnAtaqueBAsicoCambiaElTurno(){
+    public void jugadorRealizaUnAtaqueBasicoLuegoDeMoverYCambiaElTurno(){
         Juego juego = new Juego("Miqui","Giu");
         Coordenada cGoku = new Coordenada(0,9);
         Coordenada cGoku1 = new Coordenada(1,8);
 
+        //Turno miqui
         juego.mover(cGoku,cGoku1);
+        juego.finalizarTurnoJugadorActual();
 
         Coordenada cEnemigo = new Coordenada(9,0);
         Coordenada coordenada = new Coordenada(8,1);
         cGoku = new Coordenada(3,6);
-
+        //Turno Giu
         juego.mover(cEnemigo,coordenada);
-
+        juego.finalizarTurnoJugadorActual();
+        //Turno Miqui
         cEnemigo = new Coordenada(6,3);
         juego.mover(cGoku1,cGoku);
+        juego.finalizarTurnoJugadorActual();
+        //Turno Giu
         juego.mover(coordenada,cEnemigo);
+        juego.finalizarTurnoJugadorActual();
+        //Turno Miqui
         cGoku1 = new Coordenada(5,4);
         juego.mover(cGoku,cGoku1);
+        juego.atacar(cGoku1, cEnemigo);
 
-        juego.atacar(cEnemigo, cGoku1);
-
-        assertEquals("Miqui", juego.getJugadorActual().getNombre());
+        assertEquals("Giu", juego.getJugadorActual().getNombre());
     }
 
     @Test
-    public void jugadorRealizaUnAtaqueEspecialCambiaElTurno(){
+    public void jugadorRealizaUnAtaqueEspecialLuegoDeMoverYCambiaElTurno(){
         Juego juego = new Juego("Miqui","Giu");
         Coordenada cGoku = new Coordenada(0,9);
         Coordenada cGoku1 = new Coordenada(1,8);
-
+        //Turno Miqui
         juego.mover(cGoku,cGoku1);
-
+        juego.finalizarTurnoJugadorActual();
+        //Turno Giu
         Coordenada cEnemigo = new Coordenada(9,0);
         Coordenada coordenada = new Coordenada(8,1);
         cGoku = new Coordenada(3,6);
-
         juego.mover(cEnemigo,coordenada);
-
+        juego.finalizarTurnoJugadorActual();
+        //Turno Miqui
         cEnemigo = new Coordenada(6,3);
         juego.mover(cGoku1,cGoku);
+        juego.finalizarTurnoJugadorActual();
+        //Turno Giu
         juego.mover(coordenada,cEnemigo);
+        juego.finalizarTurnoJugadorActual();
+        //Turno Miqui
         cGoku1 = new Coordenada(5,4);
         juego.mover(cGoku,cGoku1);
+        juego.finalizarTurnoJugadorActual();
+        //Turno Giu
         coordenada = new Coordenada(4,3);
         juego.mover(cEnemigo, coordenada);
+        juego.finalizarTurnoJugadorActual();
+        //Turno Miqui
         cGoku = new Coordenada(5,3);
         juego.mover(cGoku1,cGoku);
-
+        juego.finalizarTurnoJugadorActual();
+        //Turno Giu
         cEnemigo = new Coordenada(4,4);
         juego.mover(coordenada,cEnemigo);
-        juego.atacarEspecial(cGoku,cEnemigo);
+        juego.atacarEspecial(cEnemigo,cGoku);
 
-        assertEquals("Giu", juego.getJugadorActual().getNombre());
-
+        assertEquals("Miqui", juego.getJugadorActual().getNombre());
     }
 
     @Test
@@ -110,27 +126,39 @@ public class JuegoTest {
         Juego juego = new Juego("Miqui","Giu");
         Coordenada cGoku = new Coordenada(0,9);
         Coordenada cGoku1 = new Coordenada(1,8);
-
+        //Turno Miqui
         juego.mover(cGoku,cGoku1);
-
+        juego.finalizarTurnoJugadorActual();
+        //Turno Giu
         Coordenada cEnemigo = new Coordenada(9,0);
         Coordenada coordenada = new Coordenada(8,1);
         cGoku = new Coordenada(3,6);
-
         juego.mover(cEnemigo,coordenada);
-
+        juego.finalizarTurnoJugadorActual();
+        //Turno Miqui
         cEnemigo = new Coordenada(6,3);
         juego.mover(cGoku1,cGoku);
+        juego.finalizarTurnoJugadorActual();
+        //Turno Giu
         juego.mover(coordenada,cEnemigo);
+        juego.finalizarTurnoJugadorActual();
+        //Turno Miqui
         cGoku1 = new Coordenada(5,4);
         juego.mover(cGoku,cGoku1);
+        juego.finalizarTurnoJugadorActual();
+        //Turno Giu
         coordenada = new Coordenada(4,3);
         juego.mover(cEnemigo, coordenada);
+        juego.finalizarTurnoJugadorActual();
+        //Turno Miqui
         cGoku = new Coordenada(5,3);
         juego.mover(cGoku1,cGoku);
-
+        juego.finalizarTurnoJugadorActual();
+        //Turno Giu
         cEnemigo = new Coordenada(4,4);
         juego.mover(coordenada,cEnemigo);
+        juego.finalizarTurnoJugadorActual();
+        //Turno Miqui
         juego.transformar(cGoku);
 
         assertEquals("Miqui",juego.getJugadorActual().getNombre());
