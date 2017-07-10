@@ -74,6 +74,10 @@ public class BotonAtaqueBasicoEventHandler implements EventHandler<ActionEvent> 
             }catch (PersonajeEnEstadoChocolateExcepcion e) {
                 Alertas.alertaPersonajeEnEstadoChocolate();
                 this.inicializarValores();
+            }catch (JugadorYaRealizoAtaqueException ex) {
+                Alertas.alertaGenerica("Ya realizó un ataque este turno. O bien mueva un personaje " +
+                        "o seleccione Finalizar Turno");
+                this.inicializarValores();
             }
 
         Controlador.getControlador().inicializarBotones();

@@ -1,9 +1,6 @@
 package fiuba.algo3.vista;
 
-import fiuba.algo3.eventos.BotonAtaqueBasicoEventHandler;
-import fiuba.algo3.eventos.BotonAtaqueEspecialEventHandler;
-import fiuba.algo3.eventos.BotonMoverEventHandler;
-import fiuba.algo3.eventos.BotonTransformarEventHandler;
+import fiuba.algo3.eventos.*;
 import fiuba.algo3.modelo.Juego.Juego;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -84,11 +81,16 @@ public class ContenedorPrincipal extends BorderPane {
         botonTransformar.setOnAction(transformarEventHandler);
         Controlador.getControlador().setBotonTransformar(transformarEventHandler);
 
+        Button botonFinalizarTurno = new Button();
+        botonFinalizarTurno.setText("Finalizar turno");
+        BotonFinalizarTurnoEventHandler finalizarTurnoEventHandler = new BotonFinalizarTurnoEventHandler(this.juego);
+        botonFinalizarTurno.setOnAction(finalizarTurnoEventHandler);
+
         VBox contenedorVertical = new VBox();
 
         VBox contenedorAtaques = this.menuAtaques();
 
-        contenedorVertical.getChildren().addAll(botonMover,contenedorAtaques, botonTransformar);
+        contenedorVertical.getChildren().addAll(botonMover,contenedorAtaques, botonTransformar, botonFinalizarTurno);
         contenedorVertical.setSpacing(10);
         this.setLeft(contenedorVertical);
     }

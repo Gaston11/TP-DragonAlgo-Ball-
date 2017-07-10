@@ -4,6 +4,8 @@ import fiuba.algo3.modelo.Componentes.Coordenada;
 import fiuba.algo3.modelo.Componentes.Tablero;
 import fiuba.algo3.modelo.Componentes.VersorDireccion;
 import fiuba.algo3.modelo.Personajes.*;
+import fiuba.algo3.modelo.excepciones.JugadorYaRealizoAtaqueException;
+import fiuba.algo3.modelo.excepciones.JugadorYaRealizoMovimientoException;
 import fiuba.algo3.modelo.excepciones.TenemosUnGanadorException;
 
 import java.util.ArrayList;
@@ -69,21 +71,24 @@ public class Juego {
     }
 
     public void mover(Coordenada coordenadaIni, Coordenada coordenadaFin){
+        if(yaMovio)
+            throw new JugadorYaRealizoMovimientoException();
+
         Personaje personaje = tablero.obtenerPersonajeEn(coordenadaIni);
         jugadorActual.mover(personaje, coordenadaFin);
-        yaMovio = tablero.mover(coordenadaIni,coordenadaFin);
+        yaMovio = tablero.mover(coordenadaIni, coordenadaFin);
         this.cambiarTurno();
-        //Borrar
-        this.finalizarTurnoJugadorActual();
     }
 
     public void atacar(Coordenada coordenadaAtaca, Coordenada coordenadaAtacado) {
+        if(yaAtaco)
+            throw new JugadorYaRealizoAtaqueException();
         Personaje personajeAtaca = tablero.obtenerPersonajeEn(coordenadaAtaca);
         Personaje personajeAtacado = tablero.obtenerPersonajeEn(coordenadaAtacado);
         yaAtaco = jugadorActual.ataqueBasico(personajeAtaca, personajeAtacado);
         this.cambiarTurno();
         //Borrar
-        this.finalizarTurnoJugadorActual();
+        //this.finalizarTurnoJugadorActual();
     }
 
     public void finalizarTurnoJugadorActual(){
@@ -93,12 +98,14 @@ public class Juego {
     }
 
     public void atacarEspecial(Coordenada coordenadaAtaca, Coordenada coordenadaAtacado){
+        if(yaAtaco)
+            throw new JugadorYaRealizoAtaqueException();
         Personaje personajeAtaca = tablero.obtenerPersonajeEn(coordenadaAtaca);
         Personaje personajeAtacado = tablero.obtenerPersonajeEn(coordenadaAtacado);
         yaAtaco = jugadorActual.ataqueEspecial(personajeAtaca, personajeAtacado);
         this.cambiarTurno();
         //Borrar
-        this.finalizarTurnoJugadorActual();
+        //this.finalizarTurnoJugadorActual();
     }
     public Jugador getJugadorActual() {
         return jugadorActual;
