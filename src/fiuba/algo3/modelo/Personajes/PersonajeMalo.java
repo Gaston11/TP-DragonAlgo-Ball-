@@ -8,11 +8,11 @@ public interface PersonajeMalo {
 
     boolean poseeMayorPoderPelea(int poderPelea);
 
-    void ataqueBasico(PersonajeMalo unPersonaje);
+    boolean ataqueBasico(PersonajeMalo unPersonaje);
 
-    void ataqueBasico(PersonajeBueno unPersonaje);
+    boolean ataqueBasico(PersonajeBueno unPersonaje);
 
-    void ataqueEspecial(PersonajeBueno enemigo);
+    boolean ataqueEspecial(PersonajeBueno enemigo);
 
     void  transformar();
 

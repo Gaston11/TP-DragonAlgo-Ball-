@@ -1,8 +1,6 @@
 package fiuba.algo3.modelo.Personajes;
 
 import fiuba.algo3.modelo.Componentes.*;
-import fiuba.algo3.modelo.Personajes.Personaje;
-import fiuba.algo3.modelo.Personajes.PersonajeMalo;
 import fiuba.algo3.modelo.Estados.Estado;
 import fiuba.algo3.modelo.EstadosFreezer.*;
 import fiuba.algo3.modelo.excepciones.FuegoAmigoException;
@@ -46,27 +44,30 @@ public class Freezer extends Personaje implements PersonajeMalo{
     }
 
     @Override
-    public void ataqueBasico(PersonajeMalo amigo) {
+    public boolean ataqueBasico(PersonajeMalo amigo) {
         throw new FuegoAmigoException();
     }
 
     @Override
-    public void ataqueEspecial(PersonajeMalo enemigo) {
+    public boolean ataqueEspecial(PersonajeMalo enemigo) {
         this.rayoMortal(enemigo);
+        return true;
     }
 
     @Override
-    public void ataqueEspecial(PersonajeBueno enemigo) {
+    public boolean ataqueEspecial(PersonajeBueno enemigo) {
         this.rayoMortal(enemigo);
+        return true;
     }
 
     @Override
-    public void ataqueBasico(PersonajeBueno enemigo) {
+    public boolean ataqueBasico(PersonajeBueno enemigo) {
         int distancia = enemigo.calcularDistanciaDesde(this.coordenada);
         if (!estado.distanciaPermitida(distancia)){
             throw new NoSePuedeAtacarPersonajePorNoEstarEnDistanciaDeAtaqueException();
         }
         estado.ataqueBasico(enemigo,this);
+        return true;
     }
 
     public void rayoMortal(PersonajeBueno enemigo){

@@ -1,7 +1,6 @@
 package fiuba.algo3.modelo.Personajes;
 
 import fiuba.algo3.modelo.Componentes.*;
-import fiuba.algo3.modelo.Personajes.Personaje;
 import fiuba.algo3.modelo.excepciones.FuegoAmigoException;
 import fiuba.algo3.modelo.excepciones.NoSePuedeAtacarPersonajePorNoEstarEnDistanciaDeAtaqueException;
 import fiuba.algo3.modelo.excepciones.NoSePuedeAtacarPersonajePorNoPoseerKiSuficienteException;
@@ -41,17 +40,19 @@ public class Piccolo extends Personaje implements PersonajeBueno {
 
 
     @Override
-    public void ataqueBasico(PersonajeMalo enemigo){
+    public boolean ataqueBasico(PersonajeMalo enemigo){
         int distancia = enemigo.calcularDistanciaDesde(this.coordenada);
         if (!estado.distanciaPermitida(distancia)){
             throw new NoSePuedeAtacarPersonajePorNoEstarEnDistanciaDeAtaqueException();
         }
         estado.ataqueBasico(enemigo,this);
+        return true;
     }
 
     @Override
-    public void ataqueEspecial(PersonajeMalo enemigo) {
+    public boolean ataqueEspecial(PersonajeMalo enemigo) {
         this.makankosappo(enemigo);
+        return true;
     }
 
     @Override
@@ -60,12 +61,13 @@ public class Piccolo extends Personaje implements PersonajeBueno {
     }
 
     @Override
-    public void ataqueEspecial(PersonajeBueno enemigo) {
+    public boolean ataqueEspecial(PersonajeBueno enemigo) {
         this.makankosappo(enemigo);
+        return true;
     }
 
     @Override
-    public void ataqueBasico(PersonajeBueno amigo){
+    public boolean ataqueBasico(PersonajeBueno amigo){
         throw new FuegoAmigoException();
     }
 

@@ -17,9 +17,9 @@ public abstract class Jugador {
 
     public abstract void asignarRival(Jugador jugador);
 
-    public abstract void ataqueBasico(Personaje personaje, Personaje enemigo);
+    public abstract boolean ataqueBasico(Personaje personaje, Personaje enemigo);
 
-    public abstract void ataqueEspecial(Personaje personaje, Personaje enemigo);
+    public abstract boolean ataqueEspecial(Personaje personaje, Personaje enemigo);
 
     public abstract void transformar(Personaje personaje);
 

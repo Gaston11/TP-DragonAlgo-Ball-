@@ -72,13 +72,13 @@ public abstract class Personaje implements Ubicable, UbicableV2 {
         this.vida = (maxVida < this.vida + cantidad)? maxVida : this.vida + cantidad;
     }
 
-    public abstract void ataqueBasico(PersonajeBueno enemigo);
+    public abstract boolean ataqueBasico(PersonajeBueno enemigo);
 
-    public abstract void ataqueBasico(PersonajeMalo enemigo);
+    public abstract boolean ataqueBasico(PersonajeMalo enemigo);
 
-    public abstract void ataqueEspecial(PersonajeMalo enemigo);
+    public abstract boolean ataqueEspecial(PersonajeMalo enemigo);
 
-    public abstract void ataqueEspecial(PersonajeBueno enemigo);
+    public abstract boolean ataqueEspecial(PersonajeBueno enemigo);
 
     public abstract Coordenada moverArriba();
 

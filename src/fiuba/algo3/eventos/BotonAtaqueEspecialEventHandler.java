@@ -80,7 +80,7 @@ public class BotonAtaqueEspecialEventHandler implements EventHandler<ActionEvent
             Alertas.alertaNoPoseeSuficienteKiParaRealizarElAtaque();
             this.inicializarValores();
         } catch (PersonajeEnEstadoChocolateExcepcion ignored){
-            alerta.alertaPersonajeEnEstadoChocolate();
+            Alertas.alertaPersonajeEnEstadoChocolate();
             this.inicializarValores();
         }
 

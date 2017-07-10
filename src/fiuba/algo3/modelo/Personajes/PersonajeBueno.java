@@ -7,11 +7,11 @@ public interface PersonajeBueno {
 
     int calcularDistanciaDesde(Coordenada otraCoordenada);
 
-    void ataqueBasico(PersonajeMalo unPersonaje);
+    boolean ataqueBasico(PersonajeMalo unPersonaje);
 
-    void ataqueBasico(PersonajeBueno unPersonaje);
+    boolean ataqueBasico(PersonajeBueno unPersonaje);
 
-    void ataqueEspecial(PersonajeMalo enemigo);
+    boolean ataqueEspecial(PersonajeMalo enemigo);
 
     void transformar(Personaje goku, Personaje gohan, Personaje piccolo);
 

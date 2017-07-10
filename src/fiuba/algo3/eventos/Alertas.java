@@ -45,6 +45,10 @@ public final class Alertas {
         alertaGenerica("Intente nuevamente", "No posee suficiente ki para atacar" );
     }
 
+    public static void alertaPersonajeEnEstadoChocolate() {
+        alertaGenerica("Personaje en estado chocolate");
+    }
+
     public static void alertaGenerica(String texto){
         alertaGenerica(texto, "error");
     }
