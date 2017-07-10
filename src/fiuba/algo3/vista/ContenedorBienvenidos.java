@@ -45,6 +45,7 @@ public class ContenedorBienvenidos extends VBox {
         etiquetaJugadorZ.setTextFill(Color.DARKRED);
         etiquetaJugadorZ.setText("Jugador Z :            ");
         TextField texto = new TextField();
+        texto.setPromptText( "ingrese un nombre... " );
 
         HBox layout = new HBox();
         layout.getChildren().addAll( etiquetaJugadorZ, texto);
@@ -54,6 +55,7 @@ public class ContenedorBienvenidos extends VBox {
         etiquetaJugadorEnemigo.setText("Jugador Enemigo: ");
         etiquetaJugadorEnemigo.setTextFill(Color.DARKRED);
         TextField texto2 = new TextField();
+        texto2.setPromptText( "ingrese un nombre... " );
 
         HBox layout2 = new HBox();
         layout2.getChildren().addAll( etiquetaJugadorEnemigo, texto2);
