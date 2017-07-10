@@ -19,7 +19,6 @@ public class BotonAtaqueEspecialEventHandler implements EventHandler<ActionEvent
     private Personaje atacado = null;
     private Coordenada coordAtacante;
     private Coordenada coordAtacado;
-    private Alertas alerta = new Alertas();
 
     public BotonAtaqueEspecialEventHandler(Juego juego){
         this.juego = juego;
@@ -56,29 +55,29 @@ public class BotonAtaqueEspecialEventHandler implements EventHandler<ActionEvent
     public void handle(ActionEvent event) {
 
         if (atacante == null && atacado == null){
-            alerta.alertaNoSeleccionoNingunPersonaje();
+            Alertas.alertaNoSeleccionoNingunPersonaje();
         }
 
         try {
             juego.atacarEspecial(coordAtacante,coordAtacado);
             Controlador.getControlador().actualizar();
         }catch (PersonajeInvalidoNoEsPersonajeMaloException e){
-            alerta.alertaPersonajeNoEsEnemigo();
+            Alertas.alertaPersonajeNoEsEnemigo();
             this.inicializarValores();
         }catch (PersonajeInvalidoNoEsPersonajeBuenoException e){
-            alerta.alertaPersonajeNoEsZ();
+            Alertas.alertaPersonajeNoEsZ();
             this.inicializarValores();
         }catch (NoSePuedeCalcularLaDistanciaException e){
-            alerta.alertaPersonajeAtacadoNoSePuedeCalcularDistancia();
+            Alertas.alertaPersonajeAtacadoNoSePuedeCalcularDistancia();
             this.inicializarValores();
         }catch (NoSePuedeAtacarPersonajePorNoEstarEnDistanciaDeAtaqueException e){
-            alerta.alertaPersonajeAtacadoNoSeEncuentraDentroDeDistanciaDeAtaque();
+            Alertas.alertaPersonajeAtacadoNoSeEncuentraDentroDeDistanciaDeAtaque();
             this.inicializarValores();
         }catch (NoSeleccionoNingunPersonajeException e) {
-            alerta.alertaNoSeleccionoNingunPersonaje();
+            Alertas.alertaNoSeleccionoNingunPersonaje();
             this.inicializarValores();
         } catch (NoSePuedeAtacarPersonajePorNoPoseerKiSuficienteException e){
-            alerta.alertaNoPoseeSuficienteKiParaRealizarElAtaque();
+            Alertas.alertaNoPoseeSuficienteKiParaRealizarElAtaque();
             this.inicializarValores();
         }
 

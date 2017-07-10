@@ -109,66 +109,40 @@ public class BotonMoverEventHandler implements EventHandler<ActionEvent> {
     }
 
     private void mensajeVelocidadMenorALaDistancia() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Excepcion");
-        alert.setHeaderText(" Distancia De Movimiento No permitida.");
         String mensaje = "Tiene que elegir un casillero acorde a su  "
                 + "velocidad de estado."
                 +" Intente nuevamente.";
-        alert.setContentText(mensaje);
-        alert.show();
+        Alertas.alertaGenerica(mensaje, " Distancia De Movimiento No permitida.");
     }
 
     private void alertaPersonajeNoPerteceASuEquipoEnemigo() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Excepcion");
-        alert.setHeaderText("Personaje Invalido");
         String mensaje = "Tiene que elegir un personaje que  "
                 + "sea un guerrero Enemigo."
                 +" Intente nuevamente.";
-        alert.setContentText(mensaje);
-        alert.show();
+        Alertas.alertaGenerica(mensaje, "Personaje incorrecto");
     }
 
     private void alertaPersonajeNoPerteceASuEquipoZ() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Excepcion");
-        alert.setHeaderText("Personaje Invalido");
         String mensaje = "Tiene que elegir un personaje que  "
                 + "sea un guerrero Z."
                 +" Intente nuevamente.";
-        alert.setContentText(mensaje);
-        alert.show();
+        Alertas.alertaGenerica(mensaje, "Personaje Incorrecto" );
     }
 
     private void alertaNoSeleccionoUnaUbicacion() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Excepcion");
-        alert.setHeaderText("No selecciono ubicacion");
         String mensaje = "Tiene que indicar donde desea mover el "
                 + "personaje."
                 +" Intente nuevamente.";
-        alert.setContentText(mensaje);
-        alert.show();
+        Alertas.alertaGenerica(mensaje, "No seleccionó ubicación");
     }
 
     private void alertaNoSeleccionoPersonaje() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Excepcion");
-        alert.setHeaderText("No selecciono ningun personaje");
-        String mensaje = "Intente nuevamente";
-        alert.setContentText(mensaje);
-        alert.show();
+        Alertas.alertaGenerica("Intente nuevamente", "No seleccionó ningún personaje");
     }
 
     private void mensajeCeldaOcupada() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Excepcion");
-        alert.setHeaderText("No no puede mover personaje a ese casillero");
         String mensaje = "Casillero ocupado por otro personaje."
                 + " Intente nuevamente.";
-        alert.setContentText(mensaje);
-        alert.show();
-
+        Alertas.alertaGenerica(mensaje, "No puede mover personaje a ese casillero");
     }
 }

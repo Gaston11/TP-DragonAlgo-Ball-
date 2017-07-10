@@ -5,86 +5,60 @@ import javafx.scene.control.Alert;
 /**
  * Created by noe on 10/07/17.
  */
-public class Alertas {
+public final class Alertas {
 
-    public void alertaNoSePuedeTransformar() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Excepcion");
-        alert.setHeaderText("No se puede transformar.");
-        String mensaje = "Intente nuevamente";
-        alert.setContentText(mensaje);
-        alert.show();
+    private Alert alerta;
+
+    public static void alertaNoSePuedeTransformar() {
+        alertaGenerica("Intente nuevamente", "No se puede transformar");
     }
 
-    public void alertaNoPerteneceEquipoEnemigo() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Excepcion");
-        alert.setHeaderText("No pertenece a equipo enemigo.");
-        String mensaje = "Intente nuevamente";
-        alert.setContentText(mensaje);
-        alert.show();
+    public static void alertaNoPerteneceEquipoEnemigo() {
+        alertaGenerica("Intente nuevamente", "No pertenece a equipo Enemigo de la Tierra");
     }
 
-    public void alertaNoPerteneceEquipoZ() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Excepcion");
-        alert.setHeaderText("No pertenece a equipo Z");
-        String mensaje = "Intente nuevamente";
-        alert.setContentText(mensaje);
-        alert.show();
+    public static void alertaNoPerteneceEquipoZ() {
+        alertaGenerica("Intente nuevamente", "No pertenece a Equipo Z");
     }
 
-    public void alertaPersonajeAtacadoNoSeEncuentraDentroDeDistanciaDeAtaque() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Excepcion");
-        alert.setHeaderText("No se encuentra dentro de la distancia de ataque.");
-        String mensaje = " Intente nuevamente.";
-        alert.setContentText(mensaje);
-        alert.show();
+    public static void alertaPersonajeAtacadoNoSeEncuentraDentroDeDistanciaDeAtaque() {
+        alertaGenerica("Intente nuevamente", "No se encuentra dentro del rango de ataque");
     }
 
-    public void alertaPersonajeAtacadoNoSePuedeCalcularDistancia() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Excepcion");
-        alert.setHeaderText(" Modo de ataque en lineas rectas.");
-        String mensaje = " Intente nuevamente.";
-        alert.setContentText(mensaje);
-        alert.show();
+    public static void alertaPersonajeAtacadoNoSePuedeCalcularDistancia() {
+        alertaGenerica("Intente nuevamente", "Modo de ataque en lína recta.");
     }
 
-    public void alertaPersonajeNoEsZ() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Excepcion");
-        alert.setHeaderText(" No pertenece a equipo Z.");
-        String mensaje = " Intente nuevamente.";
-        alert.setContentText(mensaje);
-        alert.show();
+    public static void alertaPersonajeNoEsZ() {
+        alertaGenerica("Intente nuevamente", "No pertenece a equipo Z");
     }
 
-    public void alertaPersonajeNoEsEnemigo() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Excepcion");
-        alert.setHeaderText(" No pertenece a equipo enemigo.");
-        String mensaje = " Intente nuevamente.";
-        alert.setContentText(mensaje);
-        alert.show();
+    public static void alertaPersonajeNoEsEnemigo() {
+        alertaGenerica("Intente nuevamente", "No pertenece a equipo enemigo");
     }
 
-    public void alertaNoSeleccionoNingunPersonaje() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Excepcion");
-        alert.setHeaderText(" No selecciono ningun personaje.");
-        String mensaje = " Intente nuevamente.";
-        alert.setContentText(mensaje);
-        alert.show();
+    public static void alertaNoSeleccionoNingunPersonaje() {
+        alertaGenerica("Intente nuevamente", "No seleccionó ningún personaje");
     }
 
-    public void alertaNoPoseeSuficienteKiParaRealizarElAtaque() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Excepcion");
-        alert.setHeaderText(" Posee suficiente ki para atacar.");
-        String mensaje = " Intente nuevamente.";
-        alert.setContentText(mensaje);
-        alert.show();
+    public static void alertaNoPoseeSuficienteKiParaRealizarElAtaque() {
+        alertaGenerica("Intente nuevamente", "No posee suficiente ki para atacar" );
     }
+
+    public static void alertaGenerica(String texto){
+        alertaGenerica(texto, "error");
+    }
+
+    public static void alertaGenerica(String texto, String header){
+        alertaGenerica(texto, header, "Error");
+    }
+
+    public static void alertaGenerica(String texto, String header, String titulo){
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setTitle(titulo);
+        alerta.setHeaderText(header);
+        alerta.setContentText(texto);
+        alerta.show();
+    }
+
 }

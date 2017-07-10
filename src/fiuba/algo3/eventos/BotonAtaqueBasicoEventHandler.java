@@ -21,7 +21,7 @@ public class BotonAtaqueBasicoEventHandler implements EventHandler<ActionEvent> 
     private Coordenada coordAtacante;
     private Personaje atacado = null;
     private Coordenada coordAtacado;
-    private Alertas alerta = new Alertas();
+
 
     public BotonAtaqueBasicoEventHandler(Juego juego){
         this.juego = juego;
@@ -50,26 +50,26 @@ public class BotonAtaqueBasicoEventHandler implements EventHandler<ActionEvent> 
     public void handle(ActionEvent event) {
 
         if(atacado == null || atacante == null){
-            alerta.alertaNoSeleccionoNingunPersonaje();
+            Alertas.alertaNoSeleccionoNingunPersonaje();
         }
 
         try {
             juego.atacar(coordAtacante,coordAtacado);
             Controlador.getControlador().actualizar();
             }catch (PersonajeInvalidoNoEsPersonajeMaloException e){
-                alerta.alertaPersonajeNoEsEnemigo();
+                Alertas.alertaPersonajeNoEsEnemigo();
                 this.inicializarValores();
             }catch (PersonajeInvalidoNoEsPersonajeBuenoException e){
-                alerta.alertaPersonajeNoEsZ();
+                Alertas.alertaPersonajeNoEsZ();
                 this.inicializarValores();
             }catch (NoSePuedeCalcularLaDistanciaException e){
-                alerta.alertaPersonajeAtacadoNoSePuedeCalcularDistancia();
+                Alertas.alertaPersonajeAtacadoNoSePuedeCalcularDistancia();
                 this.inicializarValores();
             }catch (NoSePuedeAtacarPersonajePorNoEstarEnDistanciaDeAtaqueException e){
-                alerta.alertaPersonajeAtacadoNoSeEncuentraDentroDeDistanciaDeAtaque();
+                Alertas.alertaPersonajeAtacadoNoSeEncuentraDentroDeDistanciaDeAtaque();
                 this.inicializarValores();
             }catch (NoSeleccionoNingunPersonajeException e) {
-                alerta.alertaNoSeleccionoNingunPersonaje();
+                Alertas.alertaNoSeleccionoNingunPersonaje();
                 this.inicializarValores();
             }
 
