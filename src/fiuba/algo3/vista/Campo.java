@@ -2,6 +2,7 @@ package fiuba.algo3.vista;
 
 import fiuba.algo3.modelo.Componentes.*;
 import fiuba.algo3.modelo.Personajes.Personaje;
+import fiuba.algo3.modelo.excepciones.CeldaOcupadaException;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.image.Image;
@@ -60,12 +61,19 @@ public class Campo extends BorderPane{
 
     private void generarConsumibles(Tablero tablero) {
         Random numero = new Random();
-        Coordenada coordenada = new Coordenada(numero.nextInt(tablero.getDimension()-1),numero.nextInt(tablero.getDimension()-1));
-        Consumible consumible = consumibles.get(numero.nextInt(consumibles.size()-1));
-        consumible.posicionarEn(coordenada);
-        Celda celdaConConsumible = new Celda(coordenada);
-        celdaConConsumible.colocarConsumible(consumible);
-        tablero.colocarCeldaEnTablero(celdaConConsumible);
+        for (int i = 0; i< consumibles.size(); i++){
+            Coordenada coordenada = new Coordenada(numero.nextInt(tablero.getDimension()-1),numero.nextInt(tablero.getDimension()-1));
+            Celda celda = tablero.obtenerCelda(coordenada);
+            while (celda!=null) {
+                coordenada = new Coordenada(numero.nextInt(tablero.getDimension()-1),numero.nextInt(tablero.getDimension()-1));
+                celda = tablero.obtenerCelda(coordenada);
+
+            }
+            celda = new Celda(coordenada);
+            celda.colocarConsumible(consumibles.get(i));
+            tablero.colocarCeldaEnTablero(celda);
+            consumibles.remove(i);
+        }
     }
 
     private void dibujarImagen(Casillero1 casillero, Tablero tablero) {

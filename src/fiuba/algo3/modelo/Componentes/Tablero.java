@@ -26,10 +26,8 @@ public class Tablero {
     	while (iterador.hasNext() && !encontrado)
     	{
     		celda = iterador.next();
-    		/*encontrado = ( (celda.getCoordenada().getCoordenadaX()) == (unaCelda.getCoordenada().getCoordenadaX())
-    				&& (celda.getCoordenada().getCoordenadaY()) == (unaCelda.getCoordenada().getCoordenadaY()) );
-    				*/
     		encontrado = celda.getCoordenada().esLaMismaCoordenada(unaCelda.getCoordenada());
+
     	}
 
     	return encontrado;
@@ -137,17 +135,15 @@ public class Tablero {
 
 	public void moverPersonaje(Personaje unPersonaje, Coordenada unaCoordenada){
 		Celda celdaNueva = new Celda(unaCoordenada);
-		if (this.celdaOcupadaConPersonaje(celdaNueva)) {
+		if (this.celdaOcupada(celdaNueva)){
 			this.colocarPersonajeEnCoordenadaAnterior(unPersonaje); // hay un metodo arriba q sirve
 		}
-
 		else
 		{
 			celdaNueva.colocarPersonaje(unPersonaje);
 			this.liberarCeldaEnTablero(this.getCoordenadaDePersonaje(unPersonaje) );
 			this.colocarCeldaEnTablero(celdaNueva);
 		}
-
 	}
 
 
@@ -157,8 +153,14 @@ public class Tablero {
 			throw new NoSeleccionoNingunPersonajeException();
 		}
 		celda = this.obtenerCelda(celda);
+		Celda celdaFin = this.obtenerCelda(unaCoordenada1);
 		Personaje personaje = celda.getPersonaje();
-		this.moverPersonaje(personaje, unaCoordenada1);
+		if ((celdaFin!=null) && (celdaFin.getPersonaje() == null)){
+			celdaFin.colocarPersonaje(personaje);
+			this.liberarCeldaEnTablero(unaCoordenada);
+		}else {
+			this.moverPersonaje(personaje, unaCoordenada1);
+		}
 		return true;
 	}
 
