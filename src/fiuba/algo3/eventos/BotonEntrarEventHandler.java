@@ -1,10 +1,16 @@
 package fiuba.algo3.eventos;
 
+import fiuba.algo3.modelo.Juego.Juego;
 import fiuba.algo3.vista.ContenedorPrincipal;
+import fiuba.algo3.vista.Controlador;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import java.awt.*;
 
 public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
 

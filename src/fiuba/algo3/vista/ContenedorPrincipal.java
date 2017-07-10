@@ -50,6 +50,7 @@ public class ContenedorPrincipal extends BorderPane {
         this.setBotonera();
         //this.setDerecha();
         this.setConsola();
+        Controlador.getControlador().setJuego(juego);
         Controlador.getControlador().setContenedor(this);
         this.escribirConsola("Nombre jugador Equipo Z: " + jZ);
         this.escribirConsola("Nombre jugador Equipo Z: " + jEnemigo);
@@ -125,23 +126,18 @@ public class ContenedorPrincipal extends BorderPane {
 
     /*
     private void setBotonera(Robot robot) {
-
         Button botonArriba = new Button();
         botonMover.setText("Arriba");
         BotonMoverHandler moveButtonHandler = new BotonMoverHandler(vistaRobot, robot);
         botonMover.setOnAction(moveButtonHandler);
-
         Button botonDireccion = new Button();
         botonDireccion.setText("Cambiar direccion");
         BotonDireccionHandler directionButtonHandler = new BotonDireccionHandler(robot);
         botonDireccion.setOnAction(directionButtonHandler);
-
         VBox contenedorVertical = new VBox(botonMover, botonDireccion);
         contenedorVertical.setSpacing(10);
         contenedorVertical.setPadding(new Insets(15));
-
         this.setLeft(contenedorVertical);
-
     }*/
 
     private void setDerecha(){
