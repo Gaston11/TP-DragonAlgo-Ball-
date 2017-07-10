@@ -1,16 +1,15 @@
 package fiuba.algo3.modelo;
 
-import fiuba.algo3.modelo.Componentes.Semilla;
+import fiuba.algo3.modelo.Componentes.*;
 import fiuba.algo3.modelo.Personajes.*;
 import fiuba.algo3.modelo.excepciones.CeldaNoOcupadaException;
 import fiuba.algo3.modelo.excepciones.NoSePuedeMoverPersonajeException;
 import org.junit.Rule;
 import org.junit.Test;
+
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.junit.rules.ExpectedException;
-import fiuba.algo3.modelo.Componentes.Celda;
-import fiuba.algo3.modelo.Componentes.Coordenada;
-import fiuba.algo3.modelo.Componentes.Tablero;
 import fiuba.algo3.modelo.excepciones.CeldaOcupadaException;
 
 import java.util.ArrayList;
@@ -350,8 +349,64 @@ public class TableroTest {
 
         tablero.colocarCeldaEnTablero(celdaConConsumible);
 
-        assertEquals(semilla, tablero.obtenerUbicable(otraCoordenada));
+        assertEquals(semilla, tablero.obtenerConsumible(otraCoordenada));
     }
+
+
+    @Test
+    public void obtenerConsumibleNadaEnCasilleroInexistente(){
+        Coordenada unaCoordenada = new Coordenada(1, 1);
+        Coordenada otraCoordenada = new Coordenada(0,0);
+        Celda celdaConConsumible = new Celda(otraCoordenada);
+        Tablero tablero = new Tablero(10);
+
+        Semilla semilla = new Semilla();
+        semilla.posicionarEn(otraCoordenada);
+        celdaConConsumible.colocarConsumible(semilla);
+
+        tablero.colocarCeldaEnTablero(celdaConConsumible);
+
+        assertEquals("Nada", tablero.obtenerConsumible(unaCoordenada).getNombre());
+    }
+
+
+    @Test
+    public void cargoPersonajeEnCoordenadaEnTableroYComprueboQueLaCeldaEstaOcupadaPorUnPersonaje(){
+        Coordenada unaCoordenada = new Coordenada(1, 1);
+        Coordenada otraCoordenada = new Coordenada(0,0);
+        Celda celdaConConsumible = new Celda(otraCoordenada);
+        Celda celdaConPersonaje = new Celda(unaCoordenada);
+        Tablero tablero = new Tablero(10);
+
+        Piccolo piccolo = new Piccolo();
+        piccolo.naceEn(unaCoordenada);
+        celdaConPersonaje.colocarPersonaje(piccolo);
+        Semilla semilla = new Semilla();
+        semilla.posicionarEn(otraCoordenada);
+        celdaConConsumible.colocarConsumible(semilla);
+
+
+        tablero.colocarCeldaEnTablero(celdaConConsumible);
+        tablero.colocarCeldaEnTablero(celdaConPersonaje);
+        assertTrue(tablero.celdaOcupadaConPersonaje(celdaConPersonaje));
+    }
+
+
+    @Test
+    public void cargoConsumibleEnCoordenadaEnTableroYComprueboQueLaCeldaNoEstaOcupadaPorUnPersonaje(){
+        Coordenada otraCoordenada = new Coordenada(0,0);
+        Celda celdaConConsumible = new Celda(otraCoordenada);
+
+        Tablero tablero = new Tablero(10);
+
+        Semilla semilla = new Semilla();
+        semilla.posicionarEn(otraCoordenada);
+        celdaConConsumible.colocarConsumible(semilla);
+        tablero.colocarCeldaEnTablero(celdaConConsumible);
+
+        assertFalse(tablero.celdaOcupadaConPersonaje(celdaConConsumible));
+    }
+
 
     /*
     @Test

@@ -28,15 +28,20 @@ public class BotonAtaqueBasicoEventHandler implements EventHandler<ActionEvent> 
 
     public void setUbicable(Casillero1 casillero) {
         Coordenada coordenada = new Coordenada(casillero.getFila(), casillero.getColumna());
-        if (juego.getTablero().celdaOcupadaConPersonaje(new Celda(coordenada))) {
+        if (juego.getTablero().celdaOcupadaConPersonaje(coordenada)) {
             if (atacante == null && atacado == null) {
                 coordAtacante = coordenada;
                 atacante = juego.getTablero().obtenerPersonajeEn(coordenada);
-            }
-            if (atacante != null && atacado == null) {
+            } else if (atacante != null && atacado == null) {
                 coordAtacado = coordenada;
                 atacado = juego.getTablero().obtenerPersonajeEn(coordenada);
+            } else {
+                this.inicializarValores();
+                coordAtacante = coordenada;
+                atacante = juego.getTablero().obtenerPersonajeEn(coordenada);
             }
+        } else {
+            this.inicializarValores();
         }
     }
 
@@ -47,11 +52,10 @@ public class BotonAtaqueBasicoEventHandler implements EventHandler<ActionEvent> 
             this.alertaNoSeleccionoNingunPersonaje();
         }
 
-        if (atacante != null && atacado !=null){
-            try {
-                juego.atacar(coordAtacante,coordAtacado);
-                //juego.getJugadorActual().ataqueBasico(atacante,atacado);
-                Controlador.getControlador().actualizar();
+        try {
+            juego.atacar(coordAtacante,coordAtacado);
+            //juego.getJugadorActual().ataqueBasico(atacante,atacado);
+            Controlador.getControlador().actualizar();
             }catch (PersonajeInvalidoNoEsPersonajeMaloException e){
                 this.alertaPersonajeNoEsEnemigo();
                 this.inicializarValores();
@@ -64,12 +68,13 @@ public class BotonAtaqueBasicoEventHandler implements EventHandler<ActionEvent> 
             }catch (NoSePuedeAtacarPersonajePorNoEstarEnDistanciaDeAtaqueException e){
                 this.alertaPersonajeAtacadoNoSeEncuentraDentroDeDistanciaDeAtaque();
                 this.inicializarValores();
-            }catch (NoSeleccionoNingunPersonajeException e){
+            }catch (NoSeleccionoNingunPersonajeException e) {
                 this.alertaNoSeleccionoNingunPersonaje();
                 this.inicializarValores();
             }
 
-        }
+
+
 
         Controlador.getControlador().inicializarBotones();
         this.inicializarValores();

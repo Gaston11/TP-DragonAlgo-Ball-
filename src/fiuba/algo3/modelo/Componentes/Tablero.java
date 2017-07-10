@@ -204,7 +204,7 @@ public class Tablero {
 
 	}
 
-	public Consumible obtenerUbicable(Coordenada coordenada) {
+	public Consumible obtenerConsumible(Coordenada coordenada) {
 		try {
 			Celda celda = this.obtenerCelda(coordenada);
 			return celda.getConsumible();
@@ -214,6 +214,19 @@ public class Tablero {
 	}
 
 	public Celda obtenerCelda(Coordenada coordenada) {
-		return this.celdasOcupadas.stream().filter(c -> c.getCoordenada().esLaMismaCoordenada(coordenada)).findFirst().get();
+	    try {
+            return this.celdasOcupadas.stream().filter(c -> c.getCoordenada().esLaMismaCoordenada(coordenada)).findFirst().get();
+        }catch (Exception ex){
+	        return null;
+        }
 	}
+
+    public boolean celdaOcupadaConPersonaje(Coordenada coordenada) {
+	    try {
+            return this.obtenerCelda(coordenada).getPersonaje() != null;
+        }catch (Exception ex){
+	        return false;
+        }
+
+    }
 }
