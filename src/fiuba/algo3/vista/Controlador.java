@@ -3,6 +3,8 @@ package fiuba.algo3.vista;
 import fiuba.algo3.eventos.BotonAtaqueBasicoEventHandler;
 import fiuba.algo3.eventos.BotonMoverEventHandler;
 import fiuba.algo3.eventos.BotonTransformarEventHandler;
+import fiuba.algo3.modelo.Componentes.Coordenada;
+import fiuba.algo3.modelo.Juego.Juego;
 import fiuba.algo3.modelo.Personajes.UbicableV2;
 
 /**
@@ -16,7 +18,7 @@ public class Controlador {
     private BotonAtaqueBasicoEventHandler botonAtaqueBasico;
     private BotonTransformarEventHandler botonTransformar;
     private Casillero1 casilleroAnterior;
-
+    private Juego juego;
 
 
     public static Controlador getControlador(){
@@ -38,8 +40,13 @@ public class Controlador {
         this.contenedor = contenedor;
     }
 
+    public void setJuego(Juego juego) { this.juego = juego; }
+
+
     public void setUbicable(Casillero1 casillero){
-        this.casilleroAnterior.desmarcarCelda();
+        Coordenada coordenada = new Coordenada(this.casilleroAnterior.getFila(), this.casilleroAnterior.getColumna());
+        if(!juego.getTablero().celdaOcupadaConPersonaje(coordenada))
+            this.casilleroAnterior.desmarcarCelda();
         casillero.marcarBorde();
         this.casilleroAnterior = casillero;
         botonMover.setUbicable(casillero);

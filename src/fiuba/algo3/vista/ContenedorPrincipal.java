@@ -50,6 +50,7 @@ public class ContenedorPrincipal extends BorderPane {
         this.setBotonera();
         //this.setDerecha();
         this.setConsola();
+        Controlador.getControlador().setJuego(juego);
         Controlador.getControlador().setContenedor(this);
         this.escribirConsola("Nombre jugador Equipo Z: " + jZ);
         this.escribirConsola("Nombre jugador Equipo Z: " + jEnemigo);

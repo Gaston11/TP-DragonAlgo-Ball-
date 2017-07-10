@@ -214,10 +214,19 @@ public class Tablero {
 	}
 
 	public Celda obtenerCelda(Coordenada coordenada) {
-		return this.celdasOcupadas.stream().filter(c -> c.getCoordenada().esLaMismaCoordenada(coordenada)).findFirst().get();
+	    try {
+            return this.celdasOcupadas.stream().filter(c -> c.getCoordenada().esLaMismaCoordenada(coordenada)).findFirst().get();
+        }catch (Exception ex){
+	        return null;
+        }
 	}
 
     public boolean celdaOcupadaConPersonaje(Coordenada coordenada) {
-		return this.obtenerCelda(coordenada).getPersonaje() != null;
+	    try {
+            return this.obtenerCelda(coordenada).getPersonaje() != null;
+        }catch (Exception ex){
+	        return false;
+        }
+
     }
 }
