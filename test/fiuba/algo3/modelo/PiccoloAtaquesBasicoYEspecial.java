@@ -32,7 +32,7 @@ public class PiccoloAtaquesBasicoYEspecial {
         majinBoo.naceEn(otraCoordenada);
 
         for(int i=0; i<5; i++){
-            piccolo.mover(otraCoordenada1);
+            piccolo.nuevoTurno();
         }
 
         piccolo.ataqueBasico(majinBoo);
@@ -96,7 +96,7 @@ public class PiccoloAtaquesBasicoYEspecial {
 
         for (int i=0; i<10; i++){
             //va a incrementar el ki
-            piccolo.mover(unaCoordenada);
+            piccolo.nuevoTurno();
         }
 
         piccolo.transformarse(gohan);

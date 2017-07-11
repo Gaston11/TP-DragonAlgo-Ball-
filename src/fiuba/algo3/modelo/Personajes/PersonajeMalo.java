@@ -19,4 +19,6 @@ public interface PersonajeMalo {
     void recibirDanio(int cantidad);
 
     int getVida();
+
+    void nuevoTurno();
 }

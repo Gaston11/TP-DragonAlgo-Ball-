@@ -115,6 +115,7 @@ public class Juego {
         if(yaMovio && yaAtaco) {
             if (!jugadorActual.personajesMuertos()) {
                 jugadorActual = jugadorActual.getRival();
+                jugadorActual.nuevoTurno();
                 yaAtaco = false;
                 yaMovio = false;
             } else {

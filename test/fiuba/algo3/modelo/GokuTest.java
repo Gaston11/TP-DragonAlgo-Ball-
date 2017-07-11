@@ -65,7 +65,7 @@ public class GokuTest {
 
         for (int i = 0; i < 10; i++) {
             //va a incrementar el ki
-            goku.mover(otraCoordenada1);
+            goku.nuevoTurno();
         }
 
         goku.transformarse();
@@ -97,7 +97,7 @@ public class GokuTest {
 
         for (int i = 0; i < 5; i++) {
             //va a incrementar el ki
-            goku.mover(otraCoordenada1);
+            goku.nuevoTurno();
         }
 
         goku.transformarse();
@@ -116,14 +116,14 @@ public class GokuTest {
 
         for (int i = 0; i < 10; i++) {
             //va a incrementar el ki
-            goku.mover(otraCoordenada1);
+            goku.nuevoTurno();
         }
 
         goku.transformarse();
 
         for (int i = 0; i < 10; i++) {
             //va a incrementar el ki
-            goku.mover(otraCoordenada1);
+            goku.nuevoTurno();
         }
 
         goku.transformarse();
@@ -144,7 +144,7 @@ public class GokuTest {
 
         for (int i = 0; i < 10; i++) {
             //va a incrementar el ki
-            goku.mover(unaCoordenada);
+            goku.nuevoTurno();
         }
 
         goku.kamehameha(cell);
@@ -164,7 +164,7 @@ public class GokuTest {
 
         for (int i = 0; i < 10; i++) {
             //va a incrementar el ki
-            goku.mover(unaCoordenada);
+            goku.nuevoTurno();
         }
 
         goku.kamehameha(cell);
@@ -183,7 +183,7 @@ public class GokuTest {
         gohan.naceEn(otraCoordenada1);
 
         for(int i= 0; i<10; i++){
-            goku.mover(unaCoordenada);
+            gohan.nuevoTurno();
         }
 
         thrown.expect(FuegoAmigoException.class);
@@ -297,6 +297,7 @@ public class GokuTest {
 
         for (int i=0; i<4; i++){
             //va a incrementar el ki
+            goku.nuevoTurno();
             goku.moverArriba();
         }
 
@@ -316,6 +317,7 @@ public class GokuTest {
 
         for (int i=0; i<14; i++){
             //va a incrementar el ki
+            goku.nuevoTurno();
             goku.moverArriba();
         }
 
@@ -336,7 +338,7 @@ public class GokuTest {
 
         for (int i=0; i<4; i++){
             //va a incrementar el ki
-            goku.mover(unaCoordenada);
+            goku.nuevoTurno();
         }
 
         goku.transformarse();
@@ -355,7 +357,7 @@ public class GokuTest {
 
         for (int i=0; i<14; i++){
             //va a incrementar el ki
-            goku.mover(unaCoordenada);
+            goku.nuevoTurno();
         }
 
         goku.transformarse();
@@ -375,7 +377,7 @@ public class GokuTest {
 
         for (int i=0; i<4; i++){
             //va a incrementar el ki
-            goku.mover(unaCoordenada);
+            goku.nuevoTurno();
         }
 
         goku.transformarse();
@@ -394,7 +396,7 @@ public class GokuTest {
 
         for (int i=0; i<14; i++){
             //va a incrementar el ki
-            goku.mover(unaCoordenada);
+            goku.nuevoTurno();
         }
 
         goku.transformarse();
@@ -414,7 +416,7 @@ public class GokuTest {
 
         for (int i=0; i<4; i++){
             //va a incrementar el ki
-            goku.mover(unaCoordenada);
+            goku.nuevoTurno();
         }
 
         goku.transformarse();
@@ -433,7 +435,7 @@ public class GokuTest {
 
         for (int i=0; i<14; i++){
             //va a incrementar el ki
-            goku.mover(unaCoordenada);
+            goku.nuevoTurno();
         }
 
         goku.transformarse();
@@ -453,7 +455,7 @@ public class GokuTest {
 
         for (int i=0; i<4; i++){
             //va a incrementar el ki
-            goku.mover(unaCoordenada);
+            goku.nuevoTurno();
         }
 
         goku.transformarse();

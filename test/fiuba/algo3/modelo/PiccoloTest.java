@@ -67,7 +67,7 @@ public class PiccoloTest{
 
         for (int i=0; i<10; i++){
             //va a incrementar el ki
-            piccolo.mover(otraCoordenada1);
+            piccolo.nuevoTurno();
         }
 
         piccolo.transformarse(gohan);
@@ -106,7 +106,7 @@ public class PiccoloTest{
 
         for (int i=0; i<10; i++){
             //va a incrementar el ki
-            piccolo.mover(otraCoordenada1);
+            piccolo.nuevoTurno();
         }
 
         piccolo.transformarse(gohan);
@@ -129,7 +129,7 @@ public class PiccoloTest{
 
         for (int i=0; i<10; i++){
             //va a incrementar el ki
-            piccolo.mover(otraCoordenada1);
+            piccolo.nuevoTurno();
             gohan.recibirDanio(24);
         }
 

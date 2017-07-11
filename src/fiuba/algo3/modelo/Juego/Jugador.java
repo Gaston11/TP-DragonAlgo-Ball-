@@ -35,4 +35,5 @@ public abstract class Jugador {
 
     public abstract boolean personajesMuertos();
 
+    public abstract void nuevoTurno();
 }

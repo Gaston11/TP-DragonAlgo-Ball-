@@ -70,7 +70,7 @@ public class CellTest {
         goku.naceEn(otraCoordenada1);
 
         for (int i=0; i<4; i++){
-            cell.mover(otraCoordenada1);
+            cell.nuevoTurno();
             cell.absorber(goku);
         }
 
@@ -104,7 +104,7 @@ public class CellTest {
 
         for (int i = 0; i < 4; i++) {
             //va a incrementar el ki
-            cell.mover(otraCoordenada1);
+            cell.nuevoTurno();
             cell.absorber(goku);
         }
 
@@ -125,7 +125,7 @@ public class CellTest {
         goku.naceEn(otraCoordenada1);
 
         for (int i = 0; i < 4; i++) {
-            cell.mover(otraCoordenada1);
+            cell.nuevoTurno();
             cell.absorber(goku);
         }
         assertEquals(500, cell.getVida());
@@ -144,7 +144,7 @@ public class CellTest {
 
         cell.recibirDanio(200);
         for (int i = 0; i < 4; i++) {
-            cell.mover(otraCoordenada1);
+            cell.nuevoTurno();
             cell.absorber(goku);
         }
         assertEquals(380, cell.getVida());
@@ -153,7 +153,7 @@ public class CellTest {
 
         cell.recibirDanio(220);
         for (int i = 0; i < 8; i++) {
-            cell.mover(otraCoordenada1);
+            cell.nuevoTurno();
             cell.absorber(goku);
         }
         cell.transformarse();
@@ -172,7 +172,7 @@ public class CellTest {
         goku.naceEn(otraCoordenada1);
 
         for (int i = 0; i < 4; i++) {
-            cell.mover(otraCoordenada1);
+            cell.nuevoTurno();
             cell.absorber(goku);
         }
 
@@ -193,8 +193,8 @@ public class CellTest {
         goku.naceEn(otraCoordenada);
 
         for(int i=0; i<10;i++){
-            cell.mover(otraCoordenada);
-            goku.mover(unaCoordenada);
+            cell.nuevoTurno();
+            goku.nuevoTurno();
         }
         goku.transformarse();
         cell.absorber(goku);
@@ -230,7 +230,7 @@ public class CellTest {
         MajinBoo majinBoo = new MajinBoo();
         majinBoo.naceEn(otraCoordenada1);
 
-        cell.mover(unaCoordenada);
+        cell.nuevoTurno();
 
         try{
             cell.absorber(majinBoo);

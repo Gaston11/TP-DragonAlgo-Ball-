@@ -31,7 +31,7 @@ public class MajinBooAtaqueEspecialTest {
 
         for (int i = 0; i < 10; i++) {
             //va a incrementar el ki
-            majinboo.mover(otraCoordenada);
+            majinboo.nuevoTurno();
         }
 
         majinboo.convertirEnChocolate(goku);
@@ -58,7 +58,7 @@ public class MajinBooAtaqueEspecialTest {
 
         for (int i = 0; i < 10; i++) {
             //va a incrementar el ki
-            majinboo.mover(otraCoordenada);
+            majinboo.nuevoTurno();
         }
 
         majinboo.convertirEnChocolate(goku);
@@ -91,7 +91,7 @@ public class MajinBooAtaqueEspecialTest {
 
         for (int i = 0; i < 10; i++) {
             //va a incrementar el ki
-            majinboo.mover(otraCoordenada);
+            majinboo.nuevoTurno();
         }
 
         majinboo.convertirEnChocolate(goku);
@@ -129,11 +129,11 @@ public class MajinBooAtaqueEspecialTest {
 
         for (int i = 0; i < 10; i++) {
             //va a incrementar el ki
-            majinboo.mover(otraCoordenada1);
+            majinboo.nuevoTurno();
         }
 
         for (int i = 0; i<10 ; i++){
-            goku.mover(otraCoordenada);
+            goku.nuevoTurno();
         }
 
         goku.transformarse();
@@ -174,7 +174,7 @@ public class MajinBooAtaqueEspecialTest {
         majinBoo.naceEn(posicionInicialMajinBoo);
 
         for (int i=0; i<10 ; i++){
-            majinBoo.mover(otraCoordenada);
+            majinBoo.nuevoTurno();
         }
 
         thrown.expect(FuegoAmigoException.class);
@@ -198,8 +198,7 @@ public class MajinBooAtaqueEspecialTest {
         majinboo.naceEn(otraCoordenada);
 
         for (int i=0; i<10 ; i++){
-            majinboo.mover(otraCoordenada);
-
+            majinboo.nuevoTurno();
         }
         majinboo.convertirEnChocolate(goku);
 
@@ -225,7 +224,7 @@ public class MajinBooAtaqueEspecialTest {
         majinboo.naceEn(otraCoordenada);
 
         for (int i=0; i<10 ; i++){
-            majinboo.mover(otraCoordenada);
+            majinboo.nuevoTurno();
 
         }
         majinboo.convertirEnChocolate(goku);
@@ -256,7 +255,7 @@ public class MajinBooAtaqueEspecialTest {
         majinboo.naceEn(otraCoordenada);
 
         for (int i=0; i<10 ; i++){
-            majinboo.mover(otraCoordenada);
+            majinboo.nuevoTurno();
 
         }
         majinboo.convertirEnChocolate(goku);
@@ -291,7 +290,7 @@ public class MajinBooAtaqueEspecialTest {
         majinboo.naceEn(otraCoordenada);
 
         for (int i=0; i<10 ; i++){
-            majinboo.mover(otraCoordenada);
+            majinboo.nuevoTurno();
 
         }
         majinboo.convertirEnChocolate(goku);

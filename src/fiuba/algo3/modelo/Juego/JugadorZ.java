@@ -92,6 +92,13 @@ public class JugadorZ extends Jugador{
     }
 
     @Override
+    public void nuevoTurno() {
+        for(PersonajeBueno personajeBueno : this.personajesZ){
+            personajeBueno.nuevoTurno();
+        }
+    }
+
+    @Override
     public void mover(Personaje personaje, Coordenada coordenada){
         if(personajesZ.contains(personaje)){
             personaje.mover(coordenada);

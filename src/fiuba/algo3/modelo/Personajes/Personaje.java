@@ -8,10 +8,10 @@ import fiuba.algo3.modelo.Componentes.Coordenada;
 import fiuba.algo3.modelo.excepciones.PersonajeEstaMuertoException;
 
 public abstract class Personaje implements Ubicable, UbicableV2 {
+    protected Estado estado;
     protected int maxVida;
     protected int vida;
     protected int ki;
-    protected int kiPorTurno = 5;
     protected Coordenada coordenada;
     protected int vidaCritica;
     protected VersorDireccion versorPersonaje;
@@ -97,6 +97,10 @@ public abstract class Personaje implements Ubicable, UbicableV2 {
     public abstract Coordenada moverAInferiorDerecha();
 
     public abstract int getPoderPelea();
+
+    public void nuevoTurno(){
+        this.ki += this.estado.kiPorTurno();
+    }
 
     public boolean estaMuerto() {
         return this.vida<=0;

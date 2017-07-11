@@ -98,4 +98,11 @@ public class JugadorEnemigo extends Jugador{
         return estaMuerto;
     }
 
+    @Override
+    public void nuevoTurno() {
+        for(PersonajeMalo personajeMalo : this.personajesEnemigos){
+            personajeMalo.nuevoTurno();
+        }
+    }
+
 }

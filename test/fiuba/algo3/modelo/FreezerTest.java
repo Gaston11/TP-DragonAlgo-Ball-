@@ -69,7 +69,7 @@ public class FreezerTest {
 
         for (int i = 0; i < 10; i++) {
             //va a incrementar el ki
-            freezer.mover(otraCoordenada1);
+            freezer.nuevoTurno();
         }
 
         freezer.transformarse();
@@ -103,7 +103,7 @@ public class FreezerTest {
 
         for (int i = 0; i < 5; i++) {
             //va a incrementar el ki
-            freezer.mover(otraCoordenada1);
+            freezer.nuevoTurno();
         }
 
         freezer.transformarse();
@@ -124,14 +124,14 @@ public class FreezerTest {
 
         for (int i = 0; i < 10; i++) {
             //va a incrementar el ki
-            freezer.mover(otraCoordenada1);
+            freezer.nuevoTurno();
         }
 
         freezer.transformarse();
 
         for (int i = 0; i < 10; i++) {
             //va a incrementar el kif
-            freezer.mover(otraCoordenada1);
+            freezer.nuevoTurno();
         }
 
         freezer.transformarse();
@@ -151,7 +151,7 @@ public class FreezerTest {
 
         for (int i = 0; i < 10; i++) {
             //va a incrementar el ki
-            freezer.mover(otraCoordenada1);
+            freezer.nuevoTurno();
         }
         freezer.rayoMortal(gohan);
         assertTrue(freezer.poseeKi(30));
@@ -170,7 +170,7 @@ public class FreezerTest {
 
         for (int i = 0; i < 10; i++) {
             //va a incrementar el ki
-            freezer.mover(otraCoordenada1);
+            freezer.nuevoTurno();
         }
         freezer.rayoMortal(gohan);
         assertTrue(gohan.poseeVida(270));
@@ -189,14 +189,14 @@ public class FreezerTest {
 
         for (int i = 0; i < 10; i++) {
             //va a incrementar el ki
-            goku.mover(otraCoordenada1);
+            goku.nuevoTurno();
         }
 
         goku.transformarse();
 
         for (int i = 0; i < 10; i++) {
             //va a incrementar el ki
-            goku.mover(otraCoordenada1);
+            goku.nuevoTurno();
         }
 
         goku.transformarse();
@@ -219,7 +219,7 @@ public class FreezerTest {
 
         for (int i = 0; i < 10; i++) {
             //va a incrementar el ki
-            freezer.mover(unaCoordenada);
+            freezer.nuevoTurno();
         }
 
         thrown.expect(FuegoAmigoException.class);
@@ -331,6 +331,7 @@ public class FreezerTest {
 
         for (int i=0; i<4; i++){
             //va a incrementar el ki
+            freezer.nuevoTurno();
             freezer.moverArriba();
         }
 
@@ -350,6 +351,7 @@ public class FreezerTest {
 
         for (int i=0; i<16; i++){
             //va a incrementar el ki
+            freezer.nuevoTurno();
             freezer.moverArriba();
         }
 

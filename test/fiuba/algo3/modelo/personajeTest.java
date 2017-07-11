@@ -33,14 +33,14 @@ public class personajeTest{
 
         Goku goku = new Goku();
         goku.naceEn(unaCoordenada);
-
+        goku.mover(otraCoordenada);
         for (int i = 0; i < 10; i++) {
             //va a incrementar el ki
-            goku.mover(otraCoordenada);
+            goku.nuevoTurno();
         }
 
-        goku.transformarse();
 
+        goku.transformarse();
         goku.mover(otraCoordenada1);
 
         assertTrue(goku.estaUbicadoEn(otraCoordenada1));

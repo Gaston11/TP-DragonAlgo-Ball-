@@ -44,7 +44,7 @@ public class GohanTest {
 
         for (int i = 0; i < 10; i++) {
             //va a incrementar el ki
-            gohan.mover(unaCoordenada);
+            gohan.nuevoTurno();
         }
 
         gohan.transformarse(goku, piccolo);
@@ -89,14 +89,14 @@ public class GohanTest {
 
         for (int i = 0; i < 5; i++) {
             //va a incrementar el ki
-            gohan.mover(otraCoordenada1);
+            gohan.nuevoTurno();
         }
 
         gohan.transformarse(goku,piccolo);
 
         for (int i = 0; i < 10; i++) {
             //va a incrementar el ki
-            gohan.mover(otraCoordenada1);
+            gohan.nuevoTurno();
         }
 
         goku.recibirDanio(350);
@@ -124,14 +124,14 @@ public class GohanTest {
 
         for (int i = 0; i < 5; i++) {
             //va a incrementar el ki
-            gohan.mover(otraCoordenada1);
+            gohan.nuevoTurno();
         }
 
         gohan.transformarse(goku,piccolo);
 
         for (int i = 0; i < 10; i++) {
             //va a incrementar el ki
-            gohan.mover(otraCoordenada1);
+            gohan.nuevoTurno();
         }
         piccolo.recibirDanio(350);
 
@@ -157,7 +157,7 @@ public class GohanTest {
 
         for (int i = 0; i < 5; i++) {
             //va a incrementar el ki
-            gohan.mover(otraCoordenada1);
+            gohan.nuevoTurno();
         }
 
         gohan.transformarse(goku,piccolo);
@@ -184,7 +184,7 @@ public class GohanTest {
         majinboo.naceEn(otraCoordenada1);
 
         for(int i=0; i<5 ; i++){
-            gohan.mover(otraCoordenada);
+            gohan.nuevoTurno();
         }
 
         gohan.masenko(majinboo);
@@ -205,7 +205,7 @@ public class GohanTest {
         majinboo.naceEn(otraCoordenada1);
 
         for(int i=0; i<5 ; i++){
-            gohan.mover(otraCoordenada);
+            gohan.nuevoTurno();
         }
 
         gohan.masenko(majinboo);
@@ -226,7 +226,7 @@ public class GohanTest {
         goku.naceEn(otraCoordenada1);
 
         for(int i=0; i<5 ; i++){
-            gohan.mover(unaCoordenada);
+            gohan.nuevoTurno();
         }
 
         thrown.expect(FuegoAmigoException.class);

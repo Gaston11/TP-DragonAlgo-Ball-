@@ -93,10 +93,8 @@ public class GokuAtaqueBasico {
 
         for (int i = 0; i < 10; i++) {
             //va a incrementar el ki
-            goku.mover(otraCoordenada2);
+            goku.nuevoTurno();
         }
-
-        goku.transformarse();
 
         Freezer freezer = new Freezer();
         freezer.naceEn(otraCoordenada2);
@@ -104,6 +102,8 @@ public class GokuAtaqueBasico {
         for (int i=0; i<18; i++){
             freezer.ataqueBasico(goku);
         }
+
+        goku.transformarse();
         goku.ataqueBasico(freezer);
 
         assertTrue(freezer.poseeVida(352));
@@ -118,26 +118,28 @@ public class GokuAtaqueBasico {
         Goku goku = new Goku();
         goku.naceEn(unaCoordenada);
 
-        for (int i = 0; i < 10; i++) {
-            //va a incrementar el ki
-            goku.mover(otraCoordenada2);
-        }
-
-        goku.transformarse();
-
-        for (int i = 0; i < 10; i++) {
-            //va a incrementar el ki
-            goku.mover(otraCoordenada2);
-        }
-
-        goku.transformarse();
-
         Freezer freezer = new Freezer();
         freezer.naceEn(otraCoordenada1);
 
         for (int i=0; i<18; i++){
             freezer.ataqueBasico(goku);
         }
+
+        for (int i = 0; i < 10; i++) {
+            //va a incrementar el ki
+            goku.nuevoTurno();
+        }
+
+        goku.transformarse();
+
+        for (int i = 0; i < 10; i++) {
+            //va a incrementar el ki
+            goku.nuevoTurno();
+        }
+
+        goku.transformarse();
+
+
         goku.ataqueBasico(freezer);
 
         assertTrue(freezer.poseeVida(328));
@@ -189,7 +191,7 @@ public class GokuAtaqueBasico {
 
         for (int i = 0; i < 10; i++) {
             //va a incrementar el ki
-            goku.mover(otraCoordenada1);
+            goku.nuevoTurno();
         }
         goku.transformarse();
         goku.ataqueBasico(cell);
@@ -211,13 +213,13 @@ public class GokuAtaqueBasico {
 
         for (int i = 0; i < 10; i++) {
             //va a incrementar el ki
-            goku.mover(otraCoordenada1);
+            goku.nuevoTurno();
         }
 
         goku.transformarse();
         for (int i = 0; i < 10; i++) {
             //va a incrementar el ki
-            goku.mover(otraCoordenada1);
+            goku.nuevoTurno();
         }
 
         goku.transformarse();

@@ -68,7 +68,7 @@ public class MajinBooTest {
 
         for (int i = 0; i < 10; i++) {
             //va a incrementar el ki
-            majinboo.mover(otraCoordenada1);
+            majinboo.nuevoTurno();
         }
 
         majinboo.transformarse();
@@ -99,7 +99,7 @@ public class MajinBooTest {
 
         for (int i = 0; i < 5; i++) {
             //va a incrementar el ki
-            majinboo.mover(otraCoordenada1);
+            majinboo.nuevoTurno();
         }
 
         majinboo.transformarse();
@@ -118,14 +118,14 @@ public class MajinBooTest {
 
         for (int i = 0; i < 10; i++) {
             //va a incrementar el ki
-            majinboo.mover(otraCoordenada1);
+            majinboo.nuevoTurno();
         }
 
         majinboo.transformarse();
 
         for (int i = 0; i < 10; i++) {
             //va a incrementar el kif
-            majinboo.mover(otraCoordenada1);
+            majinboo.nuevoTurno();
         }
 
         majinboo.transformarse();
@@ -147,7 +147,7 @@ public class MajinBooTest {
 
         for (int i = 0; i < 10; i++) {
             //va a incrementar el ki
-            majinboo.mover(otraCoordenada1);
+            majinboo.nuevoTurno();
         }
         thrown.expect(FuegoAmigoException.class);
         majinboo.ataqueBasico(cell);
@@ -262,7 +262,7 @@ public class MajinBooTest {
 
         for (int i=0; i<4; i++){
             //va a incrementar el ki
-            majinBoo.mover(unaCoordenada);
+            majinBoo.nuevoTurno();
         }
 
         majinBoo.transformarse();
@@ -282,7 +282,7 @@ public class MajinBooTest {
 
         for (int i=0; i<14; i++){
             //va a incrementar el ki
-            majinBoo.mover(unaCoordenada);
+            majinBoo.nuevoTurno();
         }
 
         majinBoo.transformarse();

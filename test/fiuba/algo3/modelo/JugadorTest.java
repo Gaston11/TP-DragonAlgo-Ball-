@@ -130,8 +130,8 @@ public class JugadorTest {
         goku.naceEn(otraCoordenada);
 
         for(int i=0; i<4; i++){
-            goku.mover(otraCoordenada);
-            freezer.mover(unaCoordenada);
+            goku.nuevoTurno();
+            freezer.nuevoTurno();
         }
 
         jugador.transformar(goku);
@@ -174,8 +174,8 @@ public class JugadorTest {
         freezer.naceEn(unaCoordenada);
         goku.naceEn(otraCoordenada);
         for (int i=0; i<4; i++){
-            freezer.mover(unaCoordenada);
-            goku.mover(otraCoordenada);
+            freezer.nuevoTurno();
+            freezer.nuevoTurno();
         }
 
         thrown.expect(PersonajeInvalidoNoEsPersonajeMaloException.class);
@@ -278,7 +278,7 @@ public class JugadorTest {
         goku.naceEn(otraCoordenada);
 
         for(int i=0; i<4; i++){
-            jugador.mover(goku,otraCoordenada);
+            jugador.nuevoTurno();
         }
 
         jugador.ataqueEspecial(goku,freezer);
@@ -318,14 +318,14 @@ public class JugadorTest {
         goku.naceEn(otraCoordenada);
 
         for(int i =0 ; i<6; i++){
-            jugador.mover(gohan,otraCoordenada);
+            jugador.nuevoTurno();
         }
 
         jugador.transformar(gohan); //transformado en super sayajin fase 1
         goku.recibirDanio(350);
         piccolo.recibirDanio(350);
         for(int i =0 ; i<6; i++){
-            jugador.mover(gohan,otraCoordenada);
+            jugador.nuevoTurno();
         }
 
         jugador.transformar(gohan);

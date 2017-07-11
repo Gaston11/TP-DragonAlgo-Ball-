@@ -16,7 +16,6 @@ import javafx.scene.image.ImageView;
 import java.util.ConcurrentModificationException;
 
 public class Goku extends Personaje implements PersonajeBueno{
-    private Estado estado;
     private int kiNecesario;
     private int porcentaje;
 
@@ -106,8 +105,6 @@ public class Goku extends Personaje implements PersonajeBueno{
         Coordenada coordenada1 = this.estado.obtenerCoordenadaValida(this.coordenada,coordenada);
         this.coordenada = coordenada1;
         this.versorPersonaje = new VersorDireccion(coordenada);
-        this.ki += this.kiPorTurno;
-
     }
 
     @Override

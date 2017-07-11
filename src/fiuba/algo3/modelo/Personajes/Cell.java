@@ -11,7 +11,6 @@ import javafx.scene.image.ImageView;
 
 public class Cell extends Personaje implements PersonajeMalo{
 
-    private Estado estado;
     private int kiNecesario;
 
     public Cell(){
@@ -68,7 +67,6 @@ public class Cell extends Personaje implements PersonajeMalo{
     public void mover(Coordenada coordenada) {
         this.coordenada = this.estado.obtenerCoordenadaValida(this.coordenada,coordenada);
         this.versorPersonaje = new VersorDireccion(coordenada);
-        this.ki += this.kiPorTurno;
     }
 
     @Override

@@ -14,7 +14,6 @@ import javafx.scene.image.ImageView;
 
 public class Gohan extends Personaje implements PersonajeBueno{
 
-    private Estado estado;
     private int vidaCritica;
     private int kiNecesario;
 
@@ -41,7 +40,6 @@ public class Gohan extends Personaje implements PersonajeBueno{
     public void mover(Coordenada coordenada) {
         this.coordenada = this.estado.obtenerCoordenadaValida(this.coordenada,coordenada);
         this.versorPersonaje = new VersorDireccion(coordenada);
-        this.ki += this.kiPorTurno;
     }
 
     @Override

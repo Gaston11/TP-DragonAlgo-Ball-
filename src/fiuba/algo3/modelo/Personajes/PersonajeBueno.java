@@ -22,4 +22,6 @@ public interface PersonajeBueno {
     void convertimeEnChocolate();
 
     int getVida();
+
+    void nuevoTurno();
 }

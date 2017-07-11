@@ -130,7 +130,7 @@ public class AtaquesIntegracionTest {
         majinBoo.naceEn(posicionInicialMajinBoo);
 
         for (int i=0; i<10 ; i++){
-            majinBoo.mover(otraCoordenada);
+            majinBoo.nuevoTurno();
         }
 
         majinBoo.convertirEnChocolate(goku);

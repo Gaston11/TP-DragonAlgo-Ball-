@@ -11,15 +11,14 @@ import javafx.scene.image.ImageView;
 
 public class MajinBoo extends Personaje implements PersonajeMalo{
 
-    private Estado estado;
     private int kiNecesario;
 
     public MajinBoo() {
-        maxVida = 300;
-        vida = maxVida;
-        ki = 0;
-        kiNecesario = 30; //para convertir en chocolate
-        estado = new EstadoNormal();
+        this.maxVida = 300;
+        this.vida = maxVida;
+        this.ki = 0;
+        this.kiNecesario = 30; //para convertir en chocolate
+        this.estado = new EstadoNormal();
     }
 
     @Override
@@ -90,7 +89,6 @@ public class MajinBoo extends Personaje implements PersonajeMalo{
     public void mover(Coordenada coordenada) {
         this.coordenada = this.estado.obtenerCoordenadaValida(this.coordenada,coordenada);
         this.versorPersonaje = new VersorDireccion(coordenada);
-        this.ki += this.kiPorTurno;
     }
 
     @Override

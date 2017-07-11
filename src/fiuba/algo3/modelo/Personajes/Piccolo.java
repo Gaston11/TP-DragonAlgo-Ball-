@@ -11,7 +11,6 @@ import javafx.scene.image.ImageView;
 
 public class Piccolo extends Personaje implements PersonajeBueno {
 
-    private Estado estado;
     private int kiNecesario;
 
     public Piccolo(){
@@ -97,7 +96,6 @@ public class Piccolo extends Personaje implements PersonajeBueno {
     public void mover(Coordenada coordenada) {
         this.coordenada = this.estado.obtenerCoordenadaValida(this.coordenada,coordenada);
         this.versorPersonaje = new VersorDireccion(coordenada);
-        this.ki += this.kiPorTurno;
     }
 
     @Override
